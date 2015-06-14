@@ -72,16 +72,6 @@ CREATE TABLE datiados.Cheques(
 	CONSTRAINT pk_Cheques PRIMARY KEY (numero_cheque,cod_banco)
 )
 
-/*Direcciones*/
-
-CREATE TABLE datiados.Direcciones(
-	id int IDENTITY(1,1) PRIMARY KEY,
-	calle varchar(255) NOT NULL,
-	altura numeric(18,0) NOT NULL,
-	piso numeric(3,0),
-	dpto varchar(10),
-)
-
 /* Tipo Documento*/
 
 CREATE TABLE datiados.TipoDoc(
@@ -98,7 +88,10 @@ CREATE TABLE datiados.Clientes(
 	cod_pais numeric(18,0) FOREIGN KEY REFERENCES datiados.Paises,
 	nombre varchar(255) NOT NULL,
 	apellido varchar(255) NOT NULL,
-	direccion int FOREIGN KEY REFERENCES datiados.Direcciones,
+	dir_calle varchar(255) NOT NULL,
+	dir_altura numeric(18,0) NOT NULL,
+	dir_piso numeric(3,0),
+	dir_dpto varchar(10),
 	mail varchar(255) NOT NULL UNIQUE,
 	fecha_nac datetime NOT NULL,
 )
