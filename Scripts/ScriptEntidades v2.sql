@@ -238,5 +238,6 @@ CREATE TABLE datiados.Items_Facturas(
 	descripcion varchar(255) NOT NULL,
 	importe numeric(18,2) NOT NULL,
 	nro_cuenta numeric(18,0) FOREIGN KEY REFERENCES datiados.Cuentas,
-	cod_transf int FOREIGN KEY REFERENCES datiados.Transferencias
+	cod_transf int FOREIGN KEY REFERENCES datiados.Transferencias,
+	CONSTRAINT pf_Item_Facturas PRIMARY KEY (id_item,nro_factura)
 )
