@@ -48,7 +48,7 @@ namespace PagoElectronico
 
         private void login()
         {
-           
+          
             String usuario;
             String contraseña;
            
@@ -59,21 +59,34 @@ namespace PagoElectronico
             SqlParameter[] parametrosEntrada = new SqlParameter[] {
                 new SqlParameter("@USUARIO", usuario),
                 new SqlParameter("@Contraseña", contraseña)
+
             };
 
-            ConectionManager.getInstance().ejecutarStoreProcedure("loguear", parametrosEntrada);
 
-            
+                ConectionManager.getInstance().ejecutarStoreProcedure("loguear", parametrosEntrada);
+
+                if (Program.hayError)
+                {
+                    txtContraseña.Text = null;
+
+                    Program.hayError = false;
+
+                }
+                else
+                {
+                    this.Hide();
+                   frmMain main = new frmMain();
+                   main.Show();
 
 
+
+
+                }
 
 
 
 
         }
-
-
-
 
 
 

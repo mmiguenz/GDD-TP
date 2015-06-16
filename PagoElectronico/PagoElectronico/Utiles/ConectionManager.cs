@@ -106,8 +106,11 @@ namespace PagoElectronico.Utiles
             }
             catch (SqlException ex)
             {
+                
                 Console.WriteLine("Error: " + ex.ToString());
                 MessageBox.Show("Error: " + ex.Message);
+                Program.hayError = true;
+               
             }
             return cmd.Parameters[parametroSalida.ParameterName].Value;
         }
@@ -126,6 +129,7 @@ namespace PagoElectronico.Utiles
             {
                 Console.WriteLine("Error: " + ex.ToString());
                 MessageBox.Show("Error: " + ex.Message);
+                Program.hayError = true;
 
 
             }
