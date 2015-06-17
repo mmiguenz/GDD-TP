@@ -103,10 +103,10 @@ CREATE TABLE datiados.CuentaEstados(
 	descripcion varchar(50)NOT NULL,
 )
 
-/*Tipos de Cuenta*/
+/*Categorías de Cuenta*/
 
-CREATE TABLE datiados.CuentaTipos(
-	id_tipo int IDENTITY(1,1) PRIMARY KEY,
+CREATE TABLE datiados.CuentaCategorias(
+	id_categoria int IDENTITY(1,1) PRIMARY KEY,
 	descripcion varchar(150) NOT NULL,
 	costo decimal(18,4) NOT NULL,
 )
@@ -128,7 +128,7 @@ CREATE TABLE datiados.Cuentas(
 	cod_pais numeric(18,0) FOREIGN KEY REFERENCES datiados.Paises,
 	fecha_creacion datetime NOT NULL,
 	fecha_cierre datetime,
-	tipo int FOREIGN KEY REFERENCES datiados.CuentaTipos,
+	categoria int FOREIGN KEY REFERENCES datiados.CuentaCategorias,
 	cod_moneda int FOREIGN KEY REFERENCES datiados.Monedas
 )
 
@@ -144,7 +144,7 @@ CREATE TABLE datiados.Tarjetas(
 
 /* Tarjetas por Cliente*/
 
-CREATE TABLE datiados.tarjetas_Cliente(
+CREATE TABLE datiados.Tarjetas_Cliente(
 	id int IDENTITY(1,1) PRIMARY KEY,
 	nro_tarjeta varchar(16) FOREIGN KEY REFERENCES datiados.Tarjetas,
 	id_cliente int FOREIGN KEY REFERENCES datiados.Clientes
@@ -167,7 +167,8 @@ CREATE TABLE datiados.Depositos(
 CREATE TABLE datiados.Retiros(
 	codigo numeric(18,0) PRIMARY KEY,
 	nro_cuenta numeric(18,0) FOREIGN KEY REFERENCES datiados.Cuentas,
-	id_cliente int FOREIGN KEY REFERENCES datiados.Clientes,
+	fecha datetime NOT NULL,
+	importe decimal(18,4) NOT NULL,
 	nro_cheque numeric(18,0) NOT NULL,
 	cod_banco numeric(18,0) NOT NULL,
 	CONSTRAINT fk_cheques_retiros FOREIGN KEY (nro_cheque,cod_banco) REFERENCES datiados.Cheques
@@ -231,6 +232,5 @@ CREATE TABLE datiados.Items_Facturas(
 	descripcion varchar(255) NOT NULL,
 	importe numeric(18,2) NOT NULL,
 	nro_cuenta numeric(18,0) FOREIGN KEY REFERENCES datiados.Cuentas,
-	cod_transf int FOREIGN KEY REFERENCES datiados.Transferencias,
 	CONSTRAINT pf_Item_Facturas PRIMARY KEY (id_item,nro_factura)
 )
