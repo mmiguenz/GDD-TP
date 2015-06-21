@@ -1,51 +1,9 @@
-USE [GD1C2015]
-GO
-CREATE SCHEMA [datiados] AUTHORIZATION [gd]
+USE [GDScriptTest]
 GO
 
-/*Roles*/
+GO
 
-CREATE TABLE datiados.Roles(
-	id_rol int IDENTITY(1,1) PRIMARY KEY,
-	nombre varchar(255) NOT NULL,
-	estado bit NOT NULL DEFAULT 0
-)	
-/*Usuarios*/
 
-CREATE TABLE datiados.Usuarios(
-	username varchar(255)NOT NULL PRIMARY KEY,
-	pwd varchar(255) NOT NULL,
-	estado bit DEFAULT 0,
-	rol_id int FOREIGN KEY REFERENCES datiados.Roles,
-	fecha_creac datetime NOT NULL,
-	fecha_ult_modif datetime NOT NULL,
-	preg_secr varchar(255),
-	rta_secr varchar(255),
-	cant_intentos_fallidos int DEFAULT 0
-)
-
-/*Funcionalidades*/
-
-CREATE TABLE datiados.Funcionalidades(
-	id_func int IDENTITY(1,1) PRIMARY KEY,
-	descripcion varchar(255) NOT NULL,
-)
-
-/*Usuarios_Roles*/
-
-CREATE TABLE datiados.Usuarios_Roles(
-	id int IDENTITY(1,1) PRIMARY KEY,
-	id_usr varchar(255) FOREIGN KEY REFERENCES datiados.Usuarios,
-	id_rol int FOREIGN KEY REFERENCES datiados.Roles
-)
-
-/*Roles_Funcionalidades*/
-
-CREATE TABLE datiados.Roles_Funcionalidades(
-	id int IDENTITY(1,1) PRIMARY KEY,
-	id_rol int FOREIGN KEY REFERENCES datiados.Roles,
-	id_func int FOREIGN KEY REFERENCES datiados.Funcionalidades
-)
 
 /*Países*/
 
@@ -66,7 +24,7 @@ CREATE TABLE datiados.Bancos(
 
 CREATE TABLE datiados.Cheques(
 	numero_cheque numeric(18,0),
-	cod_banco numeric(18,0) FOREIGN KEY REFERENCES datiados.Bancos,
+	cod_banco numeric(18,0) FOREIGN KEY  REFERENCES datiados.Bancos,
 	importe decimal(18,4) NOT NULL,
 	fecha datetime NOT NULL,
 	CONSTRAINT pk_Cheques PRIMARY KEY (numero_cheque,cod_banco)
@@ -182,7 +140,7 @@ CREATE TABLE datiados.Transferencias(
 		cta_destino numeric(18,0) FOREIGN KEY REFERENCES datiados.Cuentas,
 		importe decimal(18,4) NOT NULL,
 		fecha datetime NOT NULL,
-		costo decimal(18,4) NOT NULL
+		
 )
 
 /*Tipo de Movimientos en Cuentas*/
@@ -204,16 +162,6 @@ CREATE TABLE datiados.CuentaMovimientos(
 	CONSTRAINT pk_CtaMovs PRIMARY KEY (cod_mov,nro_cuenta)
 )
 
-/*Facturas*/
-
-CREATE TABLE datiados.Facturas(
-	numero numeric(18,0) PRIMARY KEY,
-	fecha datetime NOT NULL,
-	id_cliente int FOREIGN KEY REFERENCES datiados.Clientes,
-	abonada bit NOT NULL DEFAULT 0,
-	fecha_pago datetime,
-)
-
 /* Tipos de Items de Facturas*/
 
 CREATE TABLE datiados.ItemConceptoTipos(
@@ -223,6 +171,37 @@ CREATE TABLE datiados.ItemConceptoTipos(
 	costo decimal(18,4) DEFAULT 0,
 )
 	
+
+
+
+--- CtaCte
+
+
+CREATE TABLE datiados.CtaCte(
+							 CtaCteId int IDENTITY (1,1) Primary key,
+							 ClienteID int foreign key references datiados.clientes,
+							 importe numeric(18,2) NOT NULL,
+							 fecha datetime,
+							 tipoConcepto int foreign key references datiados.ItemConceptoTipos,
+							 NroCta numeric(18,0) foreign key references datiados.cuentas,
+							 Saldada bit 
+							 
+								)
+
+
+
+/*Facturas*/
+
+CREATE TABLE datiados.Facturas(
+	numero numeric(18,0) PRIMARY KEY,
+	fecha datetime NOT NULL,
+	id_cliente int FOREIGN KEY REFERENCES datiados.Clientes,
+	
+	
+)
+
+
+
 /*Items Facturas*/
 
 CREATE TABLE datiados.Items_Facturas(
@@ -232,5 +211,53 @@ CREATE TABLE datiados.Items_Facturas(
 	descripcion varchar(255) NOT NULL,
 	importe numeric(18,2) NOT NULL,
 	nro_cuenta numeric(18,0) FOREIGN KEY REFERENCES datiados.Cuentas,
+	CtaCteID int foreign key references datiados.CtaCte
 	CONSTRAINT pf_Item_Facturas PRIMARY KEY (id_item,nro_factura)
+)
+
+
+
+/*Roles*/
+
+CREATE TABLE datiados.Roles(
+	id_rol int IDENTITY(1,1) PRIMARY KEY,
+	nombre varchar(255) NOT NULL,
+	estado bit NOT NULL DEFAULT 0
+)	
+/*Usuarios*/
+
+CREATE TABLE datiados.Usuarios(
+	username varchar(255)NOT NULL PRIMARY KEY,
+	pwd varchar(255) NOT NULL,
+	estado bit DEFAULT 0,
+	rol_id int FOREIGN KEY REFERENCES datiados.Roles,
+	fecha_creac datetime NOT NULL,
+	fecha_ult_modif datetime NOT NULL,
+	preg_secr varchar(255),
+	rta_secr varchar(255),
+	cant_intentos_fallidos int DEFAULT 0,
+	clienteID int foreign key references datiados.clientes
+)
+
+/*Funcionalidades*/
+
+CREATE TABLE datiados.Funcionalidades(
+	id_func int IDENTITY(1,1) PRIMARY KEY,
+	descripcion varchar(255) NOT NULL,
+)
+
+/*Usuarios_Roles*/
+
+CREATE TABLE datiados.Usuarios_Roles(
+	id int IDENTITY(1,1) PRIMARY KEY,
+	id_usr varchar(255) FOREIGN KEY REFERENCES datiados.Usuarios,
+	id_rol int FOREIGN KEY REFERENCES datiados.Roles
+)
+
+/*Roles_Funcionalidades*/
+
+CREATE TABLE datiados.Roles_Funcionalidades(
+	id int IDENTITY(1,1) PRIMARY KEY,
+	id_rol int FOREIGN KEY REFERENCES datiados.Roles,
+	id_func int FOREIGN KEY REFERENCES datiados.Funcionalidades
 )

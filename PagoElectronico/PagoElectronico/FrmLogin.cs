@@ -12,9 +12,9 @@ using System.Data.SqlClient;
 
 namespace PagoElectronico
 {
-    public partial class frmLogin : Form
+    public partial class FrmLogin : Form
     {
-        public frmLogin()
+        public FrmLogin()
         {
             InitializeComponent();
         }
@@ -36,6 +36,7 @@ namespace PagoElectronico
             {
                
                 login();
+
             }
         }
 
@@ -63,30 +64,78 @@ namespace PagoElectronico
             };
 
 
-                ConectionManager.getInstance().ejecutarStoreProcedure("loguear", parametrosEntrada);
+                ConectionManager.getInstance().ejecutarStoreProcedure("datiados.loguear", parametrosEntrada);
 
-                if (Program.hayError)
+                if (Program.HayError)
                 {
                     txtContraseña.Text = null;
 
-                    Program.hayError = false;
+                    Program.HayError = false;
 
                 }
                 else
                 {
                     this.Hide();
-                   frmMain main = new frmMain();
-                   main.Show();
+                    Program.InstanciarUsuario(usuario);
+                    verificaRol(usuario);
 
-
-
-
+                 
+            
                 }
 
 
 
 
         }
+
+
+
+        private void verificaRol(String usuario)
+        {
+            String sqlQuery;
+
+            sqlQuery = "Select  us.id_rol, r.nombre  from Datiados.Usuarios_Roles us ";
+            sqlQuery += "inner join datiados.roles r on r.id_rol = us.id_rol ";
+           sqlQuery += " where usr =  " + "'"+usuario+"'";
+
+           
+
+            DataSet da = ConectionManager.getInstance().consultarDataSet(sqlQuery);
+ 
+
+            if (da.Tables[0].Rows.Count > 1)
+            {
+                FrmRol rol = new FrmRol();
+                rol.llenarCombo(da.Tables[0]);
+                rol.Show();
+                
+
+
+            }
+            else
+            {
+                int rolID  =  da.Tables[0].Rows[0].Field<int>("id_rol");
+
+                Program.InstanciarUsuario(usuario);
+                Program.setiarRol(rolID);
+                FrmMain menu = new FrmMain();
+                menu.Show();
+            
+
+            }
+
+
+
+
+
+
+                                    
+
+        
+        
+        }
+
+
 
 
 

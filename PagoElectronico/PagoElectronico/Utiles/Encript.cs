@@ -11,20 +11,26 @@ namespace PagoElectronico.Utiles
 
         public static string encriptar(string input)
         {
-            //SHA256Managed provider = new SHA256Managed();
-            SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
+            if (input.Length > 0)
+            {
+                //SHA256Managed provider = new SHA256Managed();
+                SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
 
-            //LA primer sentencia es Para usuarios de Windows XP, si no funciona, comentarla y usar la segunda.
+                //LA primer sentencia es Para usuarios de Windows XP, si no funciona, comentarla y usar la segunda.
 
-            byte[] inputBytes = Encoding.UTF8.GetBytes(input);
-            byte[] hashedBytes = provider.ComputeHash(inputBytes);
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                byte[] hashedBytes = provider.ComputeHash(inputBytes);
 
-            StringBuilder output = new StringBuilder();
+                StringBuilder output = new StringBuilder();
 
-            for (int i = 0; i < hashedBytes.Length; i++)
-                output.Append(hashedBytes[i].ToString("x2").ToLower());
+                for (int i = 0; i < hashedBytes.Length; i++)
+                    output.Append(hashedBytes[i].ToString("x2").ToLower());
 
-            return output.ToString();
+                return output.ToString();
+            }
+            else
+                return input;
+            
         }
     }
 }

@@ -31,7 +31,7 @@ namespace PagoElectronico.Utiles
 
         protected void conectar()
         {
-            cnn = new SqlConnection((@"Server=.\sqlServer2008;  user=sa ;  password=gestiondedatos; database=Migracion;"));
+            cnn = new SqlConnection((@"Server=.\sqlServer2008;  user=sa ;  password=gestiondedatos; database=gd1c2015;"));
            // cnn.ConnectionString = Properties.Settings.Default.cadenaConexion;
           
             try
@@ -109,7 +109,7 @@ namespace PagoElectronico.Utiles
                 
                 Console.WriteLine("Error: " + ex.ToString());
                 MessageBox.Show("Error: " + ex.Message);
-                Program.hayError = true;
+                Program.HayError = true;
                
             }
             return cmd.Parameters[parametroSalida.ParameterName].Value;
@@ -129,7 +129,34 @@ namespace PagoElectronico.Utiles
             {
                 Console.WriteLine("Error: " + ex.ToString());
                 MessageBox.Show("Error: " + ex.Message);
-                Program.hayError = true;
+                Program.HayError = true;
+
+
+            }
+        }
+
+        public DataSet ejecutarStoreProcedureDevuelveDataSet(String nombreSp, SqlParameter[] parametrosEntrada)
+        {
+            SqlCommand cmd = null;
+            DataSet datos = new DataSet();
+            try
+            {
+                cmd = new SqlCommand(nombreSp, cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddRange(parametrosEntrada);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(datos);
+
+                return datos; 
+                
+
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.ToString());
+                MessageBox.Show("Error: " + ex.Message);
+                Program.HayError = true;
+                return datos;
 
 
             }
