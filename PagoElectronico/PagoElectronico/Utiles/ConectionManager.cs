@@ -31,9 +31,13 @@ namespace PagoElectronico.Utiles
 
         protected void conectar()
         {
-            cnn = new SqlConnection((@"Server=.\sqlServer2008;  user=sa ;  password=gestiondedatos; database=gd1c2015;"));
+            cnn = new SqlConnection();
+            cnn.ConnectionString = Config.Default.connectionString;
+          //  cnn = new SqlConnection((@"Server=.\sqlServer2008;  user=sa ;  password=gestiondedatos; database=gd1c2015;"));
            // cnn.ConnectionString = Properties.Settings.Default.cadenaConexion;
           
+      
+
             try
             {
                 cnn.Open();
