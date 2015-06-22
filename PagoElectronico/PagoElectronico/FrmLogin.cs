@@ -17,6 +17,11 @@ namespace PagoElectronico
         public FrmLogin()
         {
             InitializeComponent();
+            if (Program.usr != null)
+            {
+                this.txtUsuario.Text = Program.usr.nombreUsuario;
+
+            }
         }
 
      

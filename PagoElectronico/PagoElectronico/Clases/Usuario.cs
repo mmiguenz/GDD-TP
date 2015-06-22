@@ -10,13 +10,13 @@ namespace PagoElectronico.Clases
     class Usuario
     {
         public int clienteID ; 
-        public String  usr;
+        public String  nombreUsuario;
         public Rol rol;
 
 
         public Usuario(String usuarioN)
         {
-            this.usr = usuarioN;
+            this.nombreUsuario = usuarioN;
             this.clienteID = leerCliente(usuarioN);
           
 
