@@ -1,6 +1,6 @@
 ﻿USE [GD1C2015]
 GO
-/****** Object:  StoredProcedure [datiados].[loguear]    Script Date: 06/20/2015 22:41:08 ******/
+/****** Object:  StoredProcedure [datiados].[loguear]    Script Date: 06/22/2015 01:00:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -13,8 +13,8 @@ ALTER Procedure [datiados].[loguear]
 As
 
 
-
-IF NOT EXISTS (SELECT * FROM Datiados.USUARIOS u WHERE u.username = @Usuario)
+select * from datiados.Usuarios 
+IF NOT EXISTS (SELECT * FROM Datiados.USUARIOS u WHERE u.username = @Usuario and u.estado=1)
 BEGIN
 	
 	RAISERROR('USUARIO INEXISTENTE',16,1)
@@ -23,15 +23,14 @@ BEGIN
 END
 
 
-IF  NOT EXISTS (SELECT * FROM Datiados.USUARIOS u WHERE u.username = @Usuario AND u.pwd=@Contraseña)
+IF  NOT EXISTS (SELECT * FROM Datiados.USUARIOS u WHERE u.username = @Usuario AND u.pwd=@Contraseña and u.estado=1)
 BEGIN 
 	Declare @INTENTOS int
 	Declare @MsgError Varchar(100)
-	select @INTENTOS = cant_intentos_fallidos
-	from datiados.Usuarios
 	
 	select @INTENTOS = cant_intentos_fallidos
-	from datiados.Usuarios
+	from datiados.Usuarios 
+	where username=@Usuario
 	
 	
 	  
@@ -41,7 +40,7 @@ BEGIN
 	set  @MsgError = @MsgError +  ltrim(rtrim(str(isnull( 3 - (@INTENTOS + 1 ),-1))))
 	set  @MsgError = @MsgError + ' INTENTOS RESTANTES'	
 	
-	
+	exec datiados.incrementarIntentosFallidos @usuario
 	
 	RAISERROR( @MsgError ,16,1)
 		
@@ -52,8 +51,4 @@ END
 
 -- Si no sale por el raiseError limpio los intentos Fallidos 
 update datiados.usuarios set cant_intentos_fallidos= 0 where username = @Usuario 
-
-
-
-
 
