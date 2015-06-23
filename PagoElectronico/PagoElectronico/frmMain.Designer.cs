@@ -62,11 +62,11 @@
             this.FacturacionMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ListadosMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CambiarRolMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Salir = new System.Windows.Forms.ToolStripLabel();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
-            this.CambiarRolMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,21 +137,22 @@
             // ClientesAlta
             // 
             this.ClientesAlta.Name = "ClientesAlta";
-            this.ClientesAlta.Size = new System.Drawing.Size(144, 22);
+            this.ClientesAlta.Size = new System.Drawing.Size(152, 22);
             this.ClientesAlta.Text = "Alta";
             this.ClientesAlta.Visible = false;
+            this.ClientesAlta.Click += new System.EventHandler(this.ClientesAlta_Click);
             // 
             // ClientesBaja
             // 
             this.ClientesBaja.Name = "ClientesBaja";
-            this.ClientesBaja.Size = new System.Drawing.Size(144, 22);
+            this.ClientesBaja.Size = new System.Drawing.Size(152, 22);
             this.ClientesBaja.Text = "Baja";
             this.ClientesBaja.Visible = false;
             // 
             // ClientesModificacion
             // 
             this.ClientesModificacion.Name = "ClientesModificacion";
-            this.ClientesModificacion.Size = new System.Drawing.Size(144, 22);
+            this.ClientesModificacion.Size = new System.Drawing.Size(152, 22);
             this.ClientesModificacion.Text = "Modificacion";
             this.ClientesModificacion.Visible = false;
             // 
@@ -356,6 +357,14 @@
             this.salirToolStripMenuItem.Visible = false;
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
+            // CambiarRolMenu
+            // 
+            this.CambiarRolMenu.Name = "CambiarRolMenu";
+            this.CambiarRolMenu.Size = new System.Drawing.Size(152, 22);
+            this.CambiarRolMenu.Text = "CambiarRol";
+            this.CambiarRolMenu.Visible = false;
+            this.CambiarRolMenu.Click += new System.EventHandler(this.cambiarRolToolStripMenuItem_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -382,14 +391,6 @@
             this.btnSalir.Size = new System.Drawing.Size(23, 22);
             this.btnSalir.Text = "btnSalir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // CambiarRolMenu
-            // 
-            this.CambiarRolMenu.Name = "CambiarRolMenu";
-            this.CambiarRolMenu.Size = new System.Drawing.Size(152, 22);
-            this.CambiarRolMenu.Text = "CambiarRol";
-            this.CambiarRolMenu.Visible = false;
-            this.CambiarRolMenu.Click += new System.EventHandler(this.cambiarRolToolStripMenuItem_Click);
             // 
             // FrmMain
             // 

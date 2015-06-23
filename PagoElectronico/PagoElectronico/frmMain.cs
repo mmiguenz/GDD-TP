@@ -148,6 +148,14 @@ namespace PagoElectronico
 
         }
 
+        private void ClientesAlta_Click(object sender, EventArgs e)
+        {
+            ABM_Cliente.AltaCliente alta = new PagoElectronico.ABM_Cliente.AltaCliente();
+
+            alta.MdiParent = this;
+            alta.Show();
+        }
+
        
        
 

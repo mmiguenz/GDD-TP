@@ -140,6 +140,13 @@ namespace PagoElectronico
         
         }
 
+        private void FrmLogin_Enter(object sender, EventArgs e)
+        {
+            this.btnAceptar_Click(sender, e);
+        }
+
+        
+
 
 
 

@@ -89,7 +89,7 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Contraseña";
             // 
-            // frmLogin
+            // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -100,10 +100,11 @@
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
-            this.Name = "frmLogin";
+            this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.frmLogin_Load);
+            this.Enter += new System.EventHandler(this.FrmLogin_Enter);
             this.ResumeLayout(false);
             this.PerformLayout();
 
