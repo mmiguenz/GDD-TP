@@ -15,5 +15,10 @@ namespace PagoElectronico.ABM_Cliente
         {
             InitializeComponent();
         }
+
+        private void groupFiltrosBus_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

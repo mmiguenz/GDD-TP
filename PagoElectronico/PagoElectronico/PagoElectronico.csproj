@@ -140,6 +140,9 @@
     <EmbeddedResource Include="ABM Cliente\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABM Cliente\BusCliente.resx">
+      <DependentUpon>BusCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABM Cliente\ModifCliente.resx">
       <DependentUpon>ModifCliente.cs</DependentUpon>
     </EmbeddedResource>
