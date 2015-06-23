@@ -356,7 +356,7 @@ order by  Retiro_Codigo
 INSERT INTO datiados.Transferencias
 SELECT Cuenta_Numero,Cuenta_Dest_Numero,Trans_Importe,Transf_Fecha
 FROM gd_esquema.maestra
-WHERE Transf_Fecha is NOT NULL
+WHERE Item_Factura_Descr is not null
 
 
 
