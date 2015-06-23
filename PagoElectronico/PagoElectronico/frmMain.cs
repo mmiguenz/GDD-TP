@@ -156,6 +156,11 @@ namespace PagoElectronico
             alta.Show();
         }
 
+        private void ClientesModificacion_Click(object sender, EventArgs e)
+        {
+            new ABM_Cliente.ModifCliente().Show();
+        }
+
        
        
 

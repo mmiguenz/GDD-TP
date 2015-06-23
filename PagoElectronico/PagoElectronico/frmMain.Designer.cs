@@ -155,6 +155,7 @@
             this.ClientesModificacion.Size = new System.Drawing.Size(152, 22);
             this.ClientesModificacion.Text = "Modificacion";
             this.ClientesModificacion.Visible = false;
+            this.ClientesModificacion.Click += new System.EventHandler(this.ClientesModificacion_Click);
             // 
             // CuentasMenu
             // 

@@ -54,6 +54,18 @@
     <Compile Include="ABM Cliente\AltaCliente.Designer.cs">
       <DependentUpon>AltaCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM Cliente\BusCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Cliente\BusCliente.Designer.cs">
+      <DependentUpon>BusCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM Cliente\ModifCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Cliente\ModifCliente.Designer.cs">
+      <DependentUpon>ModifCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM Cliente\ValidaCamposCliente.cs" />
     <Compile Include="ABM Cuenta\Form1.cs">
       <SubType>Form</SubType>
@@ -127,6 +139,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ABM Cliente\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM Cliente\ModifCliente.resx">
+      <DependentUpon>ModifCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
