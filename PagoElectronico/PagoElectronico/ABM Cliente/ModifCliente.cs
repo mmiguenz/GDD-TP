@@ -12,6 +12,8 @@ namespace PagoElectronico.ABM_Cliente
 {
     public partial class ModifCliente : Form
     {
+        public Int32 clienteID;
+
         public ModifCliente()
         {
             InitializeComponent();
@@ -46,7 +48,7 @@ namespace PagoElectronico.ABM_Cliente
 
                 SqlParameter[] parametrosEntrada = new SqlParameter[] {
             
-              
+                new SqlParameter("@clienteID", clienteID),
                 new SqlParameter("@nombre", txbxNombre.Text),
                 new SqlParameter("@apellido", txbxApellido.Text),
                 new SqlParameter("@mail", txbxMail.Text),
@@ -66,13 +68,14 @@ namespace PagoElectronico.ABM_Cliente
 
 
 
-                Utiles.ConectionManager.getInstance().ejecutarStoreProcedure("datiados.cliente_agregar", parametrosEntrada);
+                Utiles.ConectionManager.getInstance().ejecutarStoreProcedure("datiados.cliente_modificar", parametrosEntrada);
 
                 if (!Program.HayError)
                 {
                     MessageBox.Show("Grabacion Exitosa!");
                     limpiarControles();
-
+                    groupBoxDomicilio.Enabled = false;
+                    groupDatosGenerales.Enabled = false;
                 }
 
 
@@ -127,6 +130,8 @@ namespace PagoElectronico.ABM_Cliente
             txbxMail.Text = null;
             Calendario.Text = null;
             txbxLocalidad.Text = null;
+            txbxNombreCli.Text = null;
+            
 
 
 
@@ -157,10 +162,39 @@ namespace PagoElectronico.ABM_Cliente
 
         private void button1_Click(object sender, EventArgs e)
         {
-            BusCliente busqueda = new BusCliente();
+            BusCliente busqueda = new BusCliente(this);
             busqueda.Show();
+            
         }
 
+        public void llenarDatos(DataTable dt)
+            {
+                DataRow dr = dt.Rows[0];
+
+                
+                txbxNombre.Text = dr.Field<String>("nombre");
+                txbxApellido.Text = dr.Field<String>("apellido");
+                txbxNombreCli.Text = txbxNombre.Text + "  " + txbxApellido.Text;               
+                cmbTipoDoc.SelectedValue = dr.Field<decimal>("codtipodoc");
+                cmbPais.SelectedValue = dr.Field<decimal>("codpais");
+                txbxNroDoc.Text = dr.Field<decimal>("nrodoc").ToString();
+                txbxMail.Text = dr.Field<String>("mail");
+                txbxAltura.Text = dr.Field<decimal>("altura").ToString(); 
+                txbxCalle.Text = dr.Field<String>("Calle");
+                txbxDto.Text = dr.Field<String>("dto");                            
+                txbxPiso.Text = dr.Field<decimal>("piso").ToString();
+                Calendario.Value = dr.Field<DateTime>("fechanacimiento");
+                groupBoxDomicilio.Enabled = true;
+                groupDatosGenerales.Enabled = true;
+           
+            
+
+                }
+
+        public ComboBox getComboTipoDoc()
+        {
+            return cmbTipoDoc;
+            }
 
 
      

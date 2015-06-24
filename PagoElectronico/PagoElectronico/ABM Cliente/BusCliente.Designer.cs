@@ -29,21 +29,22 @@
         private void InitializeComponent()
         {
             this.groupFiltrosBus = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txbxNroDoc = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmbTipoDoc = new System.Windows.Forms.ComboBox();
-            this.txbxMail = new System.Windows.Forms.TextBox();
-            this.txbxNombre = new System.Windows.Forms.TextBox();
-            this.txbxApellido = new System.Windows.Forms.TextBox();
-            this.btnBus = new System.Windows.Forms.Button();
-            this.lstbxClientes = new System.Windows.Forms.ListBox();
-            this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnBus = new System.Windows.Forms.Button();
+            this.cmbTipoDoc = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txbxApellido = new System.Windows.Forms.TextBox();
+            this.txbxNombre = new System.Windows.Forms.TextBox();
+            this.txbxMail = new System.Windows.Forms.TextBox();
+            this.txbxNroDoc = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dgvcli = new System.Windows.Forms.DataGridView();
             this.groupFiltrosBus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvcli)).BeginInit();
             this.SuspendLayout();
             // 
             // groupFiltrosBus
@@ -69,48 +70,43 @@
             this.groupFiltrosBus.Text = "Filtros De Busqueda";
             this.groupFiltrosBus.Enter += new System.EventHandler(this.groupFiltrosBus_Enter);
             // 
-            // label1
+            // btnAceptar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 91);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Apellido";
+            this.btnAceptar.Location = new System.Drawing.Point(328, 167);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(107, 33);
+            this.btnAceptar.TabIndex = 4;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // label2
+            // btnLimpiar
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Nombre";
+            this.btnLimpiar.Location = new System.Drawing.Point(472, 167);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(107, 33);
+            this.btnLimpiar.TabIndex = 4;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
-            // label3
+            // btnBus
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 157);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "E-Mail";
+            this.btnBus.Location = new System.Drawing.Point(622, 167);
+            this.btnBus.Name = "btnBus";
+            this.btnBus.Size = new System.Drawing.Size(107, 33);
+            this.btnBus.TabIndex = 4;
+            this.btnBus.Text = "Buscar";
+            this.btnBus.UseVisualStyleBackColor = true;
+            this.btnBus.Click += new System.EventHandler(this.btnBus_Click);
             // 
-            // label4
+            // cmbTipoDoc
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(430, 39);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Numero Doc";
-            // 
-            // txbxNroDoc
-            // 
-            this.txbxNroDoc.Location = new System.Drawing.Point(501, 32);
-            this.txbxNroDoc.Name = "txbxNroDoc";
-            this.txbxNroDoc.Size = new System.Drawing.Size(150, 20);
-            this.txbxNroDoc.TabIndex = 1;
+            this.cmbTipoDoc.FormattingEnabled = true;
+            this.cmbTipoDoc.Location = new System.Drawing.Point(501, 82);
+            this.cmbTipoDoc.Name = "cmbTipoDoc";
+            this.cmbTipoDoc.Size = new System.Drawing.Size(150, 21);
+            this.cmbTipoDoc.TabIndex = 3;
             // 
             // label5
             // 
@@ -121,21 +117,12 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Tipo Doc";
             // 
-            // cmbTipoDoc
+            // txbxApellido
             // 
-            this.cmbTipoDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTipoDoc.FormattingEnabled = true;
-            this.cmbTipoDoc.Location = new System.Drawing.Point(501, 82);
-            this.cmbTipoDoc.Name = "cmbTipoDoc";
-            this.cmbTipoDoc.Size = new System.Drawing.Size(150, 21);
-            this.cmbTipoDoc.TabIndex = 3;
-            // 
-            // txbxMail
-            // 
-            this.txbxMail.Location = new System.Drawing.Point(85, 154);
-            this.txbxMail.Name = "txbxMail";
-            this.txbxMail.Size = new System.Drawing.Size(150, 20);
-            this.txbxMail.TabIndex = 1;
+            this.txbxApellido.Location = new System.Drawing.Point(85, 87);
+            this.txbxApellido.Name = "txbxApellido";
+            this.txbxApellido.Size = new System.Drawing.Size(150, 20);
+            this.txbxApellido.TabIndex = 1;
             // 
             // txbxNombre
             // 
@@ -144,60 +131,79 @@
             this.txbxNombre.Size = new System.Drawing.Size(150, 20);
             this.txbxNombre.TabIndex = 1;
             // 
-            // txbxApellido
+            // txbxMail
             // 
-            this.txbxApellido.Location = new System.Drawing.Point(85, 87);
-            this.txbxApellido.Name = "txbxApellido";
-            this.txbxApellido.Size = new System.Drawing.Size(150, 20);
-            this.txbxApellido.TabIndex = 1;
+            this.txbxMail.Location = new System.Drawing.Point(85, 154);
+            this.txbxMail.Name = "txbxMail";
+            this.txbxMail.Size = new System.Drawing.Size(150, 20);
+            this.txbxMail.TabIndex = 1;
             // 
-            // btnBus
+            // txbxNroDoc
             // 
-            this.btnBus.Location = new System.Drawing.Point(622, 167);
-            this.btnBus.Name = "btnBus";
-            this.btnBus.Size = new System.Drawing.Size(107, 33);
-            this.btnBus.TabIndex = 4;
-            this.btnBus.Text = "Buscar";
-            this.btnBus.UseVisualStyleBackColor = true;
+            this.txbxNroDoc.Location = new System.Drawing.Point(501, 32);
+            this.txbxNroDoc.Name = "txbxNroDoc";
+            this.txbxNroDoc.Size = new System.Drawing.Size(150, 20);
+            this.txbxNroDoc.TabIndex = 1;
             // 
-            // lstbxClientes
+            // label4
             // 
-            this.lstbxClientes.FormattingEnabled = true;
-            this.lstbxClientes.Location = new System.Drawing.Point(5, 248);
-            this.lstbxClientes.Name = "lstbxClientes";
-            this.lstbxClientes.ScrollAlwaysVisible = true;
-            this.lstbxClientes.Size = new System.Drawing.Size(742, 303);
-            this.lstbxClientes.TabIndex = 1;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(430, 39);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Numero Doc";
             // 
-            // btnLimpiar
+            // label3
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(472, 167);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(107, 33);
-            this.btnLimpiar.TabIndex = 4;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(29, 157);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "E-Mail";
             // 
-            // btnAceptar
+            // label2
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(328, 167);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(107, 33);
-            this.btnAceptar.TabIndex = 4;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(29, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Nombre";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 91);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Apellido";
+            // 
+            // dgvcli
+            // 
+            this.dgvcli.AllowUserToAddRows = false;
+            this.dgvcli.AllowUserToDeleteRows = false;
+            this.dgvcli.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvcli.Location = new System.Drawing.Point(13, 248);
+            this.dgvcli.Name = "dgvcli";
+            this.dgvcli.ReadOnly = true;
+            this.dgvcli.Size = new System.Drawing.Size(730, 306);
+            this.dgvcli.TabIndex = 1;
             // 
             // BusCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(755, 566);
-            this.Controls.Add(this.lstbxClientes);
+            this.Controls.Add(this.dgvcli);
             this.Controls.Add(this.groupFiltrosBus);
             this.Name = "BusCliente";
             this.Text = "BusCliente";
             this.groupFiltrosBus.ResumeLayout(false);
             this.groupFiltrosBus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvcli)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -216,8 +222,8 @@
         private System.Windows.Forms.TextBox txbxNombre;
         private System.Windows.Forms.TextBox txbxMail;
         private System.Windows.Forms.Button btnBus;
-        private System.Windows.Forms.ListBox lstbxClientes;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.DataGridView dgvcli;
     }
 }

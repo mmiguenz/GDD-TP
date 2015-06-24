@@ -158,7 +158,10 @@ namespace PagoElectronico
 
         private void ClientesModificacion_Click(object sender, EventArgs e)
         {
-            new ABM_Cliente.ModifCliente().Show();
+            PagoElectronico.ABM_Cliente.ModifCliente modifCli = new PagoElectronico.ABM_Cliente.ModifCliente();
+
+            modifCli.MdiParent = this;
+            modifCli.Show();
         }
 
        

@@ -79,6 +79,7 @@
             this.groupDatosGenerales.Controls.Add(this.txbxMail);
             this.groupDatosGenerales.Controls.Add(this.lblNombre);
             this.groupDatosGenerales.Controls.Add(this.txbxNombre);
+            this.groupDatosGenerales.Enabled = false;
             this.groupDatosGenerales.Location = new System.Drawing.Point(30, 61);
             this.groupDatosGenerales.Name = "groupDatosGenerales";
             this.groupDatosGenerales.Size = new System.Drawing.Size(936, 223);
@@ -216,6 +217,7 @@
             this.groupBoxDomicilio.Controls.Add(this.txbxPiso);
             this.groupBoxDomicilio.Controls.Add(this.Calle);
             this.groupBoxDomicilio.Controls.Add(this.txbxCalle);
+            this.groupBoxDomicilio.Enabled = false;
             this.groupBoxDomicilio.Location = new System.Drawing.Point(30, 318);
             this.groupBoxDomicilio.Name = "groupBoxDomicilio";
             this.groupBoxDomicilio.Size = new System.Drawing.Size(935, 229);
@@ -351,7 +353,7 @@
             this.btnBus.UseVisualStyleBackColor = true;
             this.btnBus.Click += new System.EventHandler(this.button1_Click);
             // 
-            // AltaCliente
+            // ModifCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -363,7 +365,7 @@
             this.Controls.Add(this.btnGrabar);
             this.Controls.Add(this.groupBoxDomicilio);
             this.Controls.Add(this.groupDatosGenerales);
-            this.Name = "AltaCliente";
+            this.Name = "ModifCliente";
             this.Text = "Modificacion Clientes";
             this.groupDatosGenerales.ResumeLayout(false);
             this.groupDatosGenerales.PerformLayout();
