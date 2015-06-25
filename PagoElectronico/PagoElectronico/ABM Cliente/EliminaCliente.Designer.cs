@@ -1,6 +1,6 @@
 ﻿namespace PagoElectronico.ABM_Cliente
 {
-    partial class ModifCliente
+    partial class EliminaCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -185,7 +185,7 @@
             // 
             this.txbxMail.Location = new System.Drawing.Point(584, 30);
             this.txbxMail.Name = "txbxMail";
-            this.txbxMail.Size = new System.Drawing.Size(140, 20);
+            this.txbxMail.Size = new System.Drawing.Size(142, 20);
             this.txbxMail.TabIndex = 4;
             this.txbxMail.Leave += new System.EventHandler(this.txbxMail_Leave);
             // 
@@ -311,7 +311,7 @@
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(198, 35);
             this.btnGrabar.TabIndex = 2;
-            this.btnGrabar.Text = "Grabar";
+            this.btnGrabar.Text = "Eliminar";
             this.btnGrabar.UseVisualStyleBackColor = true;
             this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
@@ -331,7 +331,7 @@
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(198, 35);
             this.btnLimpiar.TabIndex = 2;
-            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.Text = "Cancelar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
@@ -353,7 +353,7 @@
             this.btnBus.UseVisualStyleBackColor = true;
             this.btnBus.Click += new System.EventHandler(this.button1_Click);
             // 
-            // ModifCliente
+            // EliminaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -365,8 +365,8 @@
             this.Controls.Add(this.btnGrabar);
             this.Controls.Add(this.groupBoxDomicilio);
             this.Controls.Add(this.groupDatosGenerales);
-            this.Name = "ModifCliente";
-            this.Text = "Modificacion Clientes";
+            this.Name = "EliminaCliente";
+            this.Text = "Eliminacion Clientes";
             this.groupDatosGenerales.ResumeLayout(false);
             this.groupDatosGenerales.PerformLayout();
             this.groupBoxDomicilio.ResumeLayout(false);

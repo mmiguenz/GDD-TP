@@ -12,7 +12,8 @@ namespace PagoElectronico.ABM_Cliente
 {
     public partial class BusCliente : Form
     {
-        private ModifCliente modif;
+        private ModifCliente frm;
+        private EliminaCliente frm2;
 
         public BusCliente()
         {
@@ -21,7 +22,14 @@ namespace PagoElectronico.ABM_Cliente
 
         public BusCliente(ModifCliente modif)
         {
-            this.modif = modif;
+            this.frm = modif;
+            InitializeComponent();
+            llenarCombos();
+        }
+
+        public BusCliente(EliminaCliente elim)
+        {
+            this.frm2 = elim;
             InitializeComponent();
             llenarCombos();
         }
@@ -93,8 +101,17 @@ namespace PagoElectronico.ABM_Cliente
                                 ejecutarStoreProcedureDevuelveDataSet("datiados.cliente_buscar_ID", parametrosEntrada)
                                 .Tables[0];
 
-            modif.llenarDatos(dt);
-            modif.clienteID = clienteID;
+
+            if (frm == null)
+            {
+                frm2.clienteID = clienteID;
+                frm2.llenarDatos(dt);
+            }
+            else
+            {
+                frm.clienteID = clienteID;
+                frm.llenarDatos(dt);
+            }
             this.Hide();
 
             

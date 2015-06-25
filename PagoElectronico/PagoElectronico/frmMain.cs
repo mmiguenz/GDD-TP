@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using PagoElectronico.ABM_Cliente;
 
 namespace PagoElectronico
 {
@@ -150,7 +151,7 @@ namespace PagoElectronico
 
         private void ClientesAlta_Click(object sender, EventArgs e)
         {
-            ABM_Cliente.AltaCliente alta = new PagoElectronico.ABM_Cliente.AltaCliente();
+           AltaCliente alta = new AltaCliente();
 
             alta.MdiParent = this;
             alta.Show();
@@ -158,10 +159,18 @@ namespace PagoElectronico
 
         private void ClientesModificacion_Click(object sender, EventArgs e)
         {
-            PagoElectronico.ABM_Cliente.ModifCliente modifCli = new PagoElectronico.ABM_Cliente.ModifCliente();
+            ModifCliente modifCli = new ModifCliente();
 
             modifCli.MdiParent = this;
             modifCli.Show();
+        }
+
+        private void ClientesBaja_Click(object sender, EventArgs e)
+        {
+            EliminaCliente elim = new EliminaCliente();
+            elim.MdiParent = this;
+
+            elim.Show();
         }
 
        

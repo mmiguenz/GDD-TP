@@ -10,11 +10,11 @@ using System.Data.SqlClient;
 
 namespace PagoElectronico.ABM_Cliente
 {
-    public partial class ModifCliente : Form
+    public partial class EliminaCliente : Form
     {
         public Int32 clienteID;
 
-        public ModifCliente()
+        public EliminaCliente()
         {
             InitializeComponent();
             llenarCombos();
@@ -48,34 +48,21 @@ namespace PagoElectronico.ABM_Cliente
 
                 SqlParameter[] parametrosEntrada = new SqlParameter[] {
             
-                new SqlParameter("@clienteID", clienteID),
-                new SqlParameter("@nombre", txbxNombre.Text),
-                new SqlParameter("@apellido", txbxApellido.Text),
-                new SqlParameter("@mail", txbxMail.Text),
-                new SqlParameter("@localidad", txbxLocalidad.Text),
-                new SqlParameter("@calle", txbxCalle.Text),
-                new SqlParameter("@altura", Int32.Parse(txbxAltura.Text)),
-                new SqlParameter("@dto", txbxDto.Text),
-                new SqlParameter("@piso", Int32.Parse(txbxPiso.Text)),
-                new SqlParameter("@fechaNac", DateTime.Parse(Calendario.Text)),
-                new SqlParameter("@codTipoDoc", cmbTipoDoc.SelectedValue),
-                new SqlParameter("@codPais", cmbPais.SelectedValue),
-                new SqlParameter("@nroDoc", long.Parse(txbxNroDoc.Text))
-             
+                new SqlParameter("@clienteID", clienteID)
                 
             };
 
 
 
 
-                Utiles.ConectionManager.getInstance().ejecutarStoreProcedure("datiados.cliente_modificar", parametrosEntrada);
+                Utiles.ConectionManager.getInstance().ejecutarStoreProcedure("datiados.cliente_Eliminar", parametrosEntrada);
 
                 if (!Program.HayError)
                 {
                     MessageBox.Show("Grabacion Exitosa!");
                     limpiarControles();
                     groupBoxDomicilio.Enabled = false;
-
+                    groupDatosGenerales.Enabled = false;
                 }
 
 
@@ -184,8 +171,7 @@ namespace PagoElectronico.ABM_Cliente
                 txbxDto.Text = dr.Field<String>("dto");                            
                 txbxPiso.Text = dr.Field<decimal>("piso").ToString();
                 Calendario.Value = dr.Field<DateTime>("fechanacimiento");
-                groupBoxDomicilio.Enabled = true;
-                groupDatosGenerales.Enabled = true;
+              
            
             
 

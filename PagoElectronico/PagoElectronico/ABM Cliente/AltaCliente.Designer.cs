@@ -182,7 +182,7 @@
             // 
             this.txbxMail.Location = new System.Drawing.Point(584, 30);
             this.txbxMail.Name = "txbxMail";
-            this.txbxMail.Size = new System.Drawing.Size(114, 20);
+            this.txbxMail.Size = new System.Drawing.Size(136, 20);
             this.txbxMail.TabIndex = 4;
             this.txbxMail.Leave += new System.EventHandler(this.txbxMail_Leave);
             // 

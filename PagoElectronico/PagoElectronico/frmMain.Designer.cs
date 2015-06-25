@@ -148,6 +148,7 @@
             this.ClientesBaja.Size = new System.Drawing.Size(152, 22);
             this.ClientesBaja.Text = "Baja";
             this.ClientesBaja.Visible = false;
+            this.ClientesBaja.Click += new System.EventHandler(this.ClientesBaja_Click);
             // 
             // ClientesModificacion
             // 
