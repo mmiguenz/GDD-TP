@@ -1,6 +1,6 @@
 USE [GD1C2015]
 GO
-/****** Object:  StoredProcedure [datiados].[cliente_agregar]    Script Date: 06/23/2015 00:24:14 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_agregar]    Script Date: 06/26/2015 18:26:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -36,4 +36,6 @@ insert into datiados.Clientes	values (@nroDoc,
 																				
 										)
 		
+
+
 
