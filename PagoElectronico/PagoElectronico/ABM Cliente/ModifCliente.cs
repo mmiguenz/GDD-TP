@@ -60,7 +60,8 @@ namespace PagoElectronico.ABM_Cliente
                 new SqlParameter("@fechaNac", DateTime.Parse(Calendario.Text)),
                 new SqlParameter("@codTipoDoc", cmbTipoDoc.SelectedValue),
                 new SqlParameter("@codPais", cmbPais.SelectedValue),
-                new SqlParameter("@nroDoc", long.Parse(txbxNroDoc.Text))
+                new SqlParameter("@nroDoc", long.Parse(txbxNroDoc.Text)),
+                new SqlParameter("@habilitado",ckbxHabilitado.Checked)
              
                 
             };
@@ -174,6 +175,7 @@ namespace PagoElectronico.ABM_Cliente
                 txbxPiso.Text = dr.Field<decimal>("piso").ToString();
                 Calendario.Value = dr.Field<DateTime>("fechanacimiento");
                 txbxLocalidad.Text = dr.Field<String>("localidad");
+                ckbxHabilitado.Checked= dr.Field<bool>("habilitado");
                 groupBoxDomicilio.Enabled = true;
                 groupDatosGenerales.Enabled = true;
            

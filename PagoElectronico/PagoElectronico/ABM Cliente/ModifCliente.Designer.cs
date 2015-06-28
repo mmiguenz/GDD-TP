@@ -59,6 +59,7 @@
             this.txbxLocalidad = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBoxDomicilio = new System.Windows.Forms.GroupBox();
+            this.ckbxHabilitado = new System.Windows.Forms.CheckBox();
             this.groupDatosGenerales.SuspendLayout();
             this.groupBoxDomicilio.SuspendLayout();
             this.SuspendLayout();
@@ -335,6 +336,7 @@
             // 
             // groupBoxDomicilio
             // 
+            this.groupBoxDomicilio.Controls.Add(this.ckbxHabilitado);
             this.groupBoxDomicilio.Controls.Add(this.label10);
             this.groupBoxDomicilio.Controls.Add(this.txbxLocalidad);
             this.groupBoxDomicilio.Controls.Add(this.label9);
@@ -352,6 +354,16 @@
             this.groupBoxDomicilio.TabIndex = 1;
             this.groupBoxDomicilio.TabStop = false;
             this.groupBoxDomicilio.Text = "Domicilio";
+            // 
+            // ckbxHabilitado
+            // 
+            this.ckbxHabilitado.AutoSize = true;
+            this.ckbxHabilitado.Location = new System.Drawing.Point(652, 172);
+            this.ckbxHabilitado.Name = "ckbxHabilitado";
+            this.ckbxHabilitado.Size = new System.Drawing.Size(73, 17);
+            this.ckbxHabilitado.TabIndex = 12;
+            this.ckbxHabilitado.Text = "Habilitado";
+            this.ckbxHabilitado.UseVisualStyleBackColor = true;
             // 
             // ModifCliente
             // 
@@ -409,5 +421,6 @@
         private System.Windows.Forms.TextBox txbxLocalidad;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBoxDomicilio;
+        private System.Windows.Forms.CheckBox ckbxHabilitado;
     }
 }

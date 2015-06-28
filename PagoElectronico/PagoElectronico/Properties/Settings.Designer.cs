@@ -25,11 +25,20 @@ namespace PagoElectronico.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost\\SQLSERVER2008;Initial Catalog=GD1C2015;User Id=sa;Password=" +
-            "gestiondedatos;Trusted_Connection=FALSE")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost\\SQLSERVER2008;Initial Catalog=gd1prueba;User Id=sa;Password" +
+            "=gestiondedatos;Trusted_Connection=FALSE")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2015-06-28")]
+        public string FechaSistema {
+            get {
+                return ((string)(this["FechaSistema"]));
             }
         }
     }

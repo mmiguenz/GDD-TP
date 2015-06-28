@@ -16,6 +16,7 @@ namespace PagoElectronico.ABM_Cliente
         {
             InitializeComponent();
             llenarCombos();
+           
         }
 
         private void llenarCombos()
@@ -31,10 +32,12 @@ namespace PagoElectronico.ABM_Cliente
             this.cmbPais.DataSource = dtPaises;
             this.cmbPais.DisplayMember = "descripcion";
             this.cmbPais.ValueMember = "codigo";
+            this.Calendario.MaxDate = DateTime.Parse(Program.getDate());
 
             this.cmbPais.SelectedItem = null;
             this.cmbTipoDoc.SelectedItem = null;
 
+            txbxNroDoc.Enabled = false;
         }
 
         private void btnGrabar_Click(object sender, EventArgs e)
@@ -114,7 +117,7 @@ namespace PagoElectronico.ABM_Cliente
 
         private void limpiarControles()
         {
-
+            txbxNroDoc.Enabled = false;
             txbxNroDoc.Text = null;
             cmbTipoDoc.SelectedItem = null;
             cmbPais.SelectedItem = null;
@@ -140,7 +143,34 @@ namespace PagoElectronico.ABM_Cliente
 
         private void txbxNroDoc_Leave(object sender, EventArgs e)
         {
+            ValidaCamposCliente.validaExistenciaCliente(txbxNroDoc,cmbTipoDoc);
+            
+
+        }
+
+        private void cmbTipoDoc_Leave(object sender, EventArgs e)
+        {
+            if (cmbTipoDoc.SelectedItem != null)
+            {
+                txbxNroDoc.Enabled = true;
+
+            }
+        }
+
+        private void cmbTipoDoc_TextChanged(object sender, EventArgs e)
+        {
+            if (cmbTipoDoc.SelectedItem != null)
+            {
+                txbxNroDoc.Enabled = true;
+
+            }
+        }
+
+
+        private void txbxNroDoc_TextChanged(object sender, EventArgs e)
+        {
             ValidaCamposCliente.validaNroDoc(txbxNroDoc);
+
         }
 
 

@@ -170,16 +170,9 @@ namespace PagoElectronico.ABM_Cliente
             this.clienteID = clienteID;
         }
 
-        private void txbxNombre_TextChanged(object sender, EventArgs e)
-        {
+    
 
-        }
-
-        private void txbxApellido_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
        
        
     }

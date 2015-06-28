@@ -108,6 +108,8 @@
             this.cmbTipoDoc.Name = "cmbTipoDoc";
             this.cmbTipoDoc.Size = new System.Drawing.Size(121, 21);
             this.cmbTipoDoc.TabIndex = 2;
+            this.cmbTipoDoc.Leave += new System.EventHandler(this.cmbTipoDoc_Leave);
+            this.cmbTipoDoc.TextChanged += new System.EventHandler(this.cmbTipoDoc_TextChanged);
             // 
             // label7
             // 
@@ -156,10 +158,12 @@
             // 
             // txbxNroDoc
             // 
+            this.txbxNroDoc.Enabled = false;
             this.txbxNroDoc.Location = new System.Drawing.Point(89, 177);
             this.txbxNroDoc.Name = "txbxNroDoc";
             this.txbxNroDoc.Size = new System.Drawing.Size(149, 20);
             this.txbxNroDoc.TabIndex = 3;
+            this.txbxNroDoc.TextChanged += new System.EventHandler(this.txbxNroDoc_TextChanged);
             this.txbxNroDoc.Leave += new System.EventHandler(this.txbxNroDoc_Leave);
             // 
             // txbxApellido

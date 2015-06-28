@@ -39,6 +39,14 @@ namespace PagoElectronico
         }
 
 
+        public static String getDate()
+        {
+            
+            return Properties.Settings.Default.FechaSistema;
+            
+        }
+
+
 
 
 

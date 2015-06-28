@@ -93,6 +93,7 @@
             this.Calendario.Name = "Calendario";
             this.Calendario.Size = new System.Drawing.Size(200, 20);
             this.Calendario.TabIndex = 6;
+            
             // 
             // cmbPais
             // 
@@ -170,7 +171,7 @@
             this.txbxApellido.Name = "txbxApellido";
             this.txbxApellido.Size = new System.Drawing.Size(141, 20);
             this.txbxApellido.TabIndex = 1;
-            this.txbxApellido.TextChanged += new System.EventHandler(this.txbxApellido_TextChanged);
+            
             // 
             // label4
             // 
@@ -203,7 +204,7 @@
             this.txbxNombre.Name = "txbxNombre";
             this.txbxNombre.Size = new System.Drawing.Size(141, 20);
             this.txbxNombre.TabIndex = 0;
-            this.txbxNombre.TextChanged += new System.EventHandler(this.txbxNombre_TextChanged);
+            
             // 
             // groupBoxDomicilio
             // 

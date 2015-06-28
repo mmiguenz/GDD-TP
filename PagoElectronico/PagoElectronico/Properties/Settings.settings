@@ -3,7 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="ConnectionString" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=localhost\SQLSERVER2008;Initial Catalog=GD1C2015;User Id=sa;Password=gestiondedatos;Trusted_Connection=FALSE</Value>
+      <Value Profile="(Default)">Data Source=localhost\SQLSERVER2008;Initial Catalog=gd1prueba;User Id=sa;Password=gestiondedatos;Trusted_Connection=FALSE</Value>
+    </Setting>
+    <Setting Name="FechaSistema" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">2015-06-28</Value>
     </Setting>
   </Settings>
 </SettingsFile>
