@@ -2,6 +2,8 @@ USE [GD1C2015]
 GO
 create Schema datiados authorization [gd]
 GO
+--select * into gd_esquema.maestra from GD1C2015.gd_esquema.maestra
+
 
 
 
@@ -52,6 +54,8 @@ CREATE TABLE datiados.Clientes(
 	dir_dpto varchar(10),
 	mail varchar(255) NOT NULL UNIQUE,
 	fecha_nac datetime NOT NULL,
+	localidad varchar(100),
+	habilitado bit  
 )
 
 /*Estados de cuenta*/
@@ -90,6 +94,14 @@ CREATE TABLE datiados.Cuentas(
 	cod_moneda int FOREIGN KEY REFERENCES datiados.Monedas
 )
 
+/* EmisoresTarjeta*/
+
+create table datiados.emisoresTarjetas
+( codEmisor int identity primary key,
+  descripcion varchar(100)
+)
+
+
 /* Tarjetas*/
 
 CREATE TABLE datiados.Tarjetas(
@@ -97,7 +109,7 @@ CREATE TABLE datiados.Tarjetas(
 	fecha_emision date NOT NULL,
 	fecha_venc date NOT NULL,
 	cod_seg varchar(3) NOT NULL,
-	emisor varchar(250) NOT NULL,
+	codEmisor int NOT NULL foreign key references datiados.emisoresTarjetas,
 )
 
 /* Tarjetas por Cliente*/
@@ -211,7 +223,7 @@ CREATE TABLE datiados.Items_Facturas(
 	descripcion varchar(255) NOT NULL,
 	importe numeric(18,2) NOT NULL,
 	nro_cuenta numeric(18,0) FOREIGN KEY REFERENCES datiados.Cuentas,
-	CtaCteID int ,
+	id_transf int foreign key references datiados.transferencias
 	CONSTRAINT pf_Item_Facturas PRIMARY KEY (id_item,nro_factura)
 )
 
@@ -261,6 +273,15 @@ CREATE TABLE datiados.Roles_Funcionalidades(
 	id_func int FOREIGN KEY REFERENCES datiados.Funcionalidades
 )
 
+
+create table datiados.loguinAuditoria
+(usuario varchar(150),
+ fechayHora datetime,
+ descripcion varchar(100)
+)
+
+
+-- gd_esquema.maestra =============================================================== 
 /*Países*/
 /*Bancos*/
 /*Cheques*/
@@ -300,7 +321,7 @@ ORDER BY Cli_Tipo_Doc_Cod
 
 /*Migración Tabla Clientes*/
 INSERT INTO datiados.clientes
-SELECT DISTINCT Cli_Nro_Doc,Cli_Tipo_Doc_Cod,cli_pais_codigo,Cli_Nombre,Cli_Apellido,Cli_Dom_Calle,Cli_Dom_Nro,Cli_Dom_Piso,Cli_Dom_Depto,Cli_Mail,Cli_Fecha_Nac
+SELECT DISTINCT Cli_Nro_Doc,Cli_Tipo_Doc_Cod,cli_pais_codigo,Cli_Nombre,Cli_Apellido,Cli_Dom_Calle,Cli_Dom_Nro,Cli_Dom_Piso,Cli_Dom_Depto,Cli_Mail,Cli_Fecha_Nac,'',1
 FROM gd_esquema.maestra
 
 
@@ -319,15 +340,21 @@ INSERT INTO datiados.CuentaCategorias (descripcion,costo) values('Oro',100)
 /*Carga Tabla Monedas*/
 INSERT INTO datiados.Monedas values ('Dolar',1)
 
+/*Migración Tabla emisoresTarjetas*/
+
+insert into datiados.emisoresTarjetas
+select distinct Tarjeta_Emisor_Descripcion from gd_esquema.maestra
+where Tarjeta_Numero is not null
+
+
+
 /*Migración Tabla Tarjetas*/
 INSERT INTO datiados.Tarjetas
-SELECT DISTINCT Tarjeta_Numero,Tarjeta_Fecha_Emision,Tarjeta_Fecha_Vencimiento,Tarjeta_Codigo_Seg,Tarjeta_Emisor_Descripcion
-FROM gd_esquema.maestra
+SELECT DISTINCT Tarjeta_Numero,Tarjeta_Fecha_Emision,Tarjeta_Fecha_Vencimiento,Tarjeta_Codigo_Seg,emi.codEmisor
+FROM gd_esquema.maestra m
+inner join  datiados.emisoresTarjetas emi on emi.descripcion = m.Tarjeta_Emisor_Descripcion
 WHERE Tarjeta_Numero is NOT NULL
 ORDER BY Tarjeta_Numero
-
-
-
 
 
 
@@ -404,6 +431,7 @@ insert into datiados.funcionalidades values('ClientesModificacion')
 insert into datiados.funcionalidades values('CuentasMenu')
 insert into datiados.funcionalidades values('CuentasAlta')
 insert into datiados.funcionalidades values('CuentasBaja')
+insert into datiados.funcionalidades values('CuentasModificacion')
 insert into datiados.funcionalidades values('UsuariosMenu')
 insert into datiados.funcionalidades values('UsuariosAlta')
 insert into datiados.funcionalidades values('UsuariosBaja')
@@ -469,13 +497,4 @@ INNER JOIN DATIADOS.CLIENTES C ON C.NRO_DOC = M.cLI_NRO_DOC AND C.COD_TIPO_DOC =
  WHERE M.FACTURA_NUMERO IS NOT NULL
  GROUP BY FACTURA_NUMERO,C.ID,FACTURA_FECHA
 ORDER BY M.FACTURA_NUMERO
-
-insert into datiados.items_facturas
-SELECT 1,FACTURA_NUMERO,ITEM_FACTURA_DESCR,ITEM_FACTURA_IMPORTE,CUENTA_NUMERO,NULL FROM gd_esquema.maestra
-WHERE FACTURA_NUMERO IS NOT NULL
-
-
-
-
-
 
