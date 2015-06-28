@@ -31,11 +31,12 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.cmbRoles = new System.Windows.Forms.ComboBox();
             this.labelCombo = new System.Windows.Forms.Label();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(117, 214);
+            this.btnAceptar.Location = new System.Drawing.Point(142, 214);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(130, 36);
             this.btnAceptar.TabIndex = 0;
@@ -61,6 +62,16 @@
             this.labelCombo.TabIndex = 2;
             this.labelCombo.Text = "Rol ";
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(6, 214);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(130, 36);
+            this.btnSalir.TabIndex = 0;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // FrmRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -68,6 +79,7 @@
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.labelCombo);
             this.Controls.Add(this.cmbRoles);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnAceptar);
             this.Name = "FrmRol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -82,5 +94,6 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.ComboBox cmbRoles;
         private System.Windows.Forms.Label labelCombo;
+        private System.Windows.Forms.Button btnSalir;
     }
 }

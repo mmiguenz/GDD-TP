@@ -35,8 +35,6 @@ namespace PagoElectronico
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-
-
             Program.setiarRol(Int32.Parse(this.cmbRoles.SelectedValue.ToString()));
             FrmMain menu = new FrmMain();
             menu.Show();
@@ -46,6 +44,11 @@ namespace PagoElectronico
 
            
 
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -75,6 +75,7 @@ namespace PagoElectronico.ABM_Cliente
                 {
                     MessageBox.Show("Grabacion Exitosa!");
                     limpiarControles();
+                    txbxNombreCli.Text = null;
                     groupBoxDomicilio.Enabled = false;
                     groupDatosGenerales.Enabled = false;
 
@@ -134,7 +135,7 @@ namespace PagoElectronico.ABM_Cliente
             txbxMail.Text = null;
             Calendario.Text = null;
             txbxLocalidad.Text = null;
-            txbxNombreCli.Text = null;
+           
             
 
 

@@ -102,12 +102,13 @@ namespace PagoElectronico
             sqlQuery = "Select  us.id_rol, r.nombre  from Datiados.Usuarios_Roles us ";
             sqlQuery += "inner join datiados.roles r on r.id_rol = us.id_rol ";
            sqlQuery += " where usr =  " + "'"+usuario+"'";
+           sqlQuery += "and estado = 1  ";
 
            
 
             DataSet da = ConectionManager.getInstance().consultarDataSet(sqlQuery);
  
-
+            try {
             if (da.Tables[0].Rows.Count > 1)
             {
                 FrmRol rol = new FrmRol();
@@ -119,13 +120,18 @@ namespace PagoElectronico
             }
             else
             {
+                if (da.Tables[0].Rows.Count == 0)
+                {
+                    throw new ApplicationException("No posee rol asignado, contactese con su administrador");
+                }
+                else{
                 int rolID  =  da.Tables[0].Rows[0].Field<int>("id_rol");
 
                 Program.InstanciarUsuario(usuario);
                 Program.setiarRol(rolID);
                 FrmMain menu = new FrmMain();
                 menu.Show();
-            
+                }
 
             }
 
@@ -135,7 +141,13 @@ namespace PagoElectronico
 
 
                                     
+            }
+            catch(ApplicationException e)
+            {
+                MessageBox.Show(e.Message);
+                Application.Exit();
 
+            }
         
         
         }

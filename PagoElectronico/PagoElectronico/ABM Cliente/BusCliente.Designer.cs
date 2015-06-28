@@ -144,6 +144,8 @@
             this.txbxNroDoc.Name = "txbxNroDoc";
             this.txbxNroDoc.Size = new System.Drawing.Size(150, 20);
             this.txbxNroDoc.TabIndex = 1;
+            this.txbxNroDoc.TextChanged += new System.EventHandler(this.txbxNroDoc_TextChanged);
+            this.txbxNroDoc.Leave += new System.EventHandler(this.txbxNroDoc_TextChanged);
             // 
             // label4
             // 
