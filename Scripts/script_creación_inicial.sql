@@ -1,9 +1,9 @@
-USE [GD1C2015]
-GO
-create Schema datiados authorization [gd]
-GO
---select * into gd_esquema.maestra from GD1C2015.gd_esquema.maestra
+--begin tran
+use [GD1C2015]
 
+GO
+create Schema datiados   authorization [gd]
+GO
 
 
 
@@ -158,7 +158,7 @@ CREATE TABLE datiados.Transferencias(
 /*Tipo de Movimientos en Cuentas*/
 
 CREATE TABLE datiados.TipoMovCuentas(
-	cod_mov numeric(2,0) PRIMARY KEY,
+	tipo_mov numeric(2,0) PRIMARY KEY,
 	descripcion varchar(150) NOT NULL,
 	signo char(1) NOT NULL
 )
@@ -217,10 +217,9 @@ CREATE TABLE datiados.Facturas(
 /*Items Facturas*/
 
 CREATE TABLE datiados.Items_Facturas(
-	id_item int IDENTITY(1,1),
-	tipo_concepto int FOREIGN KEY REFERENCES datiados.ItemConceptoTipos,
+	id_item int ,
 	nro_factura numeric(18,0) FOREIGN KEY REFERENCES datiados.Facturas,
-	descripcion varchar(255) NOT NULL,
+	tipo_concepto int FOREIGN KEY REFERENCES datiados.ItemConceptoTipos,
 	importe numeric(18,2) NOT NULL,
 	nro_cuenta numeric(18,0) FOREIGN KEY REFERENCES datiados.Cuentas,
 	id_transf int foreign key references datiados.transferencias
@@ -275,21 +274,14 @@ CREATE TABLE datiados.Roles_Funcionalidades(
 
 
 create table datiados.loguinAuditoria
-(usuario varchar(150),
+(id int identity primary key  ,
+ usuario varchar(150),
  fechayHora datetime,
  descripcion varchar(100)
 )
 
 
--- gd_esquema.maestra =============================================================== 
-/*Países*/
-/*Bancos*/
-/*Cheques*/
-/* Tipo Documento*/
-/*Clientes*/
-/*Estados de cuenta*/
-/*Categorías de Cuenta*/
-/*Monedas*/
+-- Miigracion =============================================================== 
 
 /*Migración Tabla Bancos*/
 INSERT INTO datiados.Bancos
@@ -379,11 +371,11 @@ from gd_esquema.maestra
 where Retiro_Codigo is NOT NULL
 order by  Retiro_Codigo 
 
-/*Migración Tabla Transferencias*/
+/*/*Migración Tabla Transferencias*/
 INSERT INTO datiados.Transferencias
 SELECT Cuenta_Numero,Cuenta_Dest_Numero,Trans_Importe,Transf_Fecha
 FROM gd_esquema.maestra
-WHERE Item_Factura_Descr is not null
+WHERE Item_Factura_Descr is not null*/
 
 
 
@@ -492,9 +484,48 @@ INSERT INTO DATIADOS.ITEMCONCEPTOTIPOS VALUES('Apertura de cuenta')
 
 -- LLENO FACTURAS 
 insert into datiados.facturas
-SELECT  FACTURA_NUMERO, FACTURA_FECHA,C.ID,SUM(ITEM_FACTURA_IMPORTE) FROM gd_esquema.maestra M 
+SELECT  FACTURA_NUMERO, FACTURA_FECHA,C.ID,SUM(isnull(ITEM_FACTURA_IMPORTE,0)) FROM gd_esquema.maestra M 
 INNER JOIN DATIADOS.CLIENTES C ON C.NRO_DOC = M.cLI_NRO_DOC AND C.COD_TIPO_DOC = M.CLI_TIPO_DOC_COD
  WHERE M.FACTURA_NUMERO IS NOT NULL
  GROUP BY FACTURA_NUMERO,C.ID,FACTURA_FECHA
 ORDER BY M.FACTURA_NUMERO
 
+
+
+/*/*Migración Tabla Transferencias*/
+INSERT INTO datiados.Transferencias
+SELECT Cuenta_Numero,Cuenta_Dest_Numero,Trans_Importe,Transf_Fecha
+FROM gd_esquema.maestra
+WHERE Item_Factura_Descr is not null*/
+
+
+
+create table #temp
+(id_transf int identity (1,1),
+ cuenta_numero numeric(18,0),
+ cuenta_dest_numero numeric(18,0),
+ trans_importe numeric(18,2),
+ transf_fecha datetime,
+ factura_numero numeric(18,0),
+ item_factura_importe numeric(18,2)
+ 
+)
+
+
+insert into #temp
+SELECT Cuenta_Numero,Cuenta_Dest_Numero,Trans_Importe,Transf_Fecha,factura_numero,item_factura_importe
+FROM gd_esquema.maestra
+WHERE Item_Factura_Descr is not null
+
+insert into datiados.transferencias
+select Cuenta_Numero,Cuenta_Dest_Numero,Trans_Importe,Transf_Fecha
+from #temp
+order by id_transf
+
+insert into datiados.items_facturas
+select 1,factura_numero,1,item_factura_importe,cuenta_numero,id_transf
+from #temp
+order by id_transf
+
+--commit tran
+--rollback tran

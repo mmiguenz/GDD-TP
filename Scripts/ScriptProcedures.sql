@@ -1,6 +1,6 @@
-
+USE [GD1C2015]
 GO
-/****** Object:  StoredProcedure [datiados].[auditarLoguin]    Script Date: 06/27/2015 21:26:32 ******/
+/****** Object:  StoredProcedure [datiados].[auditarLoguin]    Script Date: 06/28/2015 18:25:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -18,7 +18,7 @@ set @fecha = GETDATE()
   
 insert into datiados.loguinAuditoria values (@usuario,@fecha,@descripcion)
 GO
-/****** Object:  StoredProcedure [datiados].[FuncionalidadesDelRol_buscar]    Script Date: 06/27/2015 21:26:33 ******/
+/****** Object:  StoredProcedure [datiados].[FuncionalidadesDelRol_buscar]    Script Date: 06/28/2015 18:25:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -33,7 +33,7 @@ inner join datiados.Roles_Funcionalidades rf on rf.id_func=f.id_func
 inner join datiados.roles r on r.id_rol=rf.id_rol
 where rf.id_rol = @RolID
 GO
-/****** Object:  StoredProcedure [datiados].[cliente_modificar]    Script Date: 06/27/2015 21:26:33 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_modificar]    Script Date: 06/28/2015 18:25:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -51,7 +51,8 @@ CREATE procedure [datiados].[cliente_modificar]
 @fechaNac	datetime,
 @codTipoDoc numeric(18,0),
 @codPais	numeric(18,0),
-@nroDoc		numeric(18,0)
+@nroDoc		numeric(18,0),
+@habilitado bit 
 
 as
 
@@ -59,10 +60,10 @@ as
 update datiados.Clientes set nombre = @nombre,apellido=@apellido,
 						 mail=@mail,dir_calle=@calle,dir_altura=@altura,
 						 dir_dpto=@dto,dir_piso=@piso,fecha_nac=@fechaNac,
-						 cod_tipo_doc=@codTipoDoc,cod_pais=@codPais,nro_doc=@nroDoc,localidad=@localidad
+						 cod_tipo_doc=@codTipoDoc,cod_pais=@codPais,nro_doc=@nroDoc,localidad=@localidad,habilitado = @habilitado
 where id=@ClienteID
 GO
-/****** Object:  StoredProcedure [datiados].[cliente_eliminar]    Script Date: 06/27/2015 21:26:32 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_eliminar]    Script Date: 06/28/2015 18:25:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -74,7 +75,7 @@ as
 
 update  datiados.Clientes set habilitado=0 where id = @clienteID
 GO
-/****** Object:  StoredProcedure [datiados].[cliente_buscar_ID]    Script Date: 06/27/2015 21:26:32 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_buscar_ID]    Script Date: 06/28/2015 18:25:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -86,12 +87,12 @@ as
 
 
 select nombre,apellido,cod_tipo_doc codtipodoc,cod_pais codpais, nro_doc nrodoc,
-		mail,dir_altura altura, dir_calle calle, dir_dpto dto, dir_piso piso,fecha_nac fechanacimiento,localidad
+		mail,dir_altura altura, dir_calle calle, dir_dpto dto, dir_piso piso,fecha_nac fechanacimiento,localidad,habilitado
 		
 from Clientes 
 where id = @clienteID
 GO
-/****** Object:  StoredProcedure [datiados].[cliente_buscar]    Script Date: 06/27/2015 21:26:32 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_buscar]    Script Date: 06/28/2015 18:25:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,14 +110,13 @@ as
 select c.ID,nombre,c.apellido,c.mail,td.descripcion,c.nro_doc
 from datiados.clientes c
 inner join datiados.tipodoc td on c.cod_tipo_doc=td.cod_doc
-where c.habilitado = 1 
-and (c.nro_doc = @nrodoc or @nrodoc is null)
+where (c.nro_doc = @nrodoc or @nrodoc is null)
 and (nombre  like  @nombre+'%' or @nombre ='')
 and ( apellido like @apellido+'%' or @apellido='' )
 and (mail like '%'+@mail+'%' or @mail ='')
 and (c.cod_tipo_doc = @codtipodoc or @codtipodoc is null)
 GO
-/****** Object:  StoredProcedure [datiados].[cliente_agregar]    Script Date: 06/27/2015 21:26:32 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_agregar]    Script Date: 06/28/2015 18:25:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -154,7 +154,7 @@ insert into datiados.Clientes	values (@nroDoc,
 																				
 										)
 GO
-/****** Object:  StoredProcedure [datiados].[incrementarIntentosFallidos]    Script Date: 06/27/2015 21:26:33 ******/
+/****** Object:  StoredProcedure [datiados].[incrementarIntentosFallidos]    Script Date: 06/28/2015 18:25:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -172,7 +172,7 @@ if @intentos = 2
 else
 	update datiados.Usuarios  set cant_intentos_fallidos+=1 where username = @usuario
 GO
-/****** Object:  StoredProcedure [datiados].[loguear]    Script Date: 06/27/2015 21:26:33 ******/
+/****** Object:  StoredProcedure [datiados].[loguear]    Script Date: 06/28/2015 18:25:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

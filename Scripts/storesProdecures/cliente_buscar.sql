@@ -15,7 +15,7 @@ ALTER procedure [datiados].[cliente_buscar]
 as
 
 
-select c.ID,nombre,c.apellido,c.mail,td.descripcion,c.nro_doc
+select c.ID,nombre,c.apellido,c.mail,td.descripcion,c.nro_doc,c.habilitado
 from datiados.clientes c
 inner join datiados.tipodoc td on c.cod_tipo_doc=td.cod_doc
 where (c.nro_doc = @nrodoc or @nrodoc is null)
