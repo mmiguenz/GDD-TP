@@ -12,27 +12,23 @@ namespace PagoElectronico.ABM_Cliente
 {
     public partial class BusCliente : Form
     {
-        private ModifCliente frm;
-        private EliminaCliente frm2;
+        private FrmGenericIBusCli frm;
+
 
         public BusCliente()
         {
             InitializeComponent();
         }
 
-        public BusCliente(ModifCliente modif)
+        public BusCliente(FrmGenericIBusCli frm)
         {
-            this.frm = modif;
+            this.frm = frm;
             InitializeComponent();
             llenarCombos();
         }
 
-        public BusCliente(EliminaCliente elim)
-        {
-            this.frm2 = elim;
-            InitializeComponent();
-            llenarCombos();
-        }
+        
+       
 
         private void llenarCombos()
         {
@@ -40,11 +36,6 @@ namespace PagoElectronico.ABM_Cliente
             cmbTipoDoc.DataSource = dt;
             cmbTipoDoc.DisplayMember = "descripcion";
             cmbTipoDoc.ValueMember = "cod_doc";
-        }
-
-        private void groupFiltrosBus_Enter(object sender, EventArgs e)
-        {
-            
         }
 
         private void btnBus_Click(object sender, EventArgs e)
@@ -87,34 +78,53 @@ namespace PagoElectronico.ABM_Cliente
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Int32 clienteID = Convert.ToInt32(dgvcli.CurrentRow.Cells[0].Value);
+            try
+            {
+                if (dgvcli.RowCount == 0)
+                {
+                    throw new ApplicationException("no hay datos");
+                }
+                Int32 clienteID = Convert.ToInt32(dgvcli.CurrentRow.Cells[0].Value);
 
 
-            SqlParameter[] parametrosEntrada = new SqlParameter[] {
+                SqlParameter[] parametrosEntrada = new SqlParameter[] {
                           
                 new SqlParameter("@clienteID", clienteID),
                
             };
 
-            DataTable dt = Utiles.ConectionManager.
-                                getInstance().
-                                ejecutarStoreProcedureDevuelveDataSet("datiados.cliente_buscar_ID", parametrosEntrada)
-                                .Tables[0];
+                DataTable dt = Utiles.ConectionManager.
+                                    getInstance().
+                                    ejecutarStoreProcedureDevuelveDataSet("datiados.cliente_buscar_ID", parametrosEntrada)
+                                    .Tables[0];
 
 
-            if (frm == null)
-            {
-                frm2.clienteID = clienteID;
-                frm2.llenarDatos(dt);
+              
+                    frm.setClienteID(clienteID);
+                    frm.llenarDatos(dt);
+                    this.Dispose();
+
+              
             }
-            else
-            {
-                frm.clienteID = clienteID;
-                frm.llenarDatos(dt);
-            }
-            this.Hide();
 
-            
+            catch (ApplicationException ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
+
+        }
+
+        private void txbxMail_Leave(object sender, EventArgs e)
+        {
+            ValidaCamposCliente.validaMail(txbxMail);
+        }
+
+        private void txbxNroDoc_TextChanged(object sender, EventArgs e)
+        {
+            ValidaCamposCliente.validaNroDoc(txbxNroDoc);
+          
         }
 
     }

@@ -43,22 +43,22 @@
             this.txbxMail = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txbxNombre = new System.Windows.Forms.TextBox();
-            this.groupBoxDomicilio = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txbxLocalidad = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txbxDto = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txbxAltura = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txbxPiso = new System.Windows.Forms.TextBox();
-            this.Calle = new System.Windows.Forms.Label();
-            this.txbxCalle = new System.Windows.Forms.TextBox();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.txbxNombreCli = new System.Windows.Forms.TextBox();
             this.btnBus = new System.Windows.Forms.Button();
+            this.txbxCalle = new System.Windows.Forms.TextBox();
+            this.Calle = new System.Windows.Forms.Label();
+            this.txbxPiso = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txbxAltura = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txbxDto = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txbxLocalidad = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.groupBoxDomicilio = new System.Windows.Forms.GroupBox();
             this.groupDatosGenerales.SuspendLayout();
             this.groupBoxDomicilio.SuspendLayout();
             this.SuspendLayout();
@@ -161,15 +161,15 @@
             // 
             this.txbxNroDoc.Location = new System.Drawing.Point(89, 177);
             this.txbxNroDoc.Name = "txbxNroDoc";
-            this.txbxNroDoc.Size = new System.Drawing.Size(114, 20);
+            this.txbxNroDoc.Size = new System.Drawing.Size(143, 20);
             this.txbxNroDoc.TabIndex = 3;
-            this.txbxNroDoc.TextChanged += new System.EventHandler(this.txbxNroDoc_TextChanged);
+            this.txbxNroDoc.Leave += new System.EventHandler(this.txbxNroDoc_Leave);
             // 
             // txbxApellido
             // 
             this.txbxApellido.Location = new System.Drawing.Point(89, 84);
             this.txbxApellido.Name = "txbxApellido";
-            this.txbxApellido.Size = new System.Drawing.Size(114, 20);
+            this.txbxApellido.Size = new System.Drawing.Size(143, 20);
             this.txbxApellido.TabIndex = 1;
             // 
             // label4
@@ -185,7 +185,7 @@
             // 
             this.txbxMail.Location = new System.Drawing.Point(584, 30);
             this.txbxMail.Name = "txbxMail";
-            this.txbxMail.Size = new System.Drawing.Size(140, 20);
+            this.txbxMail.Size = new System.Drawing.Size(162, 20);
             this.txbxMail.TabIndex = 4;
             this.txbxMail.Leave += new System.EventHandler(this.txbxMail_Leave);
             // 
@@ -202,108 +202,8 @@
             // 
             this.txbxNombre.Location = new System.Drawing.Point(89, 37);
             this.txbxNombre.Name = "txbxNombre";
-            this.txbxNombre.Size = new System.Drawing.Size(114, 20);
+            this.txbxNombre.Size = new System.Drawing.Size(143, 20);
             this.txbxNombre.TabIndex = 0;
-            // 
-            // groupBoxDomicilio
-            // 
-            this.groupBoxDomicilio.Controls.Add(this.label10);
-            this.groupBoxDomicilio.Controls.Add(this.txbxLocalidad);
-            this.groupBoxDomicilio.Controls.Add(this.label9);
-            this.groupBoxDomicilio.Controls.Add(this.txbxDto);
-            this.groupBoxDomicilio.Controls.Add(this.label6);
-            this.groupBoxDomicilio.Controls.Add(this.txbxAltura);
-            this.groupBoxDomicilio.Controls.Add(this.label8);
-            this.groupBoxDomicilio.Controls.Add(this.txbxPiso);
-            this.groupBoxDomicilio.Controls.Add(this.Calle);
-            this.groupBoxDomicilio.Controls.Add(this.txbxCalle);
-            this.groupBoxDomicilio.Enabled = false;
-            this.groupBoxDomicilio.Location = new System.Drawing.Point(30, 318);
-            this.groupBoxDomicilio.Name = "groupBoxDomicilio";
-            this.groupBoxDomicilio.Size = new System.Drawing.Size(935, 229);
-            this.groupBoxDomicilio.TabIndex = 1;
-            this.groupBoxDomicilio.TabStop = false;
-            this.groupBoxDomicilio.Text = "Domicilio";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(448, 100);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 13);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Localidad";
-            // 
-            // txbxLocalidad
-            // 
-            this.txbxLocalidad.Location = new System.Drawing.Point(517, 93);
-            this.txbxLocalidad.Name = "txbxLocalidad";
-            this.txbxLocalidad.Size = new System.Drawing.Size(114, 20);
-            this.txbxLocalidad.TabIndex = 11;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(448, 36);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(24, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Dto";
-            // 
-            // txbxDto
-            // 
-            this.txbxDto.Location = new System.Drawing.Point(517, 29);
-            this.txbxDto.Name = "txbxDto";
-            this.txbxDto.Size = new System.Drawing.Size(114, 20);
-            this.txbxDto.TabIndex = 10;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(19, 107);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Altura";
-            // 
-            // txbxAltura
-            // 
-            this.txbxAltura.Location = new System.Drawing.Point(88, 100);
-            this.txbxAltura.Name = "txbxAltura";
-            this.txbxAltura.Size = new System.Drawing.Size(114, 20);
-            this.txbxAltura.TabIndex = 8;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(22, 172);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Piso";
-            // 
-            // txbxPiso
-            // 
-            this.txbxPiso.Location = new System.Drawing.Point(88, 165);
-            this.txbxPiso.Name = "txbxPiso";
-            this.txbxPiso.Size = new System.Drawing.Size(114, 20);
-            this.txbxPiso.TabIndex = 9;
-            // 
-            // Calle
-            // 
-            this.Calle.AutoSize = true;
-            this.Calle.Location = new System.Drawing.Point(19, 40);
-            this.Calle.Name = "Calle";
-            this.Calle.Size = new System.Drawing.Size(30, 13);
-            this.Calle.TabIndex = 0;
-            this.Calle.Text = "Calle";
-            // 
-            // txbxCalle
-            // 
-            this.txbxCalle.Location = new System.Drawing.Point(88, 33);
-            this.txbxCalle.Name = "txbxCalle";
-            this.txbxCalle.Size = new System.Drawing.Size(114, 20);
-            this.txbxCalle.TabIndex = 7;
             // 
             // btnGrabar
             // 
@@ -353,6 +253,106 @@
             this.btnBus.UseVisualStyleBackColor = true;
             this.btnBus.Click += new System.EventHandler(this.button1_Click);
             // 
+            // txbxCalle
+            // 
+            this.txbxCalle.Location = new System.Drawing.Point(88, 33);
+            this.txbxCalle.Name = "txbxCalle";
+            this.txbxCalle.Size = new System.Drawing.Size(144, 20);
+            this.txbxCalle.TabIndex = 7;
+            // 
+            // Calle
+            // 
+            this.Calle.AutoSize = true;
+            this.Calle.Location = new System.Drawing.Point(19, 40);
+            this.Calle.Name = "Calle";
+            this.Calle.Size = new System.Drawing.Size(30, 13);
+            this.Calle.TabIndex = 0;
+            this.Calle.Text = "Calle";
+            // 
+            // txbxPiso
+            // 
+            this.txbxPiso.Location = new System.Drawing.Point(88, 165);
+            this.txbxPiso.Name = "txbxPiso";
+            this.txbxPiso.Size = new System.Drawing.Size(144, 20);
+            this.txbxPiso.TabIndex = 9;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(22, 172);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(27, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Piso";
+            // 
+            // txbxAltura
+            // 
+            this.txbxAltura.Location = new System.Drawing.Point(88, 100);
+            this.txbxAltura.Name = "txbxAltura";
+            this.txbxAltura.Size = new System.Drawing.Size(144, 20);
+            this.txbxAltura.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(19, 107);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(34, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Altura";
+            // 
+            // txbxDto
+            // 
+            this.txbxDto.Location = new System.Drawing.Point(517, 29);
+            this.txbxDto.Name = "txbxDto";
+            this.txbxDto.Size = new System.Drawing.Size(114, 20);
+            this.txbxDto.TabIndex = 10;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(448, 36);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(24, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Dto";
+            // 
+            // txbxLocalidad
+            // 
+            this.txbxLocalidad.Location = new System.Drawing.Point(517, 93);
+            this.txbxLocalidad.Name = "txbxLocalidad";
+            this.txbxLocalidad.Size = new System.Drawing.Size(114, 20);
+            this.txbxLocalidad.TabIndex = 11;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(448, 100);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Localidad";
+            // 
+            // groupBoxDomicilio
+            // 
+            this.groupBoxDomicilio.Controls.Add(this.label10);
+            this.groupBoxDomicilio.Controls.Add(this.txbxLocalidad);
+            this.groupBoxDomicilio.Controls.Add(this.label9);
+            this.groupBoxDomicilio.Controls.Add(this.txbxDto);
+            this.groupBoxDomicilio.Controls.Add(this.label6);
+            this.groupBoxDomicilio.Controls.Add(this.txbxAltura);
+            this.groupBoxDomicilio.Controls.Add(this.label8);
+            this.groupBoxDomicilio.Controls.Add(this.txbxPiso);
+            this.groupBoxDomicilio.Controls.Add(this.Calle);
+            this.groupBoxDomicilio.Controls.Add(this.txbxCalle);
+            this.groupBoxDomicilio.Enabled = false;
+            this.groupBoxDomicilio.Location = new System.Drawing.Point(30, 318);
+            this.groupBoxDomicilio.Name = "groupBoxDomicilio";
+            this.groupBoxDomicilio.Size = new System.Drawing.Size(935, 229);
+            this.groupBoxDomicilio.TabIndex = 1;
+            this.groupBoxDomicilio.TabStop = false;
+            this.groupBoxDomicilio.Text = "Domicilio";
+            // 
             // ModifCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,22 +392,22 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txbxMail;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.GroupBox groupBoxDomicilio;
-        private System.Windows.Forms.Label Calle;
-        private System.Windows.Forms.TextBox txbxCalle;
         private System.Windows.Forms.DateTimePicker Calendario;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txbxLocalidad;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txbxDto;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txbxPiso;
         private System.Windows.Forms.Button btnGrabar;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnLimpiar;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txbxAltura;
         private System.Windows.Forms.TextBox txbxNombreCli;
         private System.Windows.Forms.Button btnBus;
+        private System.Windows.Forms.TextBox txbxCalle;
+        private System.Windows.Forms.Label Calle;
+        private System.Windows.Forms.TextBox txbxPiso;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txbxAltura;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txbxDto;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txbxLocalidad;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.GroupBox groupBoxDomicilio;
     }
 }

@@ -68,7 +68,6 @@
             this.groupFiltrosBus.TabIndex = 0;
             this.groupFiltrosBus.TabStop = false;
             this.groupFiltrosBus.Text = "Filtros De Busqueda";
-            this.groupFiltrosBus.Enter += new System.EventHandler(this.groupFiltrosBus_Enter);
             // 
             // btnAceptar
             // 
@@ -137,6 +136,7 @@
             this.txbxMail.Name = "txbxMail";
             this.txbxMail.Size = new System.Drawing.Size(150, 20);
             this.txbxMail.TabIndex = 1;
+            this.txbxMail.Leave += new System.EventHandler(this.txbxMail_Leave);
             // 
             // txbxNroDoc
             // 

@@ -132,27 +132,15 @@ namespace PagoElectronico.ABM_Cliente
 
         }
 
-        private void txbxNroDoc_TextChanged(object sender, EventArgs e)
-        {
-            if (!ValidaCamposCliente.validaNroDoc(txbxNroDoc.Text.ToCharArray()))
-          {
-              this.txbxNroDoc.Text = null;
-              MessageBox.Show("solo debe ingresar numeros");
-    
-
-            }
-
-
-        }
-
+       
         private void txbxMail_Leave(object sender, EventArgs e)
         {
-            if ( ! ValidaCamposCliente.validaMail(txbxMail.Text))
-            {
-                MessageBox.Show("formato de mail incorrecto");
-                txbxMail.Text = null;
+            ValidaCamposCliente.validaMail(txbxMail);
+        }
 
-            }
+        private void txbxNroDoc_Leave(object sender, EventArgs e)
+        {
+            ValidaCamposCliente.validaNroDoc(txbxNroDoc);
         }
 
 

@@ -158,15 +158,15 @@
             // 
             this.txbxNroDoc.Location = new System.Drawing.Point(89, 177);
             this.txbxNroDoc.Name = "txbxNroDoc";
-            this.txbxNroDoc.Size = new System.Drawing.Size(114, 20);
+            this.txbxNroDoc.Size = new System.Drawing.Size(149, 20);
             this.txbxNroDoc.TabIndex = 3;
-            this.txbxNroDoc.TextChanged += new System.EventHandler(this.txbxNroDoc_TextChanged);
+            this.txbxNroDoc.Leave += new System.EventHandler(this.txbxNroDoc_Leave);
             // 
             // txbxApellido
             // 
             this.txbxApellido.Location = new System.Drawing.Point(89, 84);
             this.txbxApellido.Name = "txbxApellido";
-            this.txbxApellido.Size = new System.Drawing.Size(114, 20);
+            this.txbxApellido.Size = new System.Drawing.Size(149, 20);
             this.txbxApellido.TabIndex = 1;
             // 
             // label4
@@ -182,7 +182,7 @@
             // 
             this.txbxMail.Location = new System.Drawing.Point(584, 30);
             this.txbxMail.Name = "txbxMail";
-            this.txbxMail.Size = new System.Drawing.Size(136, 20);
+            this.txbxMail.Size = new System.Drawing.Size(167, 20);
             this.txbxMail.TabIndex = 4;
             this.txbxMail.Leave += new System.EventHandler(this.txbxMail_Leave);
             // 
@@ -199,7 +199,7 @@
             // 
             this.txbxNombre.Location = new System.Drawing.Point(89, 37);
             this.txbxNombre.Name = "txbxNombre";
-            this.txbxNombre.Size = new System.Drawing.Size(114, 20);
+            this.txbxNombre.Size = new System.Drawing.Size(149, 20);
             this.txbxNombre.TabIndex = 0;
             // 
             // groupBoxDomicilio
@@ -266,7 +266,7 @@
             // 
             this.txbxAltura.Location = new System.Drawing.Point(88, 100);
             this.txbxAltura.Name = "txbxAltura";
-            this.txbxAltura.Size = new System.Drawing.Size(114, 20);
+            this.txbxAltura.Size = new System.Drawing.Size(149, 20);
             this.txbxAltura.TabIndex = 8;
             // 
             // label8
@@ -282,7 +282,7 @@
             // 
             this.txbxPiso.Location = new System.Drawing.Point(88, 165);
             this.txbxPiso.Name = "txbxPiso";
-            this.txbxPiso.Size = new System.Drawing.Size(114, 20);
+            this.txbxPiso.Size = new System.Drawing.Size(149, 20);
             this.txbxPiso.TabIndex = 9;
             // 
             // Calle
@@ -298,7 +298,7 @@
             // 
             this.txbxCalle.Location = new System.Drawing.Point(88, 33);
             this.txbxCalle.Name = "txbxCalle";
-            this.txbxCalle.Size = new System.Drawing.Size(114, 20);
+            this.txbxCalle.Size = new System.Drawing.Size(149, 20);
             this.txbxCalle.TabIndex = 7;
             // 
             // btnGrabar

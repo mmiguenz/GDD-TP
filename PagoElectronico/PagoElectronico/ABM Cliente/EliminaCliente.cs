@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace PagoElectronico.ABM_Cliente
 {
-    public partial class EliminaCliente : Form
+    public partial class EliminaCliente : Form,FrmGenericIBusCli
     {
         public Int32 clienteID;
 
@@ -124,37 +124,15 @@ namespace PagoElectronico.ABM_Cliente
 
         }
 
-        private void txbxNroDoc_TextChanged(object sender, EventArgs e)
-        {
-            if (!ValidaCamposCliente.validaNroDoc(txbxNroDoc.Text.ToCharArray()))
-          {
-              this.txbxNroDoc.Text = null;
-              MessageBox.Show("solo debe ingresar numeros");
-    
-
-            }
-
-
-        }
-
-        private void txbxMail_Leave(object sender, EventArgs e)
-        {
-            if ( ! ValidaCamposCliente.validaMail(txbxMail.Text))
-            {
-                MessageBox.Show("formato de mail incorrecto");
-                txbxMail.Text = null;
-
-            }
-        }
-
+       
         private void button1_Click(object sender, EventArgs e)
         {
             BusCliente busqueda = new BusCliente(this);
             busqueda.Show();
             
         }
-
-        public void llenarDatos(DataTable dt)
+        
+        public  void llenarDatos(DataTable dt)
             {
                 DataRow dr = dt.Rows[0];
 
@@ -170,6 +148,7 @@ namespace PagoElectronico.ABM_Cliente
                 txbxCalle.Text = dr.Field<String>("Calle");
                 txbxDto.Text = dr.Field<String>("dto");                            
                 txbxPiso.Text = dr.Field<decimal>("piso").ToString();
+                txbxLocalidad.Text = dr.Field<String>("localidad");
                 Calendario.Value = dr.Field<DateTime>("fechanacimiento");
               
            
@@ -183,7 +162,25 @@ namespace PagoElectronico.ABM_Cliente
             }
 
 
+
      
 
+        public void setClienteID(int clienteID)
+        {
+            this.clienteID = clienteID;
+        }
+
+        private void txbxNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txbxApellido_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
+       
     }
 }

@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace PagoElectronico.ABM_Cliente
 {
-    public partial class ModifCliente : Form
+    public partial class ModifCliente :Form,FrmGenericIBusCli
     {
         public Int32 clienteID;
 
@@ -75,6 +75,9 @@ namespace PagoElectronico.ABM_Cliente
                     MessageBox.Show("Grabacion Exitosa!");
                     limpiarControles();
                     groupBoxDomicilio.Enabled = false;
+                    groupDatosGenerales.Enabled = false;
+
+                    
 
                 }
 
@@ -137,27 +140,11 @@ namespace PagoElectronico.ABM_Cliente
 
         }
 
-        private void txbxNroDoc_TextChanged(object sender, EventArgs e)
-        {
-            if (!ValidaCamposCliente.validaNroDoc(txbxNroDoc.Text.ToCharArray()))
-          {
-              this.txbxNroDoc.Text = null;
-              MessageBox.Show("solo debe ingresar numeros");
     
-
-            }
-
-
-        }
 
         private void txbxMail_Leave(object sender, EventArgs e)
         {
-            if ( ! ValidaCamposCliente.validaMail(txbxMail.Text))
-            {
-                MessageBox.Show("formato de mail incorrecto");
-                txbxMail.Text = null;
-
-            }
+            ValidaCamposCliente.validaMail(txbxMail);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -166,8 +153,10 @@ namespace PagoElectronico.ABM_Cliente
             busqueda.Show();
             
         }
+       
+        
 
-        public void llenarDatos(DataTable dt)
+        public   void llenarDatos(DataTable dt) 
             {
                 DataRow dr = dt.Rows[0];
 
@@ -184,6 +173,7 @@ namespace PagoElectronico.ABM_Cliente
                 txbxDto.Text = dr.Field<String>("dto");                            
                 txbxPiso.Text = dr.Field<decimal>("piso").ToString();
                 Calendario.Value = dr.Field<DateTime>("fechanacimiento");
+                txbxLocalidad.Text = dr.Field<String>("localidad");
                 groupBoxDomicilio.Enabled = true;
                 groupDatosGenerales.Enabled = true;
            
@@ -195,6 +185,18 @@ namespace PagoElectronico.ABM_Cliente
         {
             return cmbTipoDoc;
             }
+
+        private void txbxNroDoc_Leave(object sender, EventArgs e)
+        {
+            ValidaCamposCliente.validaNroDoc(txbxNroDoc);
+
+        }
+
+        public void setClienteID(int clienteID)
+        {
+            this.clienteID = clienteID;
+        }
+
 
 
      
