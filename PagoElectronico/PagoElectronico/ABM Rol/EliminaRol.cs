@@ -10,23 +10,23 @@ using System.Data.SqlClient;
 
 namespace PagoElectronico.ABM_Rol
 {
-    public partial class ModificacionRol : Form
+    public partial class EliminaRol : Form
     {
 
         private Dictionary<String,int> funcDict = new Dictionary<String,int>();
         private List<String> funcAnteriores = new List<string>();
 
-        public ModificacionRol()
+        public EliminaRol()
         {
             InitializeComponent();
             llenarComboRoles();
             grbxListas.Enabled = false;
-            btnGrabar.Enabled = false;
+            btnEliminar.Enabled = false;
         }
 
         private void llenarComboRoles()
         {
-            DataSet ds = Utiles.ConectionManager.getInstance().consultarDataSet("select * from datiados.roles");
+            DataSet ds = Utiles.ConectionManager.getInstance().consultarDataSet("select * from datiados.roles where estado  = 1");
 
             cmbxRol.DataSource = ds.Tables[0];
             cmbxRol.DisplayMember = "nombre";
@@ -57,9 +57,6 @@ namespace PagoElectronico.ABM_Rol
             DataSet dsRol = Utiles.ConectionManager.getInstance().consultarDataSet("select estado from datiados.roles where id_rol= "+cmbxRol.SelectedValue);
 
             ckbxHabilitado.Checked = dsRol.Tables[0].Rows[0].Field<bool>("estado");
-
-
-            ckbxHabilitado.Enabled = true;
 
             if (ckbxHabilitado.Checked)
             {
@@ -182,10 +179,6 @@ namespace PagoElectronico.ABM_Rol
             SqlTransaction trans = connection.BeginTransaction("t");
             try
             {
-
-
-                eliminarAnteriores(connection,trans);
-                agregarFuncionalidades(connection,trans);
                 grabarEstadoRol(connection, trans);
 
                 trans.Commit();
@@ -275,11 +268,8 @@ namespace PagoElectronico.ABM_Rol
         private void grabarEstadoRol(SqlConnection connection, SqlTransaction trans)
         {
             String UpdateSql;
-            int habilitado;
+            int habilitado=0;
 
-            if (ckbxHabilitado.Checked)
-                habilitado = 1;
-            else habilitado = 0;
 
 
             UpdateSql = "update datiados.roles set estado = " + habilitado;
@@ -302,8 +292,8 @@ namespace PagoElectronico.ABM_Rol
         {
             cmbxRol.Enabled = false;
             llenarFuncionalidades();
-            grbxListas.Enabled = true;
-            btnGrabar.Enabled = true;
+          
+            btnEliminar.Enabled = true;
         }
 
         private void limpiar()
@@ -316,7 +306,8 @@ namespace PagoElectronico.ABM_Rol
             lstBxFunc.Items.Clear();
             cmbxRol.Enabled = true;
             grbxListas.Enabled = false;
-            btnGrabar.Enabled = false;
+            btnEliminar.Enabled = false;
+            llenarComboRoles();
 
 
 

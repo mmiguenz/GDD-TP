@@ -1,6 +1,6 @@
 ﻿namespace PagoElectronico.ABM_Rol
 {
-    partial class ModificacionRol
+    partial class EliminaRol
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnGrabar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.lstBxFunc = new System.Windows.Forms.ListBox();
             this.lstbxFunAgre = new System.Windows.Forms.ListBox();
@@ -48,15 +48,15 @@
             this.grbxListas.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnGrabar
+            // btnEliminar
             // 
-            this.btnGrabar.Location = new System.Drawing.Point(790, 554);
-            this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(139, 32);
-            this.btnGrabar.TabIndex = 6;
-            this.btnGrabar.Text = "Grabar";
-            this.btnGrabar.UseVisualStyleBackColor = true;
-            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            this.btnEliminar.Location = new System.Drawing.Point(790, 554);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(139, 32);
+            this.btnEliminar.TabIndex = 6;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
             // btnSalir
             // 
@@ -186,6 +186,7 @@
             this.grbxListas.Controls.Add(this.label2);
             this.grbxListas.Controls.Add(this.lstbxFunAgre);
             this.grbxListas.Controls.Add(this.lstBxFunc);
+            this.grbxListas.Enabled = false;
             this.grbxListas.Location = new System.Drawing.Point(4, 57);
             this.grbxListas.Name = "grbxListas";
             this.grbxListas.Size = new System.Drawing.Size(970, 450);
@@ -213,7 +214,7 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // ModificacionRol
+            // EliminaRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -221,10 +222,10 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.btnGrabar);
-            this.Name = "ModificacionRol";
+            this.Controls.Add(this.btnEliminar);
+            this.Name = "EliminaRol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Modificacion Roles";
+            this.Text = "Eliminacion Roles";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.grbxListas.ResumeLayout(false);
@@ -235,7 +236,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnGrabar;
+        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.ListBox lstBxFunc;
         private System.Windows.Forms.ListBox lstbxFunAgre;

@@ -191,6 +191,17 @@ namespace PagoElectronico
             modifRol.Show();
         }
 
+        private void RolBaja_Click(object sender, EventArgs e)
+        {
+
+            ABM_Rol.EliminaRol elimRol = new ABM_Rol.EliminaRol();
+            elimRol.MdiParent = this;
+
+            elimRol.Show();
+
+
+        }
+
        
        
 

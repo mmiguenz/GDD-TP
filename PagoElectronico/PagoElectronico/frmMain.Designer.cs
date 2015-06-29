@@ -132,7 +132,7 @@
             // ClientesAlta
             // 
             this.ClientesAlta.Name = "ClientesAlta";
-            this.ClientesAlta.Size = new System.Drawing.Size(144, 22);
+            this.ClientesAlta.Size = new System.Drawing.Size(152, 22);
             this.ClientesAlta.Text = "Alta";
             this.ClientesAlta.Visible = false;
             this.ClientesAlta.Click += new System.EventHandler(this.ClientesAlta_Click);
@@ -140,7 +140,7 @@
             // ClientesBaja
             // 
             this.ClientesBaja.Name = "ClientesBaja";
-            this.ClientesBaja.Size = new System.Drawing.Size(144, 22);
+            this.ClientesBaja.Size = new System.Drawing.Size(152, 22);
             this.ClientesBaja.Text = "Baja";
             this.ClientesBaja.Visible = false;
             this.ClientesBaja.Click += new System.EventHandler(this.ClientesBaja_Click);
@@ -148,7 +148,7 @@
             // ClientesModificacion
             // 
             this.ClientesModificacion.Name = "ClientesModificacion";
-            this.ClientesModificacion.Size = new System.Drawing.Size(144, 22);
+            this.ClientesModificacion.Size = new System.Drawing.Size(152, 22);
             this.ClientesModificacion.Text = "Modificacion";
             this.ClientesModificacion.Visible = false;
             this.ClientesModificacion.Click += new System.EventHandler(this.ClientesModificacion_Click);
@@ -167,14 +167,14 @@
             // CuentasAlta
             // 
             this.CuentasAlta.Name = "CuentasAlta";
-            this.CuentasAlta.Size = new System.Drawing.Size(144, 22);
+            this.CuentasAlta.Size = new System.Drawing.Size(152, 22);
             this.CuentasAlta.Text = "Alta";
             this.CuentasAlta.Visible = false;
             // 
             // CuentasBaja
             // 
             this.CuentasBaja.Name = "CuentasBaja";
-            this.CuentasBaja.Size = new System.Drawing.Size(144, 22);
+            this.CuentasBaja.Size = new System.Drawing.Size(152, 22);
             this.CuentasBaja.Text = "Baja";
             this.CuentasBaja.Visible = false;
             this.CuentasBaja.Click += new System.EventHandler(this.bToolStripMenuItem_Click);
@@ -182,7 +182,7 @@
             // CuentasModificacion
             // 
             this.CuentasModificacion.Name = "CuentasModificacion";
-            this.CuentasModificacion.Size = new System.Drawing.Size(144, 22);
+            this.CuentasModificacion.Size = new System.Drawing.Size(152, 22);
             this.CuentasModificacion.Text = "Modificacion";
             this.CuentasModificacion.Visible = false;
             // 
@@ -200,21 +200,21 @@
             // UsuariosAlta
             // 
             this.UsuariosAlta.Name = "UsuariosAlta";
-            this.UsuariosAlta.Size = new System.Drawing.Size(144, 22);
+            this.UsuariosAlta.Size = new System.Drawing.Size(152, 22);
             this.UsuariosAlta.Text = "Alta";
             this.UsuariosAlta.Visible = false;
             // 
             // UsuariosBaja
             // 
             this.UsuariosBaja.Name = "UsuariosBaja";
-            this.UsuariosBaja.Size = new System.Drawing.Size(144, 22);
+            this.UsuariosBaja.Size = new System.Drawing.Size(152, 22);
             this.UsuariosBaja.Text = "Baja";
             this.UsuariosBaja.Visible = false;
             // 
             // UsuariosModificacion
             // 
             this.UsuariosModificacion.Name = "UsuariosModificacion";
-            this.UsuariosModificacion.Size = new System.Drawing.Size(144, 22);
+            this.UsuariosModificacion.Size = new System.Drawing.Size(152, 22);
             this.UsuariosModificacion.Text = "Modificacion";
             this.UsuariosModificacion.Visible = false;
             this.UsuariosModificacion.Click += new System.EventHandler(this.UsuariosModificacion_Click);
@@ -244,6 +244,7 @@
             this.RolBaja.Size = new System.Drawing.Size(152, 22);
             this.RolBaja.Text = "Baja";
             this.RolBaja.Visible = false;
+            this.RolBaja.Click += new System.EventHandler(this.RolBaja_Click);
             // 
             // RolModificacion
             // 
