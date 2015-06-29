@@ -91,6 +91,12 @@
     <Compile Include="ABM Rol\AltaRol.Designer.cs">
       <DependentUpon>AltaRol.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM Rol\ModificacionRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Rol\ModificacionRol.Designer.cs">
+      <DependentUpon>ModificacionRol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clases\FrmGenericIBusCli.cs" />
     <Compile Include="Clases\Rol.cs" />
     <Compile Include="Clases\Usuario.cs" />
@@ -158,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Rol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM Rol\ModificacionRol.resx">
+      <DependentUpon>ModificacionRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

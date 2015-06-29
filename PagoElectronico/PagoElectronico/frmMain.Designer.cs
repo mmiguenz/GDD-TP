@@ -132,7 +132,7 @@
             // ClientesAlta
             // 
             this.ClientesAlta.Name = "ClientesAlta";
-            this.ClientesAlta.Size = new System.Drawing.Size(152, 22);
+            this.ClientesAlta.Size = new System.Drawing.Size(144, 22);
             this.ClientesAlta.Text = "Alta";
             this.ClientesAlta.Visible = false;
             this.ClientesAlta.Click += new System.EventHandler(this.ClientesAlta_Click);
@@ -140,7 +140,7 @@
             // ClientesBaja
             // 
             this.ClientesBaja.Name = "ClientesBaja";
-            this.ClientesBaja.Size = new System.Drawing.Size(152, 22);
+            this.ClientesBaja.Size = new System.Drawing.Size(144, 22);
             this.ClientesBaja.Text = "Baja";
             this.ClientesBaja.Visible = false;
             this.ClientesBaja.Click += new System.EventHandler(this.ClientesBaja_Click);
@@ -148,7 +148,7 @@
             // ClientesModificacion
             // 
             this.ClientesModificacion.Name = "ClientesModificacion";
-            this.ClientesModificacion.Size = new System.Drawing.Size(152, 22);
+            this.ClientesModificacion.Size = new System.Drawing.Size(144, 22);
             this.ClientesModificacion.Text = "Modificacion";
             this.ClientesModificacion.Visible = false;
             this.ClientesModificacion.Click += new System.EventHandler(this.ClientesModificacion_Click);
@@ -251,6 +251,7 @@
             this.RolModificacion.Size = new System.Drawing.Size(152, 22);
             this.RolModificacion.Text = "Modificacion";
             this.RolModificacion.Visible = false;
+            this.RolModificacion.Click += new System.EventHandler(this.RolModificacion_Click);
             // 
             // ConsultasMenu
             // 
@@ -283,21 +284,21 @@
             // depositosToolStripMenuItem1
             // 
             this.depositosToolStripMenuItem1.Name = "depositosToolStripMenuItem1";
-            this.depositosToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
+            this.depositosToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.depositosToolStripMenuItem1.Text = "Depositos";
             this.depositosToolStripMenuItem1.Visible = false;
             // 
             // retirosToolStripMenuItem
             // 
             this.retirosToolStripMenuItem.Name = "retirosToolStripMenuItem";
-            this.retirosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.retirosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.retirosToolStripMenuItem.Text = "Retiros";
             this.retirosToolStripMenuItem.Visible = false;
             // 
             // transferenciasToolStripMenuItem
             // 
             this.transferenciasToolStripMenuItem.Name = "transferenciasToolStripMenuItem";
-            this.transferenciasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.transferenciasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.transferenciasToolStripMenuItem.Text = "Transferencias";
             this.transferenciasToolStripMenuItem.Visible = false;
             // 

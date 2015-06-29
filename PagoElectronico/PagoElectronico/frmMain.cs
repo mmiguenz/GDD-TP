@@ -183,6 +183,14 @@ namespace PagoElectronico
             altaRol.Show();
         }
 
+        private void RolModificacion_Click(object sender, EventArgs e)
+        {
+            ABM_Rol.ModificacionRol modifRol = new ABM_Rol.ModificacionRol();
+            modifRol.MdiParent = this;
+
+            modifRol.Show();
+        }
+
        
        
 
