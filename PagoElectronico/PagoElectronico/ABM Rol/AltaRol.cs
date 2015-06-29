@@ -20,6 +20,7 @@ namespace PagoElectronico.ABM_Rol
             InitializeComponent();
             llenarFuncionalidades();
             grbxListas.Enabled = false;
+            btnGrabar.Enabled = false;
         }
 
         private void llenarFuncionalidades()
@@ -69,26 +70,35 @@ namespace PagoElectronico.ABM_Rol
 
         private void txbxNombre_Leave(object sender, EventArgs e)
         {
-            if(txbxNombre.Text !="")
-            {
-            DataSet ds = Utiles.ConectionManager.getInstance().consultarDataSet("select * from datiados.roles where nombre = "+"'"+txbxNombre.Text+"'");
+           txbxNombre.Text = txbxNombre.Text.Trim();
 
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                MessageBox.Show("Ya existe un rol con ese nombre");
-                txbxNombre.Focus();
+           if (txbxNombre.Text == "")
+           {
+               btnGrabar.Enabled = false;
+           }
 
-            }
-            else
-            {
-                grbxListas.Enabled = true;
+           else 
+           {           
+                  DataSet ds = Utiles.ConectionManager.getInstance().consultarDataSet("select * from datiados.roles where nombre = " + "'" + txbxNombre.Text + "'");
 
-            }
+                   if (ds.Tables[0].Rows.Count > 0)
+                   {
+                       MessageBox.Show("Ya existe un rol con ese nombre");
+                       txbxNombre.Focus();
 
-            }
+                   }
+                   else
+                   {
+                       grbxListas.Enabled = true;
+                       btnGrabar.Enabled = true;
+
+                   }
+
+               }
+           }
 
             
-        }
+        
 
         private void btnAgregarTodas_Click(object sender, EventArgs e)
         {

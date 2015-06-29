@@ -177,7 +177,7 @@
             this.grbxListas.TabStop = false;
             this.grbxListas.Text = "Listas";
             // 
-            // grpbxRol
+            // AltaRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -185,7 +185,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGrabar);
-            this.Name = "grpbxRol";
+            this.Name = "AltaRol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Alta Roles";
             this.groupBox1.ResumeLayout(false);
