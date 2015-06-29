@@ -49,10 +49,6 @@
             this.RolAlta = new System.Windows.Forms.ToolStripMenuItem();
             this.RolBaja = new System.Windows.Forms.ToolStripMenuItem();
             this.RolModificacion = new System.Windows.Forms.ToolStripMenuItem();
-            this.FuncionalidadesMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.FuncionalidadesAlta = new System.Windows.Forms.ToolStripMenuItem();
-            this.FuncionalidadesBaja = new System.Windows.Forms.ToolStripMenuItem();
-            this.FuncionalidadesModificacion = new System.Windows.Forms.ToolStripMenuItem();
             this.ConsultasMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.saldosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MovimientosMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,8 +111,7 @@
             this.ClientesMenu,
             this.CuentasMenu,
             this.UsuariosMenu,
-            this.RolMenu,
-            this.FuncionalidadesMenu});
+            this.RolMenu});
             this.ABMmenu.Name = "ABMmenu";
             this.ABMmenu.Size = new System.Drawing.Size(152, 22);
             this.ABMmenu.Text = "ABM";
@@ -130,7 +125,7 @@
             this.ClientesBaja,
             this.ClientesModificacion});
             this.ClientesMenu.Name = "ClientesMenu";
-            this.ClientesMenu.Size = new System.Drawing.Size(160, 22);
+            this.ClientesMenu.Size = new System.Drawing.Size(152, 22);
             this.ClientesMenu.Text = "Clientes";
             this.ClientesMenu.Visible = false;
             // 
@@ -165,7 +160,7 @@
             this.CuentasBaja,
             this.CuentasModificacion});
             this.CuentasMenu.Name = "CuentasMenu";
-            this.CuentasMenu.Size = new System.Drawing.Size(160, 22);
+            this.CuentasMenu.Size = new System.Drawing.Size(152, 22);
             this.CuentasMenu.Text = "Cuentas";
             this.CuentasMenu.Visible = false;
             // 
@@ -198,7 +193,7 @@
             this.UsuariosBaja,
             this.UsuariosModificacion});
             this.UsuariosMenu.Name = "UsuariosMenu";
-            this.UsuariosMenu.Size = new System.Drawing.Size(160, 22);
+            this.UsuariosMenu.Size = new System.Drawing.Size(152, 22);
             this.UsuariosMenu.Text = "Usuarios";
             this.UsuariosMenu.Visible = false;
             // 
@@ -231,62 +226,31 @@
             this.RolBaja,
             this.RolModificacion});
             this.RolMenu.Name = "RolMenu";
-            this.RolMenu.Size = new System.Drawing.Size(160, 22);
-            this.RolMenu.Text = "Rol";
+            this.RolMenu.Size = new System.Drawing.Size(152, 22);
+            this.RolMenu.Text = "Roles";
             this.RolMenu.Visible = false;
             // 
             // RolAlta
             // 
             this.RolAlta.Name = "RolAlta";
-            this.RolAlta.Size = new System.Drawing.Size(144, 22);
+            this.RolAlta.Size = new System.Drawing.Size(152, 22);
             this.RolAlta.Text = "Alta";
             this.RolAlta.Visible = false;
+            this.RolAlta.Click += new System.EventHandler(this.RolAlta_Click);
             // 
             // RolBaja
             // 
             this.RolBaja.Name = "RolBaja";
-            this.RolBaja.Size = new System.Drawing.Size(144, 22);
+            this.RolBaja.Size = new System.Drawing.Size(152, 22);
             this.RolBaja.Text = "Baja";
             this.RolBaja.Visible = false;
             // 
             // RolModificacion
             // 
             this.RolModificacion.Name = "RolModificacion";
-            this.RolModificacion.Size = new System.Drawing.Size(144, 22);
+            this.RolModificacion.Size = new System.Drawing.Size(152, 22);
             this.RolModificacion.Text = "Modificacion";
             this.RolModificacion.Visible = false;
-            // 
-            // FuncionalidadesMenu
-            // 
-            this.FuncionalidadesMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.FuncionalidadesAlta,
-            this.FuncionalidadesBaja,
-            this.FuncionalidadesModificacion});
-            this.FuncionalidadesMenu.Name = "FuncionalidadesMenu";
-            this.FuncionalidadesMenu.Size = new System.Drawing.Size(160, 22);
-            this.FuncionalidadesMenu.Text = "Funcionalidades";
-            this.FuncionalidadesMenu.Visible = false;
-            // 
-            // FuncionalidadesAlta
-            // 
-            this.FuncionalidadesAlta.Name = "FuncionalidadesAlta";
-            this.FuncionalidadesAlta.Size = new System.Drawing.Size(144, 22);
-            this.FuncionalidadesAlta.Text = "Alta";
-            this.FuncionalidadesAlta.Visible = false;
-            // 
-            // FuncionalidadesBaja
-            // 
-            this.FuncionalidadesBaja.Name = "FuncionalidadesBaja";
-            this.FuncionalidadesBaja.Size = new System.Drawing.Size(144, 22);
-            this.FuncionalidadesBaja.Text = "Baja";
-            this.FuncionalidadesBaja.Visible = false;
-            // 
-            // FuncionalidadesModificacion
-            // 
-            this.FuncionalidadesModificacion.Name = "FuncionalidadesModificacion";
-            this.FuncionalidadesModificacion.Size = new System.Drawing.Size(144, 22);
-            this.FuncionalidadesModificacion.Text = "Modificacion";
-            this.FuncionalidadesModificacion.Visible = false;
             // 
             // ConsultasMenu
             // 
@@ -377,6 +341,7 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Click += new System.EventHandler(this.toolStripSeparator2_Click);
             // 
             // Salir
             // 
@@ -443,10 +408,6 @@
         private System.Windows.Forms.ToolStripMenuItem RolAlta;
         private System.Windows.Forms.ToolStripMenuItem RolBaja;
         private System.Windows.Forms.ToolStripMenuItem RolModificacion;
-        private System.Windows.Forms.ToolStripMenuItem FuncionalidadesMenu;
-        private System.Windows.Forms.ToolStripMenuItem FuncionalidadesAlta;
-        private System.Windows.Forms.ToolStripMenuItem FuncionalidadesBaja;
-        private System.Windows.Forms.ToolStripMenuItem FuncionalidadesModificacion;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripLabel Salir;

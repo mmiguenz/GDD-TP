@@ -74,10 +74,6 @@ namespace PagoElectronico
             menus.Add(RolAlta);
             menus.Add(RolBaja);
             menus.Add(RolModificacion);
-            menus.Add(FuncionalidadesMenu);
-            menus.Add(FuncionalidadesAlta);
-            menus.Add(FuncionalidadesBaja);
-            menus.Add(FuncionalidadesModificacion);
             menus.Add(ConsultasMenu);
             menus.Add(MovimientosMenu);
             menus.Add(FacturacionMenu);
@@ -171,6 +167,20 @@ namespace PagoElectronico
             elim.MdiParent = this;
 
             elim.Show();
+        }
+
+        private void toolStripSeparator2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RolAlta_Click(object sender, EventArgs e)
+        {
+            ABM_Rol.AltaRol altaRol = new ABM_Rol.AltaRol();
+
+            altaRol.MdiParent = this;
+
+            altaRol.Show();
         }
 
        
