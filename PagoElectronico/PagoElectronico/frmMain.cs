@@ -218,6 +218,17 @@ namespace PagoElectronico
 
         }
 
+        private void UsuariosBaja_Click(object sender, EventArgs e)
+        {
+
+            ABM_de_Usuario.EliminacionUsuario elimUsr = new ABM_de_Usuario.EliminacionUsuario();
+            elimUsr.MdiParent = this;
+
+            elimUsr.Show();
+
+
+        }
+
 
        
        

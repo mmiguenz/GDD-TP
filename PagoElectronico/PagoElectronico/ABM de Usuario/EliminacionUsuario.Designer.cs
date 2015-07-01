@@ -1,6 +1,6 @@
 ﻿namespace PagoElectronico.ABM_de_Usuario
 {
-    partial class ModificacionUsuario
+    partial class EliminacionUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -37,15 +37,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txbxResp = new System.Windows.Forms.TextBox();
             this.btnCerrar = new System.Windows.Forms.Button();
-            this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ckbxHabilitado = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.txbxCliente = new System.Windows.Forms.TextBox();
             this.txbxBusUsername = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.ckbxHabilitado = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -126,23 +125,13 @@
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.Location = new System.Drawing.Point(216, 390);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(96, 28);
-            this.btnLimpiar.TabIndex = 2;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
-            // 
             // btnGrabar
             // 
             this.btnGrabar.Location = new System.Drawing.Point(441, 390);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(96, 28);
             this.btnGrabar.TabIndex = 2;
-            this.btnGrabar.Text = "Grabar";
+            this.btnGrabar.Text = "Eliminar";
             this.btnGrabar.UseVisualStyleBackColor = true;
             this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
@@ -167,6 +156,16 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Usuario";
+            // 
+            // ckbxHabilitado
+            // 
+            this.ckbxHabilitado.Enabled = false;
+            this.ckbxHabilitado.Location = new System.Drawing.Point(411, 267);
+            this.ckbxHabilitado.Name = "ckbxHabilitado";
+            this.ckbxHabilitado.Size = new System.Drawing.Size(104, 24);
+            this.ckbxHabilitado.TabIndex = 8;
+            this.ckbxHabilitado.Text = "Habilitado";
+            this.ckbxHabilitado.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -213,17 +212,7 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // ckbxHabilitado
-            // 
-            this.ckbxHabilitado.Enabled = false;
-            this.ckbxHabilitado.Location = new System.Drawing.Point(411, 267);
-            this.ckbxHabilitado.Name = "ckbxHabilitado";
-            this.ckbxHabilitado.Size = new System.Drawing.Size(104, 24);
-            this.ckbxHabilitado.TabIndex = 8;
-            this.ckbxHabilitado.Text = "Habilitado";
-            this.ckbxHabilitado.UseVisualStyleBackColor = true;
-            // 
-            // ModificacionUsuario
+            // EliminacionUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -232,10 +221,9 @@
             this.Controls.Add(this.txbxBusUsername);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnGrabar);
-            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnCerrar);
-            this.Name = "ModificacionUsuario";
-            this.Text = "Modificacion Usuarios";
+            this.Name = "EliminacionUsuario";
+            this.Text = "Eliminacion  Usuarios";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -254,7 +242,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txbxResp;
         private System.Windows.Forms.Button btnCerrar;
-        private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnGrabar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label6;

@@ -97,6 +97,12 @@
     <Compile Include="ABM de Usuario\BusUsuario.Designer.cs">
       <DependentUpon>BusUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM de Usuario\EliminacionUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Usuario\EliminacionUsuario.Designer.cs">
+      <DependentUpon>EliminacionUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM de Usuario\ModificacionUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Usuario\BusUsuario.resx">
       <DependentUpon>BusUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Usuario\EliminacionUsuario.resx">
+      <DependentUpon>EliminacionUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Usuario\ModificacionUsuario.resx">
       <DependentUpon>ModificacionUsuario.cs</DependentUpon>

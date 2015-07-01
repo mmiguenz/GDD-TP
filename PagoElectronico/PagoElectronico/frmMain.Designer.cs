@@ -211,6 +211,7 @@
             this.UsuariosBaja.Size = new System.Drawing.Size(152, 22);
             this.UsuariosBaja.Text = "Baja";
             this.UsuariosBaja.Visible = false;
+            this.UsuariosBaja.Click += new System.EventHandler(this.UsuariosBaja_Click);
             // 
             // UsuariosModificacion
             // 

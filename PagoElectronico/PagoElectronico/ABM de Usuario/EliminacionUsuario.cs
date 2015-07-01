@@ -12,12 +12,12 @@ namespace PagoElectronico.ABM_de_Usuario
 {
 
 
-    public partial class ModificacionUsuario : Form,FrmGenericIBusCli
+    public partial class EliminacionUsuario : Form,FrmGenericIBusCli
 
     {
         private Int32 clienteID;
 
-        public ModificacionUsuario()
+        public EliminacionUsuario()
         {
             InitializeComponent();
             llenarcombo();
@@ -141,7 +141,7 @@ namespace PagoElectronico.ABM_de_Usuario
 
             }
 
-            groupBox1.Enabled = true;
+        
             
 
 
