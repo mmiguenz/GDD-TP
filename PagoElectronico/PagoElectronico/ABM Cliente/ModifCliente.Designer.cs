@@ -358,6 +358,7 @@
             // ckbxHabilitado
             // 
             this.ckbxHabilitado.AutoSize = true;
+            this.ckbxHabilitado.Enabled = false;
             this.ckbxHabilitado.Location = new System.Drawing.Point(652, 172);
             this.ckbxHabilitado.Name = "ckbxHabilitado";
             this.ckbxHabilitado.Size = new System.Drawing.Size(73, 17);

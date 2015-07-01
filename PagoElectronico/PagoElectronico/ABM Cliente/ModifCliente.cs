@@ -179,6 +179,11 @@ namespace PagoElectronico.ABM_Cliente
                 ckbxHabilitado.Checked= dr.Field<bool>("habilitado");
                 groupBoxDomicilio.Enabled = true;
                 groupDatosGenerales.Enabled = true;
+
+                if (!ckbxHabilitado.Checked)
+                {
+                    ckbxHabilitado.Enabled = true;
+                }
            
             
 

@@ -126,10 +126,7 @@ namespace PagoElectronico
 
         }
 
-        private void UsuariosModificacion_Click(object sender, EventArgs e)
-        {
-
-        }
+   
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -201,6 +198,16 @@ namespace PagoElectronico
 
 
         }
+
+        private void UsuariosAlta_Click(object sender, EventArgs e)
+        {
+            ABM_de_Usuario.AltaUsuario altaUsr = new ABM_de_Usuario.AltaUsuario();
+            altaUsr.MdiParent = this;
+
+            altaUsr.Show();
+
+        }
+
 
        
        
