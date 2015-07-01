@@ -208,6 +208,16 @@ namespace PagoElectronico
 
         }
 
+        private void UsuariosModificacion_Click(object sender, EventArgs e)
+        {
+            ABM_de_Usuario.ModificacionUsuario mofifUsr = new ABM_de_Usuario.ModificacionUsuario();
+            mofifUsr.MdiParent = this;
+
+            mofifUsr.Show();
+
+
+        }
+
 
        
        

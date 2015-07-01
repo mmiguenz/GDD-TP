@@ -167,14 +167,14 @@
             // CuentasAlta
             // 
             this.CuentasAlta.Name = "CuentasAlta";
-            this.CuentasAlta.Size = new System.Drawing.Size(144, 22);
+            this.CuentasAlta.Size = new System.Drawing.Size(152, 22);
             this.CuentasAlta.Text = "Alta";
             this.CuentasAlta.Visible = false;
             // 
             // CuentasBaja
             // 
             this.CuentasBaja.Name = "CuentasBaja";
-            this.CuentasBaja.Size = new System.Drawing.Size(144, 22);
+            this.CuentasBaja.Size = new System.Drawing.Size(152, 22);
             this.CuentasBaja.Text = "Baja";
             this.CuentasBaja.Visible = false;
             this.CuentasBaja.Click += new System.EventHandler(this.bToolStripMenuItem_Click);
@@ -182,7 +182,7 @@
             // CuentasModificacion
             // 
             this.CuentasModificacion.Name = "CuentasModificacion";
-            this.CuentasModificacion.Size = new System.Drawing.Size(144, 22);
+            this.CuentasModificacion.Size = new System.Drawing.Size(152, 22);
             this.CuentasModificacion.Text = "Modificacion";
             this.CuentasModificacion.Visible = false;
             // 
@@ -218,7 +218,7 @@
             this.UsuariosModificacion.Size = new System.Drawing.Size(152, 22);
             this.UsuariosModificacion.Text = "Modificacion";
             this.UsuariosModificacion.Visible = false;
-            
+            this.UsuariosModificacion.Click += new System.EventHandler(this.UsuariosModificacion_Click);
             // 
             // RolMenu
             // 
