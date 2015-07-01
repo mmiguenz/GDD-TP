@@ -16,6 +16,8 @@ namespace PagoElectronico.ABM_de_Usuario
 
     {
         private Int32 clienteID;
+        private String pass;
+        private String respSecre;
 
         public ModificacionUsuario()
         {
@@ -69,6 +71,7 @@ namespace PagoElectronico.ABM_de_Usuario
             txbxPass.Text = null;
             txbxResp.Text = null;
             txbxCliente.Text = null;
+            txbxBusUsername.Text = null;
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -90,8 +93,16 @@ namespace PagoElectronico.ABM_de_Usuario
 
         private void grabar()
         {
-            String pass = Utiles.Encript.encriptar(txbxPass.Text);
-            String respSecre = Utiles.Encript.encriptar(txbxResp.Text);
+            int estado;
+
+            if (ckbxHabilitado.Checked)
+            {
+                estado = 1;
+            }else 
+            {
+                estado = 0;
+            }
+             
 
 
             SqlParameter[] parametros = new SqlParameter[] {
@@ -103,13 +114,13 @@ namespace PagoElectronico.ABM_de_Usuario
                 new SqlParameter("@pregunta",txbxPregunta.Text),
                 new SqlParameter("@resp", respSecre),
                 new SqlParameter("@clienteID",(this.clienteID == 0)?(object) DBNull.Value: clienteID ),
-                new SqlParameter("@fechaCreacion",DateTime.Parse(Program.getDate())),
-                new SqlParameter("@fechaModif",DateTime.Parse( Program.getDate()))
+                new SqlParameter("@fechamodif",DateTime.Parse(Program.getDate())),
+                new SqlParameter("@estado",estado)
                 
             };
 
 
-            Utiles.ConectionManager.getInstance().ejecutarStoreProcedure("datiados.Usuario_agregar", parametros);
+            Utiles.ConectionManager.getInstance().ejecutarStoreProcedure("datiados.Usuario_modif", parametros);
 
             if (!Program.HayError)
             {
@@ -127,6 +138,8 @@ namespace PagoElectronico.ABM_de_Usuario
         {
             DataRow r = dt.Rows[0];
 
+         
+
             txbxUsrName.Text = r.Field<String>("username");
             txbxBusUsername.Text =r.Field<String>("username");
             txbxPass.Text = r.Field<String>("pwd");
@@ -142,10 +155,12 @@ namespace PagoElectronico.ABM_de_Usuario
             }
 
             groupBox1.Enabled = true;
-            
 
 
 
+
+            pass = r.Field<String>("pwd");
+            respSecre = r.Field<String>("rta_secr");
 
 
            
@@ -226,6 +241,18 @@ namespace PagoElectronico.ABM_de_Usuario
             BusUsuario busUser = new BusUsuario(this);
             busUser.Show();
 
+        }
+
+        private void txbxPass_TextChanged(object sender, EventArgs e)
+        {
+            if (pass!= null)
+            pass = Utiles.Encript.encriptar(txbxPass.Text);
+        }
+
+        private void txbxResp_TextChanged(object sender, EventArgs e)
+        {
+            if (respSecre != null)
+            respSecre = Utiles.Encript.encriptar(txbxResp.Text);
         }
 
        

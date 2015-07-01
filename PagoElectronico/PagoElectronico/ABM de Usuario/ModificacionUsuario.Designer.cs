@@ -40,12 +40,12 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ckbxHabilitado = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.txbxCliente = new System.Windows.Forms.TextBox();
             this.txbxBusUsername = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.ckbxHabilitado = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +60,7 @@
             // 
             // txbxUsrName
             // 
+            this.txbxUsrName.Enabled = false;
             this.txbxUsrName.Location = new System.Drawing.Point(120, 36);
             this.txbxUsrName.Name = "txbxUsrName";
             this.txbxUsrName.Size = new System.Drawing.Size(137, 20);
@@ -82,6 +83,7 @@
             this.txbxPass.PasswordChar = '*';
             this.txbxPass.Size = new System.Drawing.Size(137, 20);
             this.txbxPass.TabIndex = 1;
+            this.txbxPass.TextChanged += new System.EventHandler(this.txbxPass_TextChanged);
             // 
             // label3
             // 
@@ -115,6 +117,7 @@
             this.txbxResp.PasswordChar = '*';
             this.txbxResp.Size = new System.Drawing.Size(137, 20);
             this.txbxResp.TabIndex = 3;
+            this.txbxResp.TextChanged += new System.EventHandler(this.txbxResp_TextChanged);
             // 
             // btnCerrar
             // 
@@ -168,6 +171,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Usuario";
             // 
+            // ckbxHabilitado
+            // 
+            this.ckbxHabilitado.Enabled = false;
+            this.ckbxHabilitado.Location = new System.Drawing.Point(411, 267);
+            this.ckbxHabilitado.Name = "ckbxHabilitado";
+            this.ckbxHabilitado.Size = new System.Drawing.Size(104, 24);
+            this.ckbxHabilitado.TabIndex = 8;
+            this.ckbxHabilitado.Text = "Habilitado";
+            this.ckbxHabilitado.UseVisualStyleBackColor = true;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -212,16 +225,6 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // ckbxHabilitado
-            // 
-            this.ckbxHabilitado.Enabled = false;
-            this.ckbxHabilitado.Location = new System.Drawing.Point(411, 267);
-            this.ckbxHabilitado.Name = "ckbxHabilitado";
-            this.ckbxHabilitado.Size = new System.Drawing.Size(104, 24);
-            this.ckbxHabilitado.TabIndex = 8;
-            this.ckbxHabilitado.Text = "Habilitado";
-            this.ckbxHabilitado.UseVisualStyleBackColor = true;
             // 
             // ModificacionUsuario
             // 

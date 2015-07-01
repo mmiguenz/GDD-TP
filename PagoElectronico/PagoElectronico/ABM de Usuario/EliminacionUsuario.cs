@@ -80,8 +80,7 @@ namespace PagoElectronico.ABM_de_Usuario
         {
         
             grabar();
-            AsignarRoles asigR = new AsignarRoles(txbxUsrName.Text);
-            asigR.Show();            
+                 
             limpiar();
 
             
@@ -99,17 +98,12 @@ namespace PagoElectronico.ABM_de_Usuario
 
 
                 new SqlParameter("@username",txbxUsrName.Text),
-                new SqlParameter("@pass",pass),
-                new SqlParameter("@pregunta",txbxPregunta.Text),
-                new SqlParameter("@resp", respSecre),
-                new SqlParameter("@clienteID",(this.clienteID == 0)?(object) DBNull.Value: clienteID ),
-                new SqlParameter("@fechaCreacion",DateTime.Parse(Program.getDate())),
-                new SqlParameter("@fechaModif",DateTime.Parse( Program.getDate()))
+                
                 
             };
 
 
-            Utiles.ConectionManager.getInstance().ejecutarStoreProcedure("datiados.Usuario_agregar", parametros);
+            Utiles.ConectionManager.getInstance().ejecutarStoreProcedure("datiados.Usuario_baja", parametros);
 
             if (!Program.HayError)
             {
