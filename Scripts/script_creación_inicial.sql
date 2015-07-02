@@ -7,7 +7,7 @@ GO
 
 
 
-/*Pa铆ses*/
+/*Pa韘es*/
 
 CREATE TABLE datiados.Paises(
 	codigo numeric(18, 0) PRIMARY KEY,
@@ -65,7 +65,7 @@ CREATE TABLE datiados.CuentaEstados(
 	descripcion varchar(50)NOT NULL,
 )
 
-/*Categor铆as de Cuenta*/
+/*Categor韆s de Cuenta*/
 
 CREATE TABLE datiados.CuentaCategorias(
 	id_categoria int IDENTITY(1,1) PRIMARY KEY,
@@ -105,7 +105,8 @@ create table datiados.emisoresTarjetas
 /* Tarjetas*/
 
 CREATE TABLE datiados.Tarjetas(
-	numero varchar(16) PRIMARY KEY,
+	id_tarjeta int identity(1,1) primary key,
+	numero varchar(16) not null ,
 	fecha_emision date NOT NULL,
 	fecha_venc date NOT NULL,
 	cod_seg varchar(3) NOT NULL,
@@ -115,13 +116,14 @@ CREATE TABLE datiados.Tarjetas(
 /* Tarjetas por Cliente*/
 
 CREATE TABLE datiados.Tarjetas_Cliente(
-	id int IDENTITY(1,1) PRIMARY KEY,
-	nro_tarjeta varchar(16) FOREIGN KEY REFERENCES datiados.Tarjetas,
+	
+	id_tarjeta int FOREIGN KEY REFERENCES datiados.Tarjetas,
 	id_cliente int FOREIGN KEY REFERENCES datiados.Clientes
+	CONSTRAINT pK_Tarjetas_Cliente PRIMARY KEY (id_tarjeta,id_cliente)
 )
 
 
-/*Dep贸sitos*/
+/*Dep髎itos*/
 
 CREATE TABLE datiados.Depositos(
 	codigo numeric(18,0) PRIMARY KEY,
@@ -129,7 +131,7 @@ CREATE TABLE datiados.Depositos(
 	fecha datetime NOT NULL,
 	importe decimal(18,4) NOT NULL,
 	moneda int FOREIGN KEY REFERENCES datiados.Monedas,
-	nro_tarjeta varchar(16) FOREIGN KEY REFERENCES datiados.Tarjetas
+	id_tarjeta int foreign key references datiados.tarjetas
 )
 
 /*Retiros*/
@@ -283,20 +285,20 @@ create table datiados.loguinAuditoria
 
 -- Miigracion =============================================================== 
 
-/*Migraci贸n Tabla Bancos*/
+/*Migraci髇 Tabla Bancos*/
 INSERT INTO datiados.Bancos
 SELECT DISTINCT Banco_Cogido,Banco_Nombre,Banco_Direccion
 FROM gd_esquema.maestra
 WHERE Banco_Cogido is not NULL
 ORDER BY Banco_Cogido
 
-/*Migraci贸n Tabla Cheques*/
+/*Migraci髇 Tabla Cheques*/
 INSERT INTO datiados.Cheques
 SELECT DISTINCT Cheque_Numero,Banco_Cogido,Cheque_Importe,Cheque_Fecha
 FROM gd_esquema.maestra
 WHERE Cheque_Numero is not NULL
 
-/* Migraci贸n Tabla Pa铆ses*/
+/* Migraci髇 Tabla Pa韘es*/
 INSERT INTO datiados.Paises
 SELECT DISTINCT  Cuenta_Pais_Codigo,Cuenta_Pais_Desc
 FROM gd_esquema.maestra
@@ -305,13 +307,13 @@ SELECT DISTINCT Cli_Pais_Codigo,Cli_Pais_Desc
 FROM gd_esquema.maestra
 ORDER BY 1
 
-/*Migraci贸n Tabla Tipo Doc*/
+/*Migraci髇 Tabla Tipo Doc*/
 INSERT INTO datiados.TipoDoc
 SELECT DISTINCT Cli_Tipo_Doc_Cod,Cli_Tipo_Doc_Desc
 FROM gd_esquema.maestra
 ORDER BY Cli_Tipo_Doc_Cod
 
-/*Migraci贸n Tabla Clientes*/
+/*Migraci髇 Tabla Clientes*/
 INSERT INTO datiados.clientes
 SELECT DISTINCT Cli_Nro_Doc,Cli_Tipo_Doc_Cod,cli_pais_codigo,Cli_Nombre,Cli_Apellido,Cli_Dom_Calle,Cli_Dom_Nro,Cli_Dom_Piso,Cli_Dom_Depto,Cli_Mail,Cli_Fecha_Nac,'',1
 FROM gd_esquema.maestra
@@ -320,10 +322,10 @@ FROM gd_esquema.maestra
 /*Carga CuentaEstados*/
 INSERT INTO datiados.CuentaEstados (descripcion) values('Habilitada')
 INSERT INTO datiados.CuentaEstados (descripcion) values('Inhabilitada')
-INSERT INTO datiados.CuentaEstados (descripcion) values('Pendiente de activaci贸n')
+INSERT INTO datiados.CuentaEstados (descripcion) values('Pendiente de activaci髇')
 INSERT INTO datiados.CuentaEstados (descripcion) values('Cerrada')
 
-/*Carga CuentaCategor铆as*/
+/*Carga CuentaCategor韆s*/
 INSERT INTO datiados.CuentaCategorias (descripcion,costo) values('Gratuita',0)
 INSERT INTO datiados.CuentaCategorias (descripcion,costo) values('Bronce',10) 
 INSERT INTO datiados.CuentaCategorias (descripcion,costo) values('Plata',50) 
@@ -332,7 +334,7 @@ INSERT INTO datiados.CuentaCategorias (descripcion,costo) values('Oro',100)
 /*Carga Tabla Monedas*/
 INSERT INTO datiados.Monedas values ('Dolar',1)
 
-/*Migraci贸n Tabla emisoresTarjetas*/
+/*Migraci髇 Tabla emisoresTarjetas*/
 
 insert into datiados.emisoresTarjetas
 select distinct Tarjeta_Emisor_Descripcion from gd_esquema.maestra
@@ -340,7 +342,7 @@ where Tarjeta_Numero is not null
 
 
 
-/*Migraci贸n Tabla Tarjetas*/
+/*Migraci髇 Tabla Tarjetas*/
 INSERT INTO datiados.Tarjetas
 SELECT DISTINCT Tarjeta_Numero,Tarjeta_Fecha_Emision,Tarjeta_Fecha_Vencimiento,Tarjeta_Codigo_Seg,emi.codEmisor
 FROM gd_esquema.maestra m
@@ -351,27 +353,29 @@ ORDER BY Tarjeta_Numero
 
 
 
-/*Migraci贸n Tabla Cuentas*/
+/*Migraci髇 Tabla Cuentas*/
 INSERT INTO datiados.Cuentas 
 SELECT DISTINCT Cuenta_Numero,c.id,1,Cuenta_Pais_Codigo,Cuenta_Fecha_Creacion,Cuenta_Fecha_Cierre,1,1
 FROM gd_esquema.maestra m
 inner join datiados.clientes c on m.cli_nro_doc= c.nro_doc and m.cli_tipo_doc_cod= c.cod_tipo_doc
 
-/*Migraci贸n Tabla Dep贸sitos*/
+/*Migraci髇 Tabla Dep髎itos*/
 INSERT INTO datiados.Depositos
-SELECT  Deposito_Codigo,Cuenta_Numero,Deposito_fecha,Deposito_Importe,1,tarjeta_numero
-from gd_esquema.maestra
+SELECT  m.Deposito_Codigo,m.Cuenta_Numero,m.Deposito_fecha,m.Deposito_Importe,1,t.id_tarjeta
+from gd_esquema.maestra m
+inner join datiados.emisoresTarjetas et on et.descripcion = m.tarjeta_emisor_descripcion
+inner join datiados.tarjetas t on  t.codemisor = et.codemisor and  t.numero = m.tarjeta_numero
 where deposito_codigo is NOT NULL
-order by Deposito_Codigo
 
-/*Migraci贸n Tabla Retiros*/
+
+/*Migraci髇 Tabla Retiros*/
 INSERT INTO datiados.Retiros 
 SELECT  Retiro_Codigo,Cuenta_Numero,Retiro_Fecha,Retiro_Importe,Cheque_Numero,Banco_Cogido
 from gd_esquema.maestra
 where Retiro_Codigo is NOT NULL
 order by  Retiro_Codigo 
 
-/*/*Migraci贸n Tabla Transferencias*/
+/*/*Migraci髇 Tabla Transferencias*/
 INSERT INTO datiados.Transferencias
 SELECT Cuenta_Numero,Cuenta_Dest_Numero,Trans_Importe,Transf_Fecha
 FROM gd_esquema.maestra
@@ -380,12 +384,14 @@ WHERE Item_Factura_Descr is not null*/
 
 
 
-/*Migraci贸n Tabla Tarjetas_Cliente*/
+/*Migraci髇 Tabla Tarjetas_Cliente*/
 
-INSERT INTO datiados.Tarjetas_Cliente(nro_tarjeta,id_cliente)
-SELECT DISTINCT m.Tarjeta_Numero,c.id
-FROM gd_esquema.maestra m inner join datiados.Clientes c
-ON (m.Cli_Nro_Doc = c.nro_doc) AND (m.Cli_Tipo_Doc_Cod = c.cod_tipo_doc)
+INSERT INTO datiados.Tarjetas_Cliente
+SELECT DISTINCT t.id_tarjeta,c.id
+FROM gd_esquema.maestra m
+ inner join datiados.Clientes c ON (m.Cli_Nro_Doc = c.nro_doc) AND (m.Cli_Tipo_Doc_Cod = c.cod_tipo_doc)
+ inner join datiados.emisoresTarjetas et on (et.descripcion = m.tarjeta_emisor_descripcion)
+ inner join datiados.tarjetas t on (m.tarjeta_numero = t.numero and et.codemisor = t.codemisor)
 WHERE m.Tarjeta_Numero is NOT NULL
 
 
@@ -488,7 +494,7 @@ ORDER BY M.FACTURA_NUMERO
 
 
 
-/*/*Migraci贸n Tabla Transferencias*/
+/*/*Migraci髇 Tabla Transferencias*/
 INSERT INTO datiados.Transferencias
 SELECT Cuenta_Numero,Cuenta_Dest_Numero,Trans_Importe,Transf_Fecha
 FROM gd_esquema.maestra
