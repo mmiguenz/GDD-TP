@@ -54,6 +54,12 @@
     <Compile Include="ABM Cliente\AltaCliente.Designer.cs">
       <DependentUpon>AltaCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM Cliente\AsociarTarjetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Cliente\AsociarTarjetas.Designer.cs">
+      <DependentUpon>AsociarTarjetas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM Cliente\BusCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     <EmbeddedResource Include="ABM Cliente\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABM Cliente\AsociarTarjetas.resx">
+      <DependentUpon>AsociarTarjetas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABM Cliente\BusCliente.resx">
       <DependentUpon>BusCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -250,10 +259,10 @@
     <Compile Include="Retiros\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Transferencias\Form1.cs">
+    <Compile Include="Utiles\Transferencias\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Transferencias\Form1.Designer.cs">
+    <Compile Include="Utiles\Transferencias\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Utiles\ConectionManager.cs">
