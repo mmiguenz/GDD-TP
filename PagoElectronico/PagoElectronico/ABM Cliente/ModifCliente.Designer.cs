@@ -60,12 +60,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.groupBoxDomicilio = new System.Windows.Forms.GroupBox();
             this.ckbxHabilitado = new System.Windows.Forms.CheckBox();
+            this.btnAsocTarj = new System.Windows.Forms.Button();
             this.groupDatosGenerales.SuspendLayout();
             this.groupBoxDomicilio.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupDatosGenerales
             // 
+            this.groupDatosGenerales.Controls.Add(this.btnAsocTarj);
             this.groupDatosGenerales.Controls.Add(this.Calendario);
             this.groupDatosGenerales.Controls.Add(this.cmbPais);
             this.groupDatosGenerales.Controls.Add(this.cmbTipoDoc);
@@ -366,6 +368,16 @@
             this.ckbxHabilitado.Text = "Habilitado";
             this.ckbxHabilitado.UseVisualStyleBackColor = true;
             // 
+            // btnAsocTarj
+            // 
+            this.btnAsocTarj.Location = new System.Drawing.Point(307, 174);
+            this.btnAsocTarj.Name = "btnAsocTarj";
+            this.btnAsocTarj.Size = new System.Drawing.Size(87, 23);
+            this.btnAsocTarj.TabIndex = 7;
+            this.btnAsocTarj.Text = "AsociarTarjeta";
+            this.btnAsocTarj.UseVisualStyleBackColor = true;
+            this.btnAsocTarj.Click += new System.EventHandler(this.btnAsocTarj_Click);
+            // 
             // ModifCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -423,5 +435,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBoxDomicilio;
         private System.Windows.Forms.CheckBox ckbxHabilitado;
+        private System.Windows.Forms.Button btnAsocTarj;
     }
 }

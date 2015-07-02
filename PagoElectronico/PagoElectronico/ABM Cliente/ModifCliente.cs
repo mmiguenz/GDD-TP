@@ -205,6 +205,12 @@ namespace PagoElectronico.ABM_Cliente
             this.clienteID = clienteID;
         }
 
+        private void btnAsocTarj_Click(object sender, EventArgs e)
+        {
+            AsociarTarjetas asocT = new AsociarTarjetas(clienteID);
+            asocT.Show();
+        }
+
 
 
      

@@ -57,14 +57,14 @@
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAsocTarj = new System.Windows.Forms.Button();
             this.groupDatosGenerales.SuspendLayout();
             this.groupBoxDomicilio.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupDatosGenerales
             // 
-            this.groupDatosGenerales.Controls.Add(this.button1);
+            this.groupDatosGenerales.Controls.Add(this.btnAsocTarj);
             this.groupDatosGenerales.Controls.Add(this.Calendario);
             this.groupDatosGenerales.Controls.Add(this.cmbPais);
             this.groupDatosGenerales.Controls.Add(this.cmbTipoDoc);
@@ -337,15 +337,16 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
-            // button1
+            // btnAsocTarj
             // 
-            this.button1.Location = new System.Drawing.Point(271, 220);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 22);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "AsociarTarjeta";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAsocTarj.Enabled = false;
+            this.btnAsocTarj.Location = new System.Drawing.Point(271, 220);
+            this.btnAsocTarj.Name = "btnAsocTarj";
+            this.btnAsocTarj.Size = new System.Drawing.Size(105, 22);
+            this.btnAsocTarj.TabIndex = 12;
+            this.btnAsocTarj.Text = "AsociarTarjeta";
+            this.btnAsocTarj.UseVisualStyleBackColor = true;
+            
             // 
             // AltaCliente
             // 
@@ -398,6 +399,6 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txbxAltura;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAsocTarj;
     }
 }

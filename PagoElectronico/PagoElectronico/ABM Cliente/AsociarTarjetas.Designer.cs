@@ -36,12 +36,12 @@
             this.txbxTarjNumD = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gpbxDatos = new System.Windows.Forms.GroupBox();
-            this.txbxCodSeg = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateFechaEmi = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dateFechaVenc = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
+            this.dateFechaEmi = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txbxCodSeg = new System.Windows.Forms.TextBox();
             this.gpbxDatos.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,6 +85,7 @@
             this.btnDesasociar.TabIndex = 2;
             this.btnDesasociar.Text = "DesAsociar";
             this.btnDesasociar.UseVisualStyleBackColor = true;
+            this.btnDesasociar.Click += new System.EventHandler(this.btnDesasociar_Click);
             // 
             // btnAsociar
             // 
@@ -95,6 +96,7 @@
             this.btnAsociar.TabIndex = 2;
             this.btnAsociar.Text = "Asociar";
             this.btnAsociar.UseVisualStyleBackColor = true;
+            this.btnAsociar.Click += new System.EventHandler(this.btnAsociar_Click);
             // 
             // txbxTarjNumD
             // 
@@ -130,29 +132,14 @@
             this.gpbxDatos.TabStop = false;
             this.gpbxDatos.Text = "Datos";
             // 
-            // txbxCodSeg
+            // label4
             // 
-            this.txbxCodSeg.Location = new System.Drawing.Point(90, 19);
-            this.txbxCodSeg.Name = "txbxCodSeg";
-            this.txbxCodSeg.Size = new System.Drawing.Size(100, 20);
-            this.txbxCodSeg.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Cod Seguridad";
-            // 
-            // dateFechaEmi
-            // 
-            this.dateFechaEmi.Location = new System.Drawing.Point(90, 70);
-            this.dateFechaEmi.Name = "dateFechaEmi";
-            this.dateFechaEmi.Size = new System.Drawing.Size(148, 20);
-            this.dateFechaEmi.TabIndex = 2;
-            this.dateFechaEmi.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(221, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Fecha Vencimiento";
             // 
             // label3
             // 
@@ -171,14 +158,29 @@
             this.dateFechaVenc.TabIndex = 2;
             this.dateFechaVenc.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
-            // label4
+            // dateFechaEmi
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(221, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Fecha Vencimiento";
+            this.dateFechaEmi.Location = new System.Drawing.Point(90, 70);
+            this.dateFechaEmi.Name = "dateFechaEmi";
+            this.dateFechaEmi.Size = new System.Drawing.Size(148, 20);
+            this.dateFechaEmi.TabIndex = 2;
+            this.dateFechaEmi.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Cod Seguridad";
+            // 
+            // txbxCodSeg
+            // 
+            this.txbxCodSeg.Location = new System.Drawing.Point(90, 19);
+            this.txbxCodSeg.Name = "txbxCodSeg";
+            this.txbxCodSeg.Size = new System.Drawing.Size(100, 20);
+            this.txbxCodSeg.TabIndex = 0;
             // 
             // AsociarTarjetas
             // 
