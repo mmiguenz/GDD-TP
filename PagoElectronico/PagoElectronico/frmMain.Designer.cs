@@ -170,6 +170,7 @@
             this.CuentasAlta.Size = new System.Drawing.Size(152, 22);
             this.CuentasAlta.Text = "Alta";
             this.CuentasAlta.Visible = false;
+            this.CuentasAlta.Click += new System.EventHandler(this.CuentasAlta_Click);
             // 
             // CuentasBaja
             // 
@@ -200,7 +201,7 @@
             // UsuariosAlta
             // 
             this.UsuariosAlta.Name = "UsuariosAlta";
-            this.UsuariosAlta.Size = new System.Drawing.Size(152, 22);
+            this.UsuariosAlta.Size = new System.Drawing.Size(144, 22);
             this.UsuariosAlta.Text = "Alta";
             this.UsuariosAlta.Visible = false;
             this.UsuariosAlta.Click += new System.EventHandler(this.UsuariosAlta_Click);
@@ -208,7 +209,7 @@
             // UsuariosBaja
             // 
             this.UsuariosBaja.Name = "UsuariosBaja";
-            this.UsuariosBaja.Size = new System.Drawing.Size(152, 22);
+            this.UsuariosBaja.Size = new System.Drawing.Size(144, 22);
             this.UsuariosBaja.Text = "Baja";
             this.UsuariosBaja.Visible = false;
             this.UsuariosBaja.Click += new System.EventHandler(this.UsuariosBaja_Click);
@@ -216,7 +217,7 @@
             // UsuariosModificacion
             // 
             this.UsuariosModificacion.Name = "UsuariosModificacion";
-            this.UsuariosModificacion.Size = new System.Drawing.Size(152, 22);
+            this.UsuariosModificacion.Size = new System.Drawing.Size(144, 22);
             this.UsuariosModificacion.Text = "Modificacion";
             this.UsuariosModificacion.Visible = false;
             this.UsuariosModificacion.Click += new System.EventHandler(this.UsuariosModificacion_Click);

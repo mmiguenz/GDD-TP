@@ -229,6 +229,13 @@ namespace PagoElectronico
 
         }
 
+        private void CuentasAlta_Click(object sender, EventArgs e)
+        {
+             ABM_Cuenta.AltaCuenta altaCta =  new ABM_Cuenta.AltaCuenta();
+             altaCta.MdiParent = this;
+             altaCta.Show();
+        }
+
 
        
        
