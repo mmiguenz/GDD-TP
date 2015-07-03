@@ -64,7 +64,6 @@ namespace PagoElectronico
             menus.Add(ClientesModificacion);
             menus.Add(CuentasMenu);
             menus.Add(CuentasAlta);
-            menus.Add(CuentasBaja);
             menus.Add(CuentasModificacion);
             menus.Add(UsuariosMenu);
             menus.Add(UsuariosAlta);
@@ -234,6 +233,15 @@ namespace PagoElectronico
              ABM_Cuenta.AltaCuenta altaCta =  new ABM_Cuenta.AltaCuenta();
              altaCta.MdiParent = this;
              altaCta.Show();
+        }
+
+        private void CuentasModificacion_Click(object sender, EventArgs e)
+        {
+
+            ABM_Cuenta.ModificacionCuenta modif = new ABM_Cuenta.ModificacionCuenta();
+            modif.MdiParent = this;
+            modif.Show();
+
         }
 
 

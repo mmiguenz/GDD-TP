@@ -1,6 +1,6 @@
 ﻿namespace PagoElectronico.ABM_Cuenta
 {
-    partial class AltaCuenta
+    partial class ModificacionCuenta
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txbxNroCta = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbxTipoCta = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,17 +43,12 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
+            this.cmbxCtas = new System.Windows.Forms.ComboBox();
+            this.cmbxEstadoCta = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.gpbxCli.SuspendLayout();
             this.gpbxCta.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txbxNroCta
-            // 
-            this.txbxNroCta.Enabled = false;
-            this.txbxNroCta.Location = new System.Drawing.Point(103, 28);
-            this.txbxNroCta.Name = "txbxNroCta";
-            this.txbxNroCta.Size = new System.Drawing.Size(162, 20);
-            this.txbxNroCta.TabIndex = 0;
             // 
             // label1
             // 
@@ -87,7 +81,7 @@
             // 
             this.cmbxPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbxPais.FormattingEnabled = true;
-            this.cmbxPais.Location = new System.Drawing.Point(464, 28);
+            this.cmbxPais.Location = new System.Drawing.Point(469, 28);
             this.cmbxPais.Name = "cmbxPais";
             this.cmbxPais.Size = new System.Drawing.Size(162, 21);
             this.cmbxPais.TabIndex = 2;
@@ -105,7 +99,7 @@
             // 
             this.cmbxMoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbxMoneda.FormattingEnabled = true;
-            this.cmbxMoneda.Location = new System.Drawing.Point(464, 109);
+            this.cmbxMoneda.Location = new System.Drawing.Point(469, 70);
             this.cmbxMoneda.Name = "cmbxMoneda";
             this.cmbxMoneda.Size = new System.Drawing.Size(162, 21);
             this.cmbxMoneda.TabIndex = 2;
@@ -113,7 +107,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(384, 113);
+            this.label4.Location = new System.Drawing.Point(384, 78);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 3;
@@ -160,14 +154,16 @@
             // 
             // gpbxCta
             // 
+            this.gpbxCta.Controls.Add(this.label5);
+            this.gpbxCta.Controls.Add(this.cmbxEstadoCta);
             this.gpbxCta.Controls.Add(this.label4);
             this.gpbxCta.Controls.Add(this.cmbxMoneda);
             this.gpbxCta.Controls.Add(this.label3);
             this.gpbxCta.Controls.Add(this.cmbxPais);
             this.gpbxCta.Controls.Add(this.label2);
+            this.gpbxCta.Controls.Add(this.cmbxCtas);
             this.gpbxCta.Controls.Add(this.cmbxTipoCta);
             this.gpbxCta.Controls.Add(this.label1);
-            this.gpbxCta.Controls.Add(this.txbxNroCta);
             this.gpbxCta.Enabled = false;
             this.gpbxCta.Location = new System.Drawing.Point(15, 166);
             this.gpbxCta.Name = "gpbxCta";
@@ -206,6 +202,34 @@
             this.btnGrabar.UseVisualStyleBackColor = true;
             this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
+            // cmbxCtas
+            // 
+            this.cmbxCtas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbxCtas.FormattingEnabled = true;
+            this.cmbxCtas.Location = new System.Drawing.Point(103, 32);
+            this.cmbxCtas.Name = "cmbxCtas";
+            this.cmbxCtas.Size = new System.Drawing.Size(162, 21);
+            this.cmbxCtas.TabIndex = 2;
+            this.cmbxCtas.SelectionChangeCommitted += new System.EventHandler(this.cmbxCtas_SelectionChangeCommitted);
+            // 
+            // cmbxEstadoCta
+            // 
+            this.cmbxEstadoCta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbxEstadoCta.FormattingEnabled = true;
+            this.cmbxEstadoCta.Location = new System.Drawing.Point(469, 112);
+            this.cmbxEstadoCta.Name = "cmbxEstadoCta";
+            this.cmbxEstadoCta.Size = new System.Drawing.Size(162, 21);
+            this.cmbxEstadoCta.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(384, 117);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 13);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Estado Cuenta";
+            // 
             // ModificacionCuenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,7 +241,7 @@
             this.Controls.Add(this.gpbxCta);
             this.Controls.Add(this.gpbxCli);
             this.Name = "ModificacionCuenta";
-            this.Text = "Alta Cuentas";
+            this.Text = "Modificacion Cuentas";
             this.gpbxCli.ResumeLayout(false);
             this.gpbxCli.PerformLayout();
             this.gpbxCta.ResumeLayout(false);
@@ -228,7 +252,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txbxNroCta;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbxTipoCta;
         private System.Windows.Forms.Label label2;
@@ -244,5 +267,8 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnGrabar;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbxEstadoCta;
+        private System.Windows.Forms.ComboBox cmbxCtas;
     }
 }
