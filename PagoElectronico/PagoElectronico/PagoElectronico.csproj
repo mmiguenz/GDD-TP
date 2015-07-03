@@ -142,11 +142,11 @@
     <Compile Include="Clases\FrmGenericIBusCli.cs" />
     <Compile Include="Clases\Rol.cs" />
     <Compile Include="Clases\Usuario.cs" />
-    <Compile Include="Consulta Saldos\Form1.cs">
+    <Compile Include="Consulta Saldos\ConsultaSaldos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Consulta Saldos\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Consulta Saldos\ConsultaSaldos.Designer.cs">
+      <DependentUpon>ConsultaSaldos.cs</DependentUpon>
     </Compile>
     <Compile Include="Depositos\Form1.cs">
       <SubType>Form</SubType>

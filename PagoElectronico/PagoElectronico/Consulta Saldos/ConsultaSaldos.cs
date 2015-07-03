@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace PagoElectronico.Consulta_Saldos
 {
-    public partial class Form1 : Form
+    public partial class ConsultaSaldos : Form
     {
-        public Form1()
+        public ConsultaSaldos()
         {
             InitializeComponent();
         }

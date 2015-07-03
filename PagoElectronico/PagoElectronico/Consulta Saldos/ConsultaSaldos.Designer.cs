@@ -1,6 +1,6 @@
 ﻿namespace PagoElectronico.Consulta_Saldos
 {
-    partial class Form1
+    partial class ConsultaSaldos
     {
         /// <summary>
         /// Required designer variable.

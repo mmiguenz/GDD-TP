@@ -123,17 +123,21 @@ namespace PagoElectronico.ABM_Rol
 
         private void bntAgregar_Click(object sender, EventArgs e)
         {
-            
-            lstbxFunAgre.Items.Add(lstBxFunc.SelectedItem);
-            lstBxFunc.Items.Remove(lstBxFunc.SelectedItem);
-            
+            if (lstBxFunc.SelectedItem != null)
+            {
+                lstbxFunAgre.Items.Add(lstBxFunc.SelectedItem);
+                lstBxFunc.Items.Remove(lstBxFunc.SelectedItem);
+            }
 
         }
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            lstBxFunc.Items.Add(lstbxFunAgre.SelectedItem);
-            lstbxFunAgre.Items.Remove(lstbxFunAgre.SelectedItem);
+            if (lstbxFunAgre.SelectedItem != null)
+            {
+                lstBxFunc.Items.Add(lstbxFunAgre.SelectedItem);
+                lstbxFunAgre.Items.Remove(lstbxFunAgre.SelectedItem);
+            }
         }
 
         private void btnGrabar_Click(object sender, EventArgs e)
