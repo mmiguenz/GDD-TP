@@ -48,22 +48,22 @@
             this.RolAlta = new System.Windows.Forms.ToolStripMenuItem();
             this.RolBaja = new System.Windows.Forms.ToolStripMenuItem();
             this.RolModificacion = new System.Windows.Forms.ToolStripMenuItem();
-            this.ConsultasMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.MovimientosMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.depositos = new System.Windows.Forms.ToolStripMenuItem();
             this.retiros = new System.Windows.Forms.ToolStripMenuItem();
             this.transferencias = new System.Windows.Forms.ToolStripMenuItem();
             this.FacturacionMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ConsultasMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ListadosMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CambiarRolMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Salir = new System.Windows.Forms.ToolStripLabel();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCambiarPass = new System.Windows.Forms.ToolStripLabel();
             this.btnCambiarPwd = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,7 +129,7 @@
             this.ClientesBaja,
             this.ClientesModificacion});
             this.ClientesMenu.Name = "ClientesMenu";
-            this.ClientesMenu.Size = new System.Drawing.Size(152, 22);
+            this.ClientesMenu.Size = new System.Drawing.Size(119, 22);
             this.ClientesMenu.Text = "Clientes";
             this.ClientesMenu.Visible = false;
             // 
@@ -163,7 +163,7 @@
             this.CuentasAlta,
             this.CuentasModificacion});
             this.CuentasMenu.Name = "CuentasMenu";
-            this.CuentasMenu.Size = new System.Drawing.Size(152, 22);
+            this.CuentasMenu.Size = new System.Drawing.Size(119, 22);
             this.CuentasMenu.Text = "Cuentas";
             this.CuentasMenu.Visible = false;
             // 
@@ -190,7 +190,7 @@
             this.UsuariosBaja,
             this.UsuariosModificacion});
             this.UsuariosMenu.Name = "UsuariosMenu";
-            this.UsuariosMenu.Size = new System.Drawing.Size(152, 22);
+            this.UsuariosMenu.Size = new System.Drawing.Size(119, 22);
             this.UsuariosMenu.Text = "Usuarios";
             this.UsuariosMenu.Visible = false;
             // 
@@ -225,7 +225,7 @@
             this.RolBaja,
             this.RolModificacion});
             this.RolMenu.Name = "RolMenu";
-            this.RolMenu.Size = new System.Drawing.Size(152, 22);
+            this.RolMenu.Size = new System.Drawing.Size(119, 22);
             this.RolMenu.Text = "Roles";
             this.RolMenu.Visible = false;
             // 
@@ -253,14 +253,6 @@
             this.RolModificacion.Visible = false;
             this.RolModificacion.Click += new System.EventHandler(this.RolModificacion_Click);
             // 
-            // ConsultasMenu
-            // 
-            this.ConsultasMenu.Name = "ConsultasMenu";
-            this.ConsultasMenu.Size = new System.Drawing.Size(171, 22);
-            this.ConsultasMenu.Text = "Consulta De Saldo";
-            this.ConsultasMenu.Visible = false;
-            this.ConsultasMenu.Click += new System.EventHandler(this.ConsultasMenu_Click);
-            // 
             // MovimientosMenu
             // 
             this.MovimientosMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -279,6 +271,7 @@
             this.depositos.Size = new System.Drawing.Size(152, 22);
             this.depositos.Text = "Depositos";
             this.depositos.Visible = false;
+            this.depositos.Click += new System.EventHandler(this.depositos_Click);
             // 
             // retiros
             // 
@@ -300,6 +293,14 @@
             this.FacturacionMenu.Size = new System.Drawing.Size(171, 22);
             this.FacturacionMenu.Text = "Facturacion";
             this.FacturacionMenu.Visible = false;
+            // 
+            // ConsultasMenu
+            // 
+            this.ConsultasMenu.Name = "ConsultasMenu";
+            this.ConsultasMenu.Size = new System.Drawing.Size(171, 22);
+            this.ConsultasMenu.Text = "Consulta De Saldo";
+            this.ConsultasMenu.Visible = false;
+            this.ConsultasMenu.Click += new System.EventHandler(this.ConsultasMenu_Click);
             // 
             // ListadosMenu
             // 
@@ -330,12 +331,6 @@
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             this.toolStripSeparator1.Visible = false;
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            this.toolStripSeparator2.Click += new System.EventHandler(this.toolStripSeparator2_Click);
-            // 
             // Salir
             // 
             this.Salir.Name = "Salir";
@@ -351,6 +346,12 @@
             this.btnSalir.Size = new System.Drawing.Size(23, 22);
             this.btnSalir.Text = "btnSalir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator3.Click += new System.EventHandler(this.toolStripSeparator2_Click);
             // 
             // btnCambiarPass
             // 
@@ -368,11 +369,11 @@
             this.btnCambiarPwd.Text = "toolStripButton1";
             this.btnCambiarPwd.Click += new System.EventHandler(this.btnCambiarPwd_Click);
             // 
-            // toolStripSeparator3
+            // toolStripSeparator2
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            this.toolStripSeparator3.Click += new System.EventHandler(this.toolStripSeparator2_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Click += new System.EventHandler(this.toolStripSeparator2_Click);
             // 
             // FrmMain
             // 

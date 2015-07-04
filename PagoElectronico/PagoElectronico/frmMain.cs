@@ -274,6 +274,14 @@ namespace PagoElectronico
 
         }
 
+        private void depositos_Click(object sender, EventArgs e)
+        {
+            Depositos.Deposito depo = new Depositos.Deposito();
+
+            depo.MdiParent = this;
+            depo.Show();
+        }
+
 
        
        

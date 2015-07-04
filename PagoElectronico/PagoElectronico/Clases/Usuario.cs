@@ -9,7 +9,8 @@ namespace PagoElectronico.Clases
 {
     class Usuario
     {
-        public int clienteID ; 
+        public int clienteID ;
+        public String nombreCompletoCliente;
         public String  nombreUsuario;
         public Rol rol;
 
@@ -18,7 +19,26 @@ namespace PagoElectronico.Clases
         {
             this.nombreUsuario = usuarioN;
             this.clienteID = leerCliente(usuarioN);
+            llenarNombre();
           
+
+
+
+
+        }
+
+        private void llenarNombre()
+        {
+            String sqlQuery;
+
+            sqlQuery = " select nombre, apellido from datiados.clientes  where id =  " + clienteID;
+
+                DataSet ds = Utiles.ConectionManager.getInstance().consultarDataSet(sqlQuery);
+
+                DataRow r = ds.Tables[0].Rows[0];
+
+                nombreCompletoCliente = r.Field<String>("nombre") + " " + r.Field<String>("apellido");
+
 
 
 
@@ -36,6 +56,10 @@ namespace PagoElectronico.Clases
 
             sqlQuery = "Select  clienteID  from Datiados.Usuarios";
             sqlQuery += " where username =  " +"'"+usr+"'";
+            
+
+
+           
 
 
 
