@@ -37,6 +37,8 @@ namespace PagoElectronico.ABM_de_Usuario
 
         private void button3_Click(object sender, EventArgs e)
         {
+
+            
             String username = grid.CurrentRow.Cells[0].Value.ToString();
 
             DataSet ds = Utiles.ConectionManager.getInstance().consultarDataSet("select * from datiados.usuarios where username = "+"'"+username+"'");
@@ -63,6 +65,23 @@ namespace PagoElectronico.ABM_de_Usuario
             grid.DataSource = null; 
             
         }
+
+
+        public void seleccionar(String  user)
+
+        {
+
+
+
+            DataSet ds = Utiles.ConectionManager.getInstance().consultarDataSet("select * from datiados.usuarios where username = " + "'" + user + "'");
+
+            frm.llenarDatos(ds.Tables[0]);
+
+            this.Hide();
+
+        
+        }
+
 
 
 

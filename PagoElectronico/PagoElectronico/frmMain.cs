@@ -78,6 +78,9 @@ namespace PagoElectronico
             menus.Add(FacturacionMenu);
             menus.Add(ListadosMenu);
             menus.Add(CambiarRolMenu);
+            menus.Add(depositos);
+            menus.Add(retiros);
+            menus.Add(transferencias);
             
 
 
@@ -241,6 +244,33 @@ namespace PagoElectronico
             ABM_Cuenta.ModificacionCuenta modif = new ABM_Cuenta.ModificacionCuenta();
             modif.MdiParent = this;
             modif.Show();
+
+        }
+
+        
+
+        private void ConsultasMenu_Click(object sender, EventArgs e)
+        {
+            Consulta_Saldos.ConsultaSaldos cons = new PagoElectronico.Consulta_Saldos.ConsultaSaldos(Program.usr.clienteID);
+            cons.Show();
+
+        }
+
+        private void btnCambiarPwd_Click(object sender, EventArgs e)
+        {
+
+            ABM_de_Usuario.ModificacionUsuario modifPWD = new ABM_de_Usuario.ModificacionUsuario();
+            ABM_de_Usuario.BusUsuario bus = new ABM_de_Usuario.BusUsuario(modifPWD);
+            modifPWD.setAtCambioPass();
+
+            bus.seleccionar(Program.usr.nombreUsuario);
+
+            modifPWD.MdiParent = this;
+            modifPWD.Show();
+
+            
+
+
 
         }
 

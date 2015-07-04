@@ -18,7 +18,7 @@ namespace PagoElectronico.ABM_de_Usuario
         private Int32 clienteID;
         private String pass;
         private String respSecre;
-
+        private bool cambioPass;
         public ModificacionUsuario()
         {
             InitializeComponent();
@@ -81,12 +81,24 @@ namespace PagoElectronico.ABM_de_Usuario
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-        
-            grabar();
-            AsignarRoles asigR = new AsignarRoles(txbxUsrName.Text);
-            asigR.Show();            
-            limpiar();
 
+
+            if (cambioPass)
+            {
+                grabar();
+                this.Hide();
+
+            }
+            else
+            {
+
+
+                grabar();
+                AsignarRoles asigR = new AsignarRoles(txbxUsrName.Text);
+                asigR.Show();
+                limpiar();
+            }
+      
             
 
         }
@@ -255,8 +267,20 @@ namespace PagoElectronico.ABM_de_Usuario
             respSecre = Utiles.Encript.encriptar(txbxResp.Text);
         }
 
-       
-       
+
+
+
+        public void setAtCambioPass()
+        {
+           ckbxHabilitado.Visible = false ;
+           txbxCliente.Visible = false;
+           btnBuscarCliente.Visible = false;
+           btnBuscar.Visible = false;
+           label6.Visible = false;
+           cambioPass = true;
+            
+           
+        }
     }
 
 

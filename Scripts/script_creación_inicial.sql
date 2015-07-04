@@ -91,7 +91,8 @@ CREATE TABLE datiados.Cuentas(
 	fecha_creacion datetime NOT NULL,
 	fecha_cierre datetime,
 	categoria int FOREIGN KEY REFERENCES datiados.CuentaCategorias,
-	cod_moneda int FOREIGN KEY REFERENCES datiados.Monedas
+	cod_moneda int FOREIGN KEY REFERENCES datiados.Monedas,
+	DiasRestantes int
 )
 
 /* EmisoresTarjeta*/
@@ -283,6 +284,12 @@ create table datiados.loguinAuditoria
 )
 
 
+create table datiados.gestionCuentas
+(
+	smalldatetime fechaUltimaGestion primary key
+)
+
+
 -- Miigracion =============================================================== 
 
 /*Migración Tabla Bancos*/
@@ -438,6 +445,10 @@ insert into datiados.funcionalidades values('RolMenu')
 insert into datiados.funcionalidades values('RolAlta')
 insert into datiados.funcionalidades values('RolBaja')
 insert into datiados.funcionalidades values('RolModificacion')
+insert into datiados.Funcionalidades values('ListadosMenu')
+insert into datiados.Funcionalidades values('depositos')
+insert into datiados.Funcionalidades values('transferencias')
+insert into datiados.Funcionalidades values('retiros')
 insert into datiados.Funcionalidades values('ListadosMenu')
 insert into datiados.Funcionalidades values('MovimientosMenu')
 insert into datiados.Funcionalidades values('ConsultasMenu')
