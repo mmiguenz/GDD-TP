@@ -278,6 +278,12 @@
     <EmbeddedResource Include="Retiros\Retiro.resx">
       <DependentUpon>Retiro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Transferencias\BusCuenta.resx">
+      <DependentUpon>BusCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transferencias\Transferencia.resx">
+      <DependentUpon>Transferencia.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -298,11 +304,17 @@
     <Compile Include="Retiros\Retiro.Designer.cs">
       <DependentUpon>Retiro.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utiles\Transferencias\Form1.cs">
+    <Compile Include="Transferencias\BusCuenta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utiles\Transferencias\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Transferencias\BusCuenta.Designer.cs">
+      <DependentUpon>BusCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transferencias\Transferencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transferencias\Transferencia.Designer.cs">
+      <DependentUpon>Transferencia.cs</DependentUpon>
     </Compile>
     <Compile Include="Utiles\ConectionManager.cs">
     </Compile>

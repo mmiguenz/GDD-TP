@@ -91,7 +91,8 @@ CREATE TABLE datiados.Cuentas(
 	fecha_creacion datetime NOT NULL,
 	fecha_cierre datetime,
 	categoria int FOREIGN KEY REFERENCES datiados.CuentaCategorias,
-	cod_moneda int FOREIGN KEY REFERENCES datiados.Monedas
+	cod_moneda int FOREIGN KEY REFERENCES datiados.Monedas,
+	diasRestantes int
 )
 
 /* EmisoresTarjeta*/

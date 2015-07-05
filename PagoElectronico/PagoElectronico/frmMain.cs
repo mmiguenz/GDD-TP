@@ -287,6 +287,14 @@ namespace PagoElectronico
             Retiros.Retiro retiro = new Retiros.Retiro();
             retiro.MdiParent = this;
             retiro.Show();
+            
+        }
+
+        private void transferencias_Click(object sender, EventArgs e)
+        {
+            Transferencias.Transferencia transf = new Transferencias.Transferencia();
+            transf.MdiParent = this;
+            transf.Show();
         }
 
 
