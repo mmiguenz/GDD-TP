@@ -13,13 +13,15 @@ namespace PagoElectronico.Clases
         public String nombreCompletoCliente;
         public String  nombreUsuario;
         public Rol rol;
+        public  Decimal  nroDoc ;
 
 
         public Usuario(String usuarioN)
         {
             this.nombreUsuario = usuarioN;
             this.clienteID = leerCliente(usuarioN);
-            llenarNombre();
+            llenarAtributos();
+
           
 
 
@@ -27,17 +29,18 @@ namespace PagoElectronico.Clases
 
         }
 
-        private void llenarNombre()
+        private void llenarAtributos()
         {
             String sqlQuery;
 
-            sqlQuery = " select nombre, apellido from datiados.clientes  where id =  " + clienteID;
+            sqlQuery = " select nombre, apellido,nro_doc from datiados.clientes  where id =  " + clienteID;
 
                 DataSet ds = Utiles.ConectionManager.getInstance().consultarDataSet(sqlQuery);
 
                 DataRow r = ds.Tables[0].Rows[0];
 
                 nombreCompletoCliente = r.Field<String>("nombre") + " " + r.Field<String>("apellido");
+                nroDoc = r.Field<Decimal>("nro_doc");
 
 
 

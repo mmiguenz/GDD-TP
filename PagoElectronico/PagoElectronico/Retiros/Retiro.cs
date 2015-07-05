@@ -8,13 +8,13 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace PagoElectronico.Depositos
+namespace PagoElectronico.Retiros
 {
-    public partial class Deposito : Form
+    public partial class Retiro : Form
     {
-        int tarjetaID; 
+       
 
-        public Deposito()
+        public Retiro()
         {
             InitializeComponent();
             llenarNombreCli();
@@ -36,7 +36,7 @@ namespace PagoElectronico.Depositos
             cmbxMoneda.DataSource = ds.Tables[1];
             cmbxMoneda.DisplayMember = "descripcion";
             cmbxMoneda.ValueMember = "moneda_id";
-            
+
         }
 
         private void llenarNombreCli()
@@ -47,33 +47,9 @@ namespace PagoElectronico.Depositos
 
         }
 
-        public void llenar(DataGridViewCellCollection celdas)
-        {
+      
 
-            if (DateTime.Parse(celdas[3].Value.ToString()) >= DateTime.Parse(Program.getDate()))
-            {
-                txbxTarjeta.Text = celdas[1].Value.ToString();
-                tarjetaID = (int)celdas[0].Value;
-
-            }
-            else
-            {
-                MessageBox.Show("La tarjeta seleccionada no debe estar vencida");
-
-            }
-
-
-
-
-
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            BusTarjeta busT = new BusTarjeta(this);
-            busT.Show();
-        }
+       
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -90,12 +66,13 @@ namespace PagoElectronico.Depositos
         private void limpiar()
         {
             txbxImporte.Clear();
-            txbxTarjeta.Clear();
             cmbxCuenta.SelectedItem = null;
             cmbxMoneda.SelectedItem = null;
             txbxImporte.Enabled = false;
             Program.HayError = false;
-            
+            txbxNroDoc.Enabled = false;
+            txbxNroDoc.Clear();
+
         }
 
         private void txbxImporte_KeyPress(object sender, KeyPressEventArgs e)
@@ -131,18 +108,18 @@ namespace PagoElectronico.Depositos
         {
             if (txbxImporte.Text != "")
             {
-                
-               
+
+
                 if (Decimal.Parse(txbxImporte.Text) < 1)
                 {
-                  
+
                     MessageBox.Show("El importe debe ser mayor o igual a 1");
                     txbxImporte.Focus();
 
                 }
                 else
                 {
-                    /*
+                    
                     if (!validaSaldoSuficiente())
                     {
                     
@@ -151,7 +128,7 @@ namespace PagoElectronico.Depositos
 
 
                     }
-                    */
+                    
                 }
             }
 
@@ -170,25 +147,42 @@ namespace PagoElectronico.Depositos
             DataRow r = ds.Tables[0].Rows[0];
 
             return (r.Field<Decimal>("saldo") >= Decimal.Parse(txbxImporte.Text));
-           
+
 
         }
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-
-            if (txbxImporte.Text != "" && txbxTarjeta.Text != "" && cmbxCuenta.Text != "" && cmbxMoneda.Text != "")
+            if (validarNroDocCorrecto())
             {
-                grabar();
-                limpiar();
+
+                if (txbxImporte.Text != "" && cmbxCuenta.Text != "" && cmbxMoneda.Text != "" && txbxNroDoc.Text != "")
+                {
+                    grabar();
+                    limpiar();
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Ningun Campo debe estar vacio ");
+
+                }
 
 
             }
-            else
-            {
-                MessageBox.Show("Ningun Campo debe estar vacio ");
+        }
 
+        private bool validarNroDocCorrecto()
+        {
+            if (Program.usr.nroDoc.ToString() != txbxNroDoc.Text)
+            {
+                MessageBox.Show("Numero de Documento incorrecto !");
+                txbxNroDoc.Focus();
+                return false;
             }
+
+            return true;
 
 
         }
@@ -198,10 +192,9 @@ namespace PagoElectronico.Depositos
             SqlParameter[] parametros = new SqlParameter[] {new SqlParameter("@nroCta",cmbxCuenta.Text),   
                                                             new SqlParameter("@importe",Decimal.Parse(txbxImporte.Text)),
                                                             new SqlParameter("@moneda",cmbxMoneda.SelectedValue),
-                                                            new SqlParameter("@tarjetaID",tarjetaID),
                                                             new SqlParameter("@Fecha",DateTime.Parse(Program.getDate()))};
 
-            Utiles.ConectionManager.getInstance().ejecutarStoreProcedure("datiados.Deposito_agregar", parametros);
+            Utiles.ConectionManager.getInstance().ejecutarStoreProcedure("datiados.Retiro_agregar", parametros);
 
             if (!Program.HayError)
                 MessageBox.Show("Grabacion Exitosa!");
@@ -214,8 +207,16 @@ namespace PagoElectronico.Depositos
         private void cmbxCuenta_SelectionChangeCommitted(object sender, EventArgs e)
         {
             txbxImporte.Enabled = true;
+            txbxNroDoc.Enabled = true;
+        }
+
+        private void txbxNroDoc_Leave(object sender, EventArgs e)
+        {
+            ABM_Cliente.ValidaCamposCliente.validaNroDoc(txbxNroDoc);
         }
 
        
+
+
     }
 }

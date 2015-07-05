@@ -282,6 +282,13 @@ namespace PagoElectronico
             depo.Show();
         }
 
+        private void retiros_Click(object sender, EventArgs e)
+        {
+            Retiros.Retiro retiro = new Retiros.Retiro();
+            retiro.MdiParent = this;
+            retiro.Show();
+        }
+
 
        
        

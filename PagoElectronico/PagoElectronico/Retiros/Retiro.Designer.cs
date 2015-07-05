@@ -1,6 +1,6 @@
-﻿namespace PagoElectronico.Depositos
+﻿namespace PagoElectronico.Retiros
 {
-    partial class Deposito
+    partial class Retiro
     {
         /// <summary>
         /// Required designer variable.
@@ -31,8 +31,7 @@
             this.txbxClieNom = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.txbxTarjeta = new System.Windows.Forms.TextBox();
+            this.txbxNroDoc = new System.Windows.Forms.TextBox();
             this.txbxImporte = new System.Windows.Forms.TextBox();
             this.cmbxMoneda = new System.Windows.Forms.ComboBox();
             this.cmbxCuenta = new System.Windows.Forms.ComboBox();
@@ -65,8 +64,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.txbxTarjeta);
+            this.groupBox1.Controls.Add(this.txbxNroDoc);
             this.groupBox1.Controls.Add(this.txbxImporte);
             this.groupBox1.Controls.Add(this.cmbxMoneda);
             this.groupBox1.Controls.Add(this.cmbxCuenta);
@@ -74,30 +72,21 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(16, 75);
+            this.groupBox1.Location = new System.Drawing.Point(16, 80);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(836, 219);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Deposito";
+            this.groupBox1.Text = "Retiro";
             // 
-            // button1
+            // txbxNroDoc
             // 
-            this.button1.Location = new System.Drawing.Point(751, 123);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txbxTarjeta
-            // 
-            this.txbxTarjeta.Enabled = false;
-            this.txbxTarjeta.Location = new System.Drawing.Point(562, 123);
-            this.txbxTarjeta.Name = "txbxTarjeta";
-            this.txbxTarjeta.Size = new System.Drawing.Size(159, 20);
-            this.txbxTarjeta.TabIndex = 2;
+            this.txbxNroDoc.Enabled = false;
+            this.txbxNroDoc.Location = new System.Drawing.Point(558, 123);
+            this.txbxNroDoc.Name = "txbxNroDoc";
+            this.txbxNroDoc.Size = new System.Drawing.Size(159, 20);
+            this.txbxNroDoc.TabIndex = 2;
+            this.txbxNroDoc.Leave += new System.EventHandler(this.txbxNroDoc_Leave);
             // 
             // txbxImporte
             // 
@@ -140,11 +129,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(491, 130);
+            this.label5.Location = new System.Drawing.Point(470, 126);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.Size = new System.Drawing.Size(82, 13);
             this.label5.TabIndex = 1;
-            this.label5.Text = "Tarjeta";
+            this.label5.Text = "Nro Documento";
             // 
             // label4
             // 
@@ -194,7 +183,7 @@
             this.btnGrabar.UseVisualStyleBackColor = true;
             this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
-            // Deposito
+            // Retiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -205,8 +194,8 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txbxClieNom);
-            this.Name = "Deposito";
-            this.Text = "Deposito";
+            this.Name = "Retiro";
+            this.Text = "Retiro";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -225,11 +214,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txbxImporte;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txbxTarjeta;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnGrabar;
+        private System.Windows.Forms.TextBox txbxNroDoc;
+        private System.Windows.Forms.Label label5;
     }
 }

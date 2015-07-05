@@ -129,7 +129,7 @@
             this.ClientesBaja,
             this.ClientesModificacion});
             this.ClientesMenu.Name = "ClientesMenu";
-            this.ClientesMenu.Size = new System.Drawing.Size(119, 22);
+            this.ClientesMenu.Size = new System.Drawing.Size(152, 22);
             this.ClientesMenu.Text = "Clientes";
             this.ClientesMenu.Visible = false;
             // 
@@ -163,7 +163,7 @@
             this.CuentasAlta,
             this.CuentasModificacion});
             this.CuentasMenu.Name = "CuentasMenu";
-            this.CuentasMenu.Size = new System.Drawing.Size(119, 22);
+            this.CuentasMenu.Size = new System.Drawing.Size(152, 22);
             this.CuentasMenu.Text = "Cuentas";
             this.CuentasMenu.Visible = false;
             // 
@@ -190,7 +190,7 @@
             this.UsuariosBaja,
             this.UsuariosModificacion});
             this.UsuariosMenu.Name = "UsuariosMenu";
-            this.UsuariosMenu.Size = new System.Drawing.Size(119, 22);
+            this.UsuariosMenu.Size = new System.Drawing.Size(152, 22);
             this.UsuariosMenu.Text = "Usuarios";
             this.UsuariosMenu.Visible = false;
             // 
@@ -225,7 +225,7 @@
             this.RolBaja,
             this.RolModificacion});
             this.RolMenu.Name = "RolMenu";
-            this.RolMenu.Size = new System.Drawing.Size(119, 22);
+            this.RolMenu.Size = new System.Drawing.Size(152, 22);
             this.RolMenu.Text = "Roles";
             this.RolMenu.Visible = false;
             // 
@@ -279,6 +279,7 @@
             this.retiros.Size = new System.Drawing.Size(152, 22);
             this.retiros.Text = "Retiros";
             this.retiros.Visible = false;
+            this.retiros.Click += new System.EventHandler(this.retiros_Click);
             // 
             // transferencias
             // 
