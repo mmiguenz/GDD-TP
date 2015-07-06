@@ -305,6 +305,19 @@ insert into datiados.trimestre  values ('Octubre-Diciembre',10,12)
 
 
 
+create table datiados.tiposListados
+(
+	id int ,
+	descip varchar(max)
+)
+
+
+ insert into datiados.tiposListados values  (1,'Clientes que alguna de sus cuentas fueron inhabilitadas por no pagar los costos de transacción')
+ insert into datiados.tiposListados values  (2,'Cliente con mayor cantidad de comisiones facturadas en todas sus cuentas')
+ insert into datiados.tiposListados values  (3,'Clientes con mayor cantidad de transacciones realizadas entre cuentas propias')
+ insert into datiados.tiposListados values  (4,'Países con mayor cantidad de movimientos tanto ingresos como egresos')
+ insert into datiados.tiposListados values  (5,'Total facturado para los distintos tipos de cuentas')
+
 
 
 -- Miigracion =============================================================== 
