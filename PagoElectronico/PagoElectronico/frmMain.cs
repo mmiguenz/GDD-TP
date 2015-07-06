@@ -321,6 +321,14 @@ namespace PagoElectronico
             asoc.Show();
         }
 
+        private void ListadosMenu_Click(object sender, EventArgs e)
+        {
+            Listados.ListadoEstadistico list = new Listados.ListadoEstadistico();
+            list.MdiParent = this;
+            list.Show();
+
+        }
+
 
        
        

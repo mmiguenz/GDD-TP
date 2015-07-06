@@ -315,6 +315,7 @@
             this.ListadosMenu.Size = new System.Drawing.Size(171, 22);
             this.ListadosMenu.Text = "Listado Estadistico";
             this.ListadosMenu.Visible = false;
+            this.ListadosMenu.Click += new System.EventHandler(this.ListadosMenu_Click);
             // 
             // salirToolStripMenuItem
             // 
