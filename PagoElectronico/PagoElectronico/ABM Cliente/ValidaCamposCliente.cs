@@ -65,7 +65,7 @@ namespace PagoElectronico.ABM_Cliente
         {
 
 
-            if (nrodoc.Text != null && validaNroDocBool(nrodoc))
+            if (nrodoc.Text.Trim() != "" && validaNroDocBool(nrodoc))
             {
 
                 String qrySql = "select * from datiados.clientes ";
