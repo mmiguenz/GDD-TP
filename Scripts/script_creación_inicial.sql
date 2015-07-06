@@ -198,7 +198,9 @@ CREATE TABLE datiados.CtaCte(
 							 fecha datetime,
 							 tipoConcepto int foreign key references datiados.ItemConceptoTipos,
 							 NroCta numeric(18,0) foreign key references datiados.cuentas,
-							 Saldada bit 
+							 Saldada bit,
+							 id_transf int foreign key references datiados.transferencias
+							 
 							 
 								)
 
@@ -256,7 +258,7 @@ CREATE TABLE datiados.Usuarios(
 
 CREATE TABLE datiados.Funcionalidades(
 	id_func int IDENTITY(1,1) PRIMARY KEY,
-	descripcion varchar(255) NOT NULL,
+	descripcion varchar(255) NOT NULL UNIQUE,
 )
 
 /*Usuarios_Roles*/

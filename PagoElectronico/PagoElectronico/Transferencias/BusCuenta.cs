@@ -55,5 +55,12 @@ namespace PagoElectronico.Transferencias
 
 
         }
+
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            String  nroCta = gridCuentas.CurrentRow.Cells[0].Value.ToString();
+            frmTran.llenarCuentaDestino(nroCta);
+            this.Hide();
+        }
     }
 }

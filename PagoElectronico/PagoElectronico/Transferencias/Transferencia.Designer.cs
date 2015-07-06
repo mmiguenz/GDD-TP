@@ -107,7 +107,6 @@
             this.txbxImporte.Name = "txbxImporte";
             this.txbxImporte.Size = new System.Drawing.Size(159, 20);
             this.txbxImporte.TabIndex = 2;
-            this.txbxImporte.TextChanged += new System.EventHandler(this.txbxImporte_TextChanged);
             this.txbxImporte.Leave += new System.EventHandler(this.txbxImporte_Leave);
             this.txbxImporte.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbxImporte_KeyPress);
             // 
@@ -128,6 +127,7 @@
             this.cmbxCuentaOrg.Name = "cmbxCuentaOrg";
             this.cmbxCuentaOrg.Size = new System.Drawing.Size(159, 21);
             this.cmbxCuentaOrg.TabIndex = 0;
+            this.cmbxCuentaOrg.SelectionChangeCommitted += new System.EventHandler(this.cmbxCuentaOrg_SelectionChangeCommitted);
             // 
             // label3
             // 

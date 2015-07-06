@@ -70,6 +70,7 @@ namespace PagoElectronico.Transferencias
             cmbxMoneda.SelectedItem = null;
             txbxImporte.Enabled = false;
             Program.HayError = false;
+            txbxCtaDest.Clear();
          
 
         }
@@ -109,10 +110,10 @@ namespace PagoElectronico.Transferencias
             {
 
 
-                if (Decimal.Parse(txbxImporte.Text) < 0)
+                if (Decimal.Parse(txbxImporte.Text) <= 0)
                 {
 
-                    MessageBox.Show("El importe debe ser mayor o igual a 0");
+                    MessageBox.Show("El importe debe ser mayor a 0");
                     txbxImporte.Focus();
 
                 }
@@ -153,17 +154,26 @@ namespace PagoElectronico.Transferencias
         private void btnGrabar_Click(object sender, EventArgs e)
         {
          
+            grabar();
+            limpiar();
+
+
+         
+
         }
+
+
 
      
         private void grabar()
         {
-            SqlParameter[] parametros = new SqlParameter[] {new SqlParameter("@nroCta",cmbxCuentaOrg.Text),   
+            SqlParameter[] parametros = new SqlParameter[] {new SqlParameter("@nroCtaO",cmbxCuentaOrg.Text), 
+                                                            new SqlParameter("@nroCtaD",txbxCtaDest.Text),    
                                                             new SqlParameter("@importe",Decimal.Parse(txbxImporte.Text)),
                                                             new SqlParameter("@moneda",cmbxMoneda.SelectedValue),
                                                             new SqlParameter("@Fecha",DateTime.Parse(Program.getDate()))};
 
-            Utiles.ConectionManager.getInstance().ejecutarStoreProcedure("datiados.Retiro_agregar", parametros);
+            Utiles.ConectionManager.getInstance().ejecutarStoreProcedure("datiados.Transferencia_agregar", parametros);
 
             if (!Program.HayError)
                 MessageBox.Show("Grabacion Exitosa!");
@@ -173,12 +183,7 @@ namespace PagoElectronico.Transferencias
 
 
 
-        
 
-        private void txbxImporte_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -186,8 +191,26 @@ namespace PagoElectronico.Transferencias
             bus.Show();
         }
 
-       
 
 
+
+
+        public void llenarCuentaDestino(string nroCta)
+        {
+
+            if (nroCta == cmbxCuentaOrg.Text)
+            {
+                MessageBox.Show("Cuenta Origen y Cuenta Destino deben ser distintanas");
+            }else {
+
+            txbxCtaDest.Text = nroCta;
+            }
+
+        }
+
+        private void cmbxCuentaOrg_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            txbxImporte.Enabled = true;
+        }
     }
 }
