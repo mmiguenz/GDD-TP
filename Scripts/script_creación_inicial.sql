@@ -286,6 +286,27 @@ create table datiados.loguinAuditoria
 )
 
 
+
+
+create table datiados.trimestre 
+(
+Trimestre varchar(100),
+MDeste int,
+Mhasta int
+
+)
+
+
+insert into datiados.trimestre values ('Enero-Marzo',1,3)
+insert into datiados.trimestre values ('Abril-Junio',4,6)
+insert into datiados.trimestre values  ('Julio-Septiembre',7,9)
+insert into datiados.trimestre  values ('Octubre-Diciembre',10,12)
+
+
+
+
+
+
 -- Miigracion =============================================================== 
 
 /*Migración Tabla Bancos*/
@@ -446,6 +467,8 @@ insert into datiados.Funcionalidades values('MovimientosMenu')
 insert into datiados.Funcionalidades values('ConsultasMenu')
 insert into datiados.Funcionalidades values('FacturacionMenu')
 insert into datiados.Funcionalidades values('CambiarRolMenu')
+
+
 
 
 -- LLENO TABLA ROLES
