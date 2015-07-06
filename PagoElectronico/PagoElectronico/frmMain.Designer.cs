@@ -64,6 +64,8 @@
             this.btnCambiarPass = new System.Windows.Forms.ToolStripLabel();
             this.btnCambiarPwd = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.btnAsocTarj = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +80,9 @@
             this.toolStripSeparator3,
             this.btnCambiarPass,
             this.btnCambiarPwd,
-            this.toolStripSeparator2});
+            this.toolStripSeparator2,
+            this.toolStripLabel2,
+            this.btnAsocTarj});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1267, 25);
@@ -268,7 +272,7 @@
             // depositos
             // 
             this.depositos.Name = "depositos";
-            this.depositos.Size = new System.Drawing.Size(152, 22);
+            this.depositos.Size = new System.Drawing.Size(150, 22);
             this.depositos.Text = "Depositos";
             this.depositos.Visible = false;
             this.depositos.Click += new System.EventHandler(this.depositos_Click);
@@ -276,7 +280,7 @@
             // retiros
             // 
             this.retiros.Name = "retiros";
-            this.retiros.Size = new System.Drawing.Size(152, 22);
+            this.retiros.Size = new System.Drawing.Size(150, 22);
             this.retiros.Text = "Retiros";
             this.retiros.Visible = false;
             this.retiros.Click += new System.EventHandler(this.retiros_Click);
@@ -284,7 +288,7 @@
             // transferencias
             // 
             this.transferencias.Name = "transferencias";
-            this.transferencias.Size = new System.Drawing.Size(152, 22);
+            this.transferencias.Size = new System.Drawing.Size(150, 22);
             this.transferencias.Text = "Transferencias";
             this.transferencias.Visible = false;
             this.transferencias.Click += new System.EventHandler(this.transferencias_Click);
@@ -295,6 +299,7 @@
             this.FacturacionMenu.Size = new System.Drawing.Size(171, 22);
             this.FacturacionMenu.Text = "Facturacion";
             this.FacturacionMenu.Visible = false;
+            this.FacturacionMenu.Click += new System.EventHandler(this.FacturacionMenu_Click);
             // 
             // ConsultasMenu
             // 
@@ -377,6 +382,22 @@
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             this.toolStripSeparator2.Click += new System.EventHandler(this.toolStripSeparator2_Click);
             // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(151, 22);
+            this.toolStripLabel2.Text = "Asociar/Desasociar Tarjetas";
+            // 
+            // btnAsocTarj
+            // 
+            this.btnAsocTarj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAsocTarj.Image = ((System.Drawing.Image)(resources.GetObject("btnAsocTarj.Image")));
+            this.btnAsocTarj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAsocTarj.Name = "btnAsocTarj";
+            this.btnAsocTarj.Size = new System.Drawing.Size(23, 22);
+            this.btnAsocTarj.Text = "toolStripButton1";
+            this.btnAsocTarj.Click += new System.EventHandler(this.btnAsocTarj_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,7 +406,7 @@
             this.Controls.Add(this.toolStrip1);
             this.IsMdiContainer = true;
             this.Name = "FrmMain";
-            this.Text = "frmMain";
+            this.Text = "FRBA -  Pago Electronico";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.toolStrip1.ResumeLayout(false);
@@ -432,5 +453,7 @@
         private System.Windows.Forms.ToolStripLabel btnCambiarPass;
         private System.Windows.Forms.ToolStripButton btnCambiarPwd;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripButton btnAsocTarj;
     }
 }

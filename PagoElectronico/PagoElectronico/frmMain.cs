@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using PagoElectronico.ABM_Cliente;
+using System.Data.SqlClient;
 
 namespace PagoElectronico
 {
@@ -23,7 +24,16 @@ namespace PagoElectronico
 
             cargarBotones();
             asignarPermisos();
+            gestionarCuentas();
+            Program.HayError = false;
 
+        }
+
+        private void gestionarCuentas()
+        {
+            SqlParameter[] parametros = new SqlParameter[] { new SqlParameter("@fecha", DateTime.Parse(Program.getDate())) };
+
+            Utiles.ConectionManager.getInstance().ejecutarStoreProcedure("datiados.gestionarCuentas",parametros);
         }
 
         private void asignarPermisos()
@@ -295,6 +305,20 @@ namespace PagoElectronico
             Transferencias.Transferencia transf = new Transferencias.Transferencia();
             transf.MdiParent = this;
             transf.Show();
+        }
+
+        private void FacturacionMenu_Click(object sender, EventArgs e)
+        {
+            Facturacion.Facturacion fact = new Facturacion.Facturacion();
+            fact.MdiParent = this;
+            fact.Show();
+        }
+
+        private void btnAsocTarj_Click(object sender, EventArgs e)
+        {
+            ABM_Cliente.AsociarTarjetas asoc = new ABM_Cliente.AsociarTarjetas(Program.usr.clienteID);
+            asoc.MdiParent = this;
+            asoc.Show();
         }
 
 
