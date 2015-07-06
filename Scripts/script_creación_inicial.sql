@@ -320,6 +320,14 @@ create table datiados.tiposListados
 
 
 
+create table datiados.historialDeudores
+(
+nroCta numeric(18,0),
+clienteID int ,
+fecha datetime
+
+)
+
 -- Miigracion =============================================================== 
 
 /*Migración Tabla Bancos*/

@@ -190,6 +190,12 @@
     <Compile Include="FrmRol.Designer.cs">
       <DependentUpon>FrmRol.cs</DependentUpon>
     </Compile>
+    <Compile Include="Listados\Listado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listados\Listado.Designer.cs">
+      <DependentUpon>Listado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Listados\ListadoEstadistico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRol.resx">
       <DependentUpon>FrmRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listados\Listado.resx">
+      <DependentUpon>Listado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Listados\ListadoEstadistico.resx">
       <DependentUpon>ListadoEstadistico.cs</DependentUpon>

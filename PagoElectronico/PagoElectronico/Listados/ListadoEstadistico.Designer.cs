@@ -47,6 +47,7 @@
             this.btnListar.TabIndex = 0;
             this.btnListar.Text = "Listar";
             this.btnListar.UseVisualStyleBackColor = true;
+            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
             // btnSalir
             // 
