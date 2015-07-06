@@ -154,6 +154,7 @@ namespace PagoElectronico.ABM_Cuenta
                                                             new SqlParameter("@estadoCuenta",cmbxEstadoCta.SelectedValue),
                                                             new SqlParameter("@pais",cmbxPais.SelectedValue),
                                                             new SqlParameter("@moneda",cmbxMoneda.SelectedValue),
+                                                             new SqlParameter("@fecha",DateTime.Parse(Program.getDate()))
                                                            
                                                                 };
                 Utiles.ConectionManager.getInstance().ejecutarStoreProcedure("datiados.Cuenta_modif", parametros);

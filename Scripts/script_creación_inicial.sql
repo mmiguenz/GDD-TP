@@ -309,7 +309,7 @@ insert into datiados.trimestre  values ('Octubre-Diciembre',10,12)
 create table datiados.tiposListados
 (
 	id int ,
-	descip varchar(max)
+	descripcion varchar(max)
 )
 
 
@@ -493,6 +493,9 @@ insert into datiados.funcionalidades values('RolBaja')
 insert into datiados.funcionalidades values('RolModificacion')
 insert into datiados.Funcionalidades values('ListadosMenu')
 insert into datiados.Funcionalidades values('MovimientosMenu')
+insert into datiados.Funcionalidades values('retiros')
+insert into datiados.Funcionalidades values('depositos')
+insert into datiados.Funcionalidades values('transferencias')
 insert into datiados.Funcionalidades values('ConsultasMenu')
 insert into datiados.Funcionalidades values('FacturacionMenu')
 insert into datiados.Funcionalidades values('CambiarRolMenu')
@@ -591,9 +594,9 @@ order by id_transf
 
 --------------- procedures -------------------
 
-
+USE [GD1C2015]
 GO
-/****** Object:  StoredProcedure [datiados].[listado1]    Script Date: 07/06/2015 17:29:55 ******/
+/****** Object:  StoredProcedure [datiados].[listado1]    Script Date: 07/06/2015 18:29:30 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -620,7 +623,7 @@ from datiados.historialDeudores
 where YEAR(fecha) = @anio
 and MONTH(fecha) between @MesDesde and @MesHasta
 GO
-/****** Object:  StoredProcedure [datiados].[auditarLoguin]    Script Date: 07/06/2015 17:29:54 ******/
+/****** Object:  StoredProcedure [datiados].[auditarLoguin]    Script Date: 07/06/2015 18:29:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -638,45 +641,7 @@ set @fecha = GETDATE()
   
 insert into datiados.loguinAuditoria values (@usuario,@fecha,@descripcion)
 GO
-/****** Object:  StoredProcedure [datiados].[FuncionalidadesDelRol_buscar]    Script Date: 07/06/2015 17:29:55 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE procedure [datiados].[FuncionalidadesDelRol_buscar]
-@RolID int 
-as
-
-
-select descripcion funcionalidad from datiados.funcionalidades  f
-inner join datiados.Roles_Funcionalidades rf on rf.id_func=f.id_func
-inner join datiados.roles r on r.id_rol=rf.id_rol
-where rf.id_rol = @RolID
-GO
-/****** Object:  StoredProcedure [datiados].[funcionalidades_buscar]    Script Date: 07/06/2015 17:29:54 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE procedure [datiados].[funcionalidades_buscar]
-@id_rol int
-
-as
-
-
-select f.id_func,f.descripcion
-from  datiados.Funcionalidades f
-inner join datiados.Roles_Funcionalidades rf on f.id_func = rf.id_func
-where id_rol = @id_rol
-
-
-select f.id_func,f.descripcion
-from datiados.Funcionalidades f
-where f.id_func not in (select fu.id_func  from datiados.Funcionalidades fu
-							inner join datiados.Roles_Funcionalidades rf on fu.id_func = rf.id_func
-							where id_rol = @id_rol)
-GO
-/****** Object:  StoredProcedure [datiados].[cliente_modificar]    Script Date: 07/06/2015 17:29:54 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_modificar]    Script Date: 07/06/2015 18:29:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -706,7 +671,7 @@ update datiados.Clientes set nombre = @nombre,apellido=@apellido,
 						 cod_tipo_doc=@codTipoDoc,cod_pais=@codPais,nro_doc=@nroDoc,localidad=@localidad,habilitado = @habilitado
 where id=@ClienteID
 GO
-/****** Object:  StoredProcedure [datiados].[cliente_eliminar]    Script Date: 07/06/2015 17:29:54 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_eliminar]    Script Date: 07/06/2015 18:29:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -718,7 +683,7 @@ as
 
 update  datiados.Clientes set habilitado=0 where id = @clienteID
 GO
-/****** Object:  StoredProcedure [datiados].[cliente_buscar_ID]    Script Date: 07/06/2015 17:29:54 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_buscar_ID]    Script Date: 07/06/2015 18:29:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -735,7 +700,7 @@ select nombre,apellido,cod_tipo_doc codtipodoc,cod_pais codpais, nro_doc nrodoc,
 from Clientes 
 where id = @clienteID
 GO
-/****** Object:  StoredProcedure [datiados].[cliente_buscar]    Script Date: 07/06/2015 17:29:54 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_buscar]    Script Date: 07/06/2015 18:29:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -759,7 +724,7 @@ and ( apellido like @apellido+'%' or @apellido='' )
 and (mail like '%'+@mail+'%' or @mail ='')
 and (c.cod_tipo_doc = @codtipodoc or @codtipodoc is null)
 GO
-/****** Object:  StoredProcedure [datiados].[cliente_agregar]    Script Date: 07/06/2015 17:29:54 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_agregar]    Script Date: 07/06/2015 18:29:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -797,26 +762,63 @@ insert into datiados.Clientes	values (@nroDoc,
 																				
 										)
 GO
-/****** Object:  StoredProcedure [datiados].[proximoNroCta]    Script Date: 07/06/2015 17:29:55 ******/
+/****** Object:  StoredProcedure [datiados].[FuncionalidadesDelRol_buscar]    Script Date: 07/06/2015 18:29:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create procedure [datiados].[proximoNroCta]
+CREATE procedure [datiados].[FuncionalidadesDelRol_buscar]
+@RolID int 
 as
 
 
-declare @proximoNro numeric(16,0)
-
-select  @proximoNro = cast(max(nro_cuenta)as numeric(16,0))
-from datiados.cuentas 
-
-
-set @proximoNro+=1
-
-select ProximoNro = convert(varchar(16),@proximoNro)
+select descripcion funcionalidad from datiados.funcionalidades  f
+inner join datiados.Roles_Funcionalidades rf on rf.id_func=f.id_func
+inner join datiados.roles r on r.id_rol=rf.id_rol
+where rf.id_rol = @RolID
 GO
-/****** Object:  StoredProcedure [datiados].[Usuario_modif]    Script Date: 07/06/2015 17:29:55 ******/
+/****** Object:  StoredProcedure [datiados].[funcionalidades_buscar]    Script Date: 07/06/2015 18:29:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [datiados].[funcionalidades_buscar]
+@id_rol int
+
+as
+
+
+select f.id_func,f.descripcion
+from  datiados.Funcionalidades f
+inner join datiados.Roles_Funcionalidades rf on f.id_func = rf.id_func
+where id_rol = @id_rol
+
+
+select f.id_func,f.descripcion
+from datiados.Funcionalidades f
+where f.id_func not in (select fu.id_func  from datiados.Funcionalidades fu
+							inner join datiados.Roles_Funcionalidades rf on fu.id_func = rf.id_func
+							where id_rol = @id_rol)
+GO
+/****** Object:  StoredProcedure [datiados].[Tarjetas_buscar]    Script Date: 07/06/2015 18:29:30 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [datiados].[Tarjetas_buscar]
+@clienteID int
+
+as 
+
+
+
+select t.id_tarjeta ID ,right(replicate('*',16) + right(t.numero,4),16) Numero, et.descripcion Emisor, t.fecha_venc FechaVencimiento
+from datiados.tarjetas  t 
+inner join datiados.tarjetas_cliente tc on tc.id_tarjeta = t.id_tarjeta
+inner join datiados.emisoresTarjetas et  on et.codemisor = t.codemisor
+where tc.id_cliente = @clienteID
+GO
+/****** Object:  StoredProcedure [datiados].[Usuario_modif]    Script Date: 07/06/2015 18:29:30 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -837,7 +839,7 @@ as
 update datiados.Usuarios set username = @username,pwd = @pass,estado = @estado,fecha_ult_modif=@fechaModif,preg_secr= @pregunta, rta_secr=@resp,clienteID = @clienteID
 where username = @username
 GO
-/****** Object:  StoredProcedure [datiados].[Usuario_baja]    Script Date: 07/06/2015 17:29:55 ******/
+/****** Object:  StoredProcedure [datiados].[Usuario_baja]    Script Date: 07/06/2015 18:29:30 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -850,7 +852,7 @@ as
 
 update datiados.Usuarios set estado = 0 where username = @username
 GO
-/****** Object:  StoredProcedure [datiados].[Usuario_agregar]    Script Date: 07/06/2015 17:29:55 ******/
+/****** Object:  StoredProcedure [datiados].[Usuario_agregar]    Script Date: 07/06/2015 18:29:30 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -871,25 +873,44 @@ as
 insert into datiados.Usuarios 
 values (@username,@pass,1,@fechaCreacion,@fechaModif,@pregunta,@resp,0,@clienteID);
 GO
-/****** Object:  StoredProcedure [datiados].[Tarjetas_buscar]    Script Date: 07/06/2015 17:29:55 ******/
+/****** Object:  StoredProcedure [datiados].[proximoNroCta]    Script Date: 07/06/2015 18:29:30 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create procedure [datiados].[Tarjetas_buscar]
-@clienteID int
-
-as 
+create procedure [datiados].[proximoNroCta]
+as
 
 
+declare @proximoNro numeric(16,0)
 
-select t.id_tarjeta ID ,right(replicate('*',16) + right(t.numero,4),16) Numero, et.descripcion Emisor, t.fecha_venc FechaVencimiento
-from datiados.tarjetas  t 
-inner join datiados.tarjetas_cliente tc on tc.id_tarjeta = t.id_tarjeta
-inner join datiados.emisoresTarjetas et  on et.codemisor = t.codemisor
-where tc.id_cliente = @clienteID
+select  @proximoNro = cast(max(nro_cuenta)as numeric(16,0))
+from datiados.cuentas 
+
+
+set @proximoNro+=1
+
+select ProximoNro = convert(varchar(16),@proximoNro)
 GO
-/****** Object:  StoredProcedure [datiados].[tarjeta_desAsociar]    Script Date: 07/06/2015 17:29:55 ******/
+/****** Object:  StoredProcedure [datiados].[incrementarIntentosFallidos]    Script Date: 07/06/2015 18:29:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [datiados].[incrementarIntentosFallidos]
+@usuario varchar(100)
+as
+
+declare @intentos int
+
+select @intentos = cant_intentos_fallidos from datiados.Usuarios where username=@usuario
+
+if @intentos = 2
+	update datiados.Usuarios  set cant_intentos_fallidos+=1,estado=0 where username = @usuario
+else
+	update datiados.Usuarios  set cant_intentos_fallidos+=1 where username = @usuario
+GO
+/****** Object:  StoredProcedure [datiados].[tarjeta_desAsociar]    Script Date: 07/06/2015 18:29:30 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -916,7 +937,7 @@ begin
 	delete from datiados.Tarjetas_Cliente where id_cliente = @clienteID and id_tarjeta = @tarjetaID
 end
 GO
-/****** Object:  StoredProcedure [datiados].[tarjeta_asociar]    Script Date: 07/06/2015 17:29:55 ******/
+/****** Object:  StoredProcedure [datiados].[tarjeta_asociar]    Script Date: 07/06/2015 18:29:30 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -964,25 +985,7 @@ begin
 	end
 end
 GO
-/****** Object:  StoredProcedure [datiados].[incrementarIntentosFallidos]    Script Date: 07/06/2015 17:29:55 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE procedure [datiados].[incrementarIntentosFallidos]
-@usuario varchar(100)
-as
-
-declare @intentos int
-
-select @intentos = cant_intentos_fallidos from datiados.Usuarios where username=@usuario
-
-if @intentos = 2
-	update datiados.Usuarios  set cant_intentos_fallidos+=1,estado=0 where username = @usuario
-else
-	update datiados.Usuarios  set cant_intentos_fallidos+=1 where username = @usuario
-GO
-/****** Object:  StoredProcedure [datiados].[buscarCuentas]    Script Date: 07/06/2015 17:29:54 ******/
+/****** Object:  StoredProcedure [datiados].[buscarCuentas]    Script Date: 07/06/2015 18:29:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -999,96 +1002,7 @@ inner join datiados.Clientes c  on c.id = cc.cliente_id
 where (c.nombre like @nombre+'%' or @nombre ='')
 and  (c.apellido like @apellido+'%' or @apellido='')
 GO
-/****** Object:  StoredProcedure [datiados].[cuenta_modif]    Script Date: 07/06/2015 17:29:54 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE procedure [datiados].[cuenta_modif]
-@NroCta varchar(16),
-@Categoria int ,
-@EstadoCuenta int ,
-@pais int,
-@moneda int
-
-as
-
-declare @cateAnterior int
-declare @diasRestantes int
-
-
-
-select @cateAnterior = categoria,@diasRestantes = diasRestantes
-from datiados.cuentas
-where nro_cuenta=@NroCta
-
-
-
-
-
-set @diasRestantes = case when @cateAnterior <> @Categoria  and @Categoria = 1 then null		
-						  when 	@cateAnterior<>@Categoria and @Categoria <> 1 then 30
-						  else @diasRestantes end
-
-
-update datiados.cuentas set cod_estado =@estadoCuenta,cod_pais = @pais,categoria = @categoria,cod_moneda = @moneda,diasRestantes = @diasRestantes where nro_cuenta  = @NroCta
-GO
-/****** Object:  StoredProcedure [datiados].[Cuenta_agregar]    Script Date: 07/06/2015 17:29:54 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-create procedure [datiados].[Cuenta_agregar]
-@NroCta varchar(16),
-@Categoria int ,
-@pais int,
-@moneda int,
-@fechaCreac Datetime ,
-@ClienteID int
-
-
-as
-
-
-insert into datiados.cuentas 
-values (@NroCta,@clienteID,3,@pais,@fechaCreac,null,@categoria,@moneda,null)
-GO
-/****** Object:  StoredProcedure [datiados].[Deposito_agregar]    Script Date: 07/06/2015 17:29:54 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE procedure [datiados].[Deposito_agregar]
-@nroCta varchar(16),
-@importe decimal(18,4),
-@moneda int ,
-@tarjetaID int,
-@Fecha datetime
-
-as
-
-
-if exists (select * from datiados.cuentas where nro_cuenta = @nroCta and cod_estado <>1)
-begin
-	raiserror('La Cuenta Debe esta Habilitada Para relizar la transaccion',16,1)
-	return
-end
-
-declare @proximoCodigo numeric (18,0)
-
-select   @proximoCodigo = max(codigo)+ 1
-from datiados.depositos
-
-
-
-insert into datiados.depositos
-values  (@proximoCodigo,@nroCta,@Fecha,@importe,@moneda,@tarjetaID)
-
-
-insert into datiados.cuentaMovimientos
-values(@nroCta,1,@importe,@Fecha)
-GO
-/****** Object:  StoredProcedure [datiados].[consultaSaldo]    Script Date: 07/06/2015 17:29:54 ******/
+/****** Object:  StoredProcedure [datiados].[consultaSaldo]    Script Date: 07/06/2015 18:29:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1143,7 +1057,105 @@ where cta_origen = @nroCta
 and fecha <= @fechaTope
 order by fecha desc
 GO
-/****** Object:  StoredProcedure [datiados].[loguear]    Script Date: 07/06/2015 17:29:55 ******/
+/****** Object:  StoredProcedure [datiados].[Deposito_agregar]    Script Date: 07/06/2015 18:29:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [datiados].[Deposito_agregar]
+@nroCta varchar(16),
+@importe decimal(18,4),
+@moneda int ,
+@tarjetaID int,
+@Fecha datetime
+
+as
+
+
+if exists (select * from datiados.cuentas where nro_cuenta = @nroCta and cod_estado <>1)
+begin
+	raiserror('La Cuenta Debe esta Habilitada Para relizar la transaccion',16,1)
+	return
+end
+
+declare @proximoCodigo numeric (18,0)
+
+select   @proximoCodigo = max(codigo)+ 1
+from datiados.depositos
+
+
+
+insert into datiados.depositos
+values  (@proximoCodigo,@nroCta,@Fecha,@importe,@moneda,@tarjetaID)
+
+
+insert into datiados.cuentaMovimientos
+values(@nroCta,1,@importe,@Fecha)
+GO
+/****** Object:  StoredProcedure [datiados].[RolesBuscar]    Script Date: 07/06/2015 18:29:30 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [datiados].[RolesBuscar]
+@username varchar(255)
+
+as 
+
+
+
+select id_rol,nombre
+ from datiados.Roles
+ where estado = 1 
+ 
+ 
+ 
+select id_rol 
+from datiados.Usuarios_Roles
+where usr = @username
+GO
+/****** Object:  StoredProcedure [datiados].[Retiro_agregar]    Script Date: 07/06/2015 18:29:30 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [datiados].[Retiro_agregar]
+@nroCta varchar(16),
+@importe decimal(18,4),
+@moneda int ,
+@Fecha datetime
+
+as
+
+
+
+if exists (select * from datiados.cuentas where nro_cuenta = @nroCta and cod_Estado <>1 )
+begin
+	declare @strError  varchar(150)
+	set  @strError =' Imposible realizar la transaccion. La cuenta no se encuentra habilitada'
+	
+	raiserror(@strError,16,1)	
+	return
+end
+
+
+declare @proxCheque numeric(18,0)
+declare @proximoRetiro numeric(18,0)
+
+
+select @proxCheque =  MAX(numero_cheque) + 1  from datiados.cheques
+select @proximoRetiro = MAX(codigo) + 1  from datiados.retiros
+
+insert into datiados.cheques
+values (@proxCheque,10002,@importe,@Fecha)
+
+insert into datiados.retiros
+values(@proximoRetiro,@nroCta,@Fecha,@importe,@proxCheque,10002)
+
+insert into datiados.cuentaMovimientos
+values(@nroCta,4,@importe,@Fecha)
+GO
+/****** Object:  StoredProcedure [datiados].[loguear]    Script Date: 07/06/2015 18:29:30 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1207,70 +1219,7 @@ begin
 
 end
 GO
-/****** Object:  StoredProcedure [datiados].[RolesBuscar]    Script Date: 07/06/2015 17:29:55 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE procedure [datiados].[RolesBuscar]
-@username varchar(255)
-
-as 
-
-
-
-select id_rol,nombre
- from datiados.Roles
- where estado = 1 
- 
- 
- 
-select id_rol 
-from datiados.Usuarios_Roles
-where usr = @username
-GO
-/****** Object:  StoredProcedure [datiados].[Retiro_agregar]    Script Date: 07/06/2015 17:29:55 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE procedure [datiados].[Retiro_agregar]
-@nroCta varchar(16),
-@importe decimal(18,4),
-@moneda int ,
-@Fecha datetime
-
-as
-
-
-
-if exists (select * from datiados.cuentas where nro_cuenta = @nroCta and cod_Estado <>1 )
-begin
-	declare @strError  varchar(150)
-	set  @strError =' Imposible realizar la transaccion. La cuenta no se encuentra habilitada'
-	
-	raiserror(@strError,16,1)	
-	return
-end
-
-
-declare @proxCheque numeric(18,0)
-declare @proximoRetiro numeric(18,0)
-
-
-select @proxCheque =  MAX(numero_cheque) + 1  from datiados.cheques
-select @proximoRetiro = MAX(codigo) + 1  from datiados.retiros
-
-insert into datiados.cheques
-values (@proxCheque,10002,@importe,@Fecha)
-
-insert into datiados.retiros
-values(@proximoRetiro,@nroCta,@Fecha,@importe,@proxCheque,10002)
-
-insert into datiados.cuentaMovimientos
-values(@nroCta,4,@importe,@Fecha)
-GO
-/****** Object:  StoredProcedure [datiados].[listado4]    Script Date: 07/06/2015 17:29:55 ******/
+/****** Object:  StoredProcedure [datiados].[listado4]    Script Date: 07/06/2015 18:29:30 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1302,7 +1251,7 @@ and MONTH(cm.fecha) between @MesDesde and @MesHasta
 group by  p.descripcion
 order by 2 desc
 GO
-/****** Object:  StoredProcedure [datiados].[listado3]    Script Date: 07/06/2015 17:29:55 ******/
+/****** Object:  StoredProcedure [datiados].[listado3]    Script Date: 07/06/2015 18:29:30 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1335,7 +1284,37 @@ and MONTH(t.fecha) between @MesDesde and @MesHasta
 group by cli.nombre + ' '+cli.apellido 
 order by 2 desc
 GO
-/****** Object:  StoredProcedure [datiados].[transferencia_agregar]    Script Date: 07/06/2015 17:29:55 ******/
+/****** Object:  StoredProcedure [datiados].[listado2]    Script Date: 07/06/2015 18:29:30 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [datiados].[listado2]
+@anio int,
+@trimestre varchar(150)
+
+as
+
+
+
+declare @MesDesde int 
+declare @MesHasta int 
+
+select @MesDesde = MDeste , @MesHasta = MHasta
+from datiados.Trimestre
+where trimestre = @trimestre
+
+
+select top 5 c.nombre +' ' +c.apellido Cliente , COUNT(*) Cantidad_De_Comisiones_Cobradas from datiados.Facturas f 
+inner join datiados.Items_Facturas i on i.nro_factura = f.numero
+inner join datiados.Clientes c on c.id  = f.id_cliente
+where i.tipo_concepto = 1 
+and YEAR(f.fecha)= @anio 
+and MONTH(f.fecha) between @MesDesde and @MesHasta 
+group by c.nombre +' ' +c.apellido
+order by 2 desc
+GO
+/****** Object:  StoredProcedure [datiados].[transferencia_agregar]    Script Date: 07/06/2015 18:29:30 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1401,37 +1380,7 @@ values (@nroCtaO,3,@importe,@Fecha)
 insert into datiados.CuentaMovimientos
 values (@nroCtaD,2,@importe,@Fecha)
 GO
-/****** Object:  StoredProcedure [datiados].[listado2]    Script Date: 07/06/2015 17:29:55 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE procedure [datiados].[listado2]
-@anio int,
-@trimestre varchar(150)
-
-as
-
-
-
-declare @MesDesde int 
-declare @MesHasta int 
-
-select @MesDesde = MDeste , @MesHasta = MHasta
-from datiados.Trimestre
-where trimestre = @trimestre
-
-
-select top 5 c.nombre +' ' +c.apellido Cliente , COUNT(*) Cantidad_De_Comisiones_Cobradas from datiados.Facturas f 
-inner join datiados.Items_Facturas i on i.nro_factura = f.numero
-inner join datiados.Clientes c on c.id  = f.id_cliente
-where i.tipo_concepto = 1 
-and YEAR(f.fecha)= @anio 
-and MONTH(f.fecha) between @MesDesde and @MesHasta 
-group by c.nombre +' ' +c.apellido
-order by 2 desc
-GO
-/****** Object:  StoredProcedure [datiados].[listado5]    Script Date: 07/06/2015 17:29:55 ******/
+/****** Object:  StoredProcedure [datiados].[listado5]    Script Date: 07/06/2015 18:29:30 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1461,7 +1410,7 @@ where YEAR(f.fecha) = @anio
 and MONTH(f.fecha) between @MesDesde and @MesHasta
 group by cc.descripcion
 GO
-/****** Object:  StoredProcedure [datiados].[gestionarCuentas]    Script Date: 07/06/2015 17:29:55 ******/
+/****** Object:  StoredProcedure [datiados].[gestionarCuentas]    Script Date: 07/06/2015 18:29:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1472,7 +1421,7 @@ as
 
 
 
-if  not exists (select * from gestionCuentas where left(convert(varchar,fechaUltimaGestion,121),10) = left(convert(varchar,@fecha,121),10) )
+if  not exists (select * from datiados.gestionCuentas where left(convert(varchar,fechaUltimaGestion,121),10) = left(convert(varchar,@fecha,121),10) )
 begin 
 
 begin tran t1
@@ -1497,7 +1446,7 @@ update datiados.cuentas set diasRestantes -=1 where isnull(diasRestantes,0)<>0
 update  datiados.cuentas set cod_estado = 3 where DiasRestantes = 0
 
 
-
+---- registro deudores que se les inhabilita la cuenta
 
 insert into datiados.historialDeudores
 select NroCta,ClienteID,@fecha
@@ -1508,7 +1457,7 @@ having COUNT(*) > =5
 
 
 
-
+-- inabilito las cuentas de los deudores
 
 update c set cod_estado = 2
 from datiados.Cuentas c 
@@ -1539,7 +1488,7 @@ end
 
 end
 GO
-/****** Object:  StoredProcedure [datiados].[facturar]    Script Date: 07/06/2015 17:29:54 ******/
+/****** Object:  StoredProcedure [datiados].[facturar]    Script Date: 07/06/2015 18:29:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1606,4 +1555,83 @@ and  cc.Saldada = 1
 
 
 drop table #tempItems
+GO
+/****** Object:  StoredProcedure [datiados].[cuenta_modif]    Script Date: 07/06/2015 18:29:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [datiados].[cuenta_modif]
+@NroCta varchar(16),
+@Categoria int ,
+@EstadoCuenta int ,
+@pais int,
+@moneda int,
+@fecha datetime 
+
+
+as
+
+declare @cateAnterior int
+declare @diasRestantes int
+
+
+
+select @cateAnterior = categoria,@diasRestantes = diasRestantes
+from datiados.cuentas
+where nro_cuenta=@NroCta
+
+
+
+
+
+set @diasRestantes = case when @cateAnterior <> @Categoria  and @Categoria = 1 then null		
+						  when 	@cateAnterior<>@Categoria and @Categoria <> 1 then 30
+						  else @diasRestantes end
+
+
+---si modifico la categoria agrego el cargo a la ctacte
+
+if ISNULL(@diasRestantes,0) = 30 
+begin
+declare @clienteID int
+set @clienteID = (select cliente_id  from datiados.Cuentas where nro_cuenta = @NroCta)
+
+
+insert into datiados.CtaCte
+select @clienteID,costo,@fecha,2,@NroCta,0,null
+from datiados.CuentaCategorias
+where id_categoria =@Categoria
+
+update datiados.cuentas set cod_estado =3,cod_pais = @pais,categoria = @categoria,cod_moneda = @moneda,diasRestantes = @diasRestantes where nro_cuenta  = @NroCta
+return
+
+end 
+
+update datiados.cuentas set cod_estado =@estadoCuenta,cod_pais = @pais,categoria = @categoria,cod_moneda = @moneda,diasRestantes = @diasRestantes where nro_cuenta  = @NroCta
+GO
+/****** Object:  StoredProcedure [datiados].[Cuenta_agregar]    Script Date: 07/06/2015 18:29:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [datiados].[Cuenta_agregar]
+@NroCta varchar(16),
+@Categoria int ,
+@pais int,
+@moneda int,
+@fechaCreac Datetime ,
+@ClienteID int
+
+
+as
+
+
+
+insert into datiados.CtaCte 
+select @ClienteID,c.costo,@fechaCreac,2,@NroCta,0,null
+from datiados.CuentaCategorias c
+
+insert into datiados.cuentas 
+values (@NroCta,@clienteID,3,@pais,@fechaCreac,null,@categoria,@moneda,null)
 GO
