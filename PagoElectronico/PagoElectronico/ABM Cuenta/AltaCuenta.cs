@@ -108,6 +108,7 @@ namespace PagoElectronico.ABM_Cuenta
             cmbxPais.SelectedItem = null;
             cmbxTipoCta.SelectedItem = null;
             gpbxCta.Enabled = false;
+            Program.HayError = false;
         }
 
         private void btnGrabar_Click(object sender, EventArgs e)
@@ -132,7 +133,7 @@ namespace PagoElectronico.ABM_Cuenta
 
             }
 
-
+             limpiar();
         }
 
 

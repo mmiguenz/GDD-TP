@@ -153,11 +153,19 @@ namespace PagoElectronico.Transferencias
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-         
-            grabar();
-            limpiar();
 
+            if (txbxCtaDest.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe seleccionar una Cuenta Destino");
 
+            }
+            else
+            {
+
+                grabar();
+                limpiar();
+
+            }
          
 
         }
