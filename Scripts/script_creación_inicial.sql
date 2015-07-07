@@ -607,7 +607,7 @@ where username in('Agata_Duarte_aga','Aien_Rodríguez_aie','Alejandro_Figueroa_al
 --------------- procedures -------------------
 USE [GD1C2015]
 GO
-/****** Object:  StoredProcedure [datiados].[listado1]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[listado1]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -634,7 +634,7 @@ from datiados.historialDeudores
 where YEAR(fecha) = @anio
 and MONTH(fecha) between @MesDesde and @MesHasta
 GO
-/****** Object:  StoredProcedure [datiados].[auditarLoguin]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[auditarLoguin]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -652,7 +652,7 @@ set @fecha = GETDATE()
   
 insert into datiados.loguinAuditoria values (@usuario,@fecha,@descripcion)
 GO
-/****** Object:  StoredProcedure [datiados].[cliente_modificar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_modificar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -682,7 +682,7 @@ update datiados.Clientes set nombre = @nombre,apellido=@apellido,
 						 cod_tipo_doc=@codTipoDoc,cod_pais=@codPais,nro_doc=@nroDoc,localidad=@localidad,habilitado = @habilitado
 where id=@ClienteID
 GO
-/****** Object:  StoredProcedure [datiados].[cliente_eliminar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_eliminar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -694,7 +694,7 @@ as
 
 update  datiados.Clientes set habilitado=0 where id = @clienteID
 GO
-/****** Object:  StoredProcedure [datiados].[cliente_buscar_ID]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_buscar_ID]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -711,7 +711,7 @@ select nombre,apellido,cod_tipo_doc codtipodoc,cod_pais codpais, nro_doc nrodoc,
 from Clientes 
 where id = @clienteID
 GO
-/****** Object:  StoredProcedure [datiados].[cliente_buscar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_buscar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -735,7 +735,7 @@ and ( apellido like @apellido+'%' or @apellido='' )
 and (mail like '%'+@mail+'%' or @mail ='')
 and (c.cod_tipo_doc = @codtipodoc or @codtipodoc is null)
 GO
-/****** Object:  StoredProcedure [datiados].[cliente_agregar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[cliente_agregar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -773,7 +773,7 @@ insert into datiados.Clientes	values (@nroDoc,
 																				
 										)
 GO
-/****** Object:  StoredProcedure [datiados].[FuncionalidadesDelRol_buscar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[FuncionalidadesDelRol_buscar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -788,7 +788,7 @@ inner join datiados.Roles_Funcionalidades rf on rf.id_func=f.id_func
 inner join datiados.roles r on r.id_rol=rf.id_rol
 where rf.id_rol = @RolID
 GO
-/****** Object:  StoredProcedure [datiados].[funcionalidades_buscar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[funcionalidades_buscar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -811,7 +811,7 @@ where f.id_func not in (select fu.id_func  from datiados.Funcionalidades fu
 							inner join datiados.Roles_Funcionalidades rf on fu.id_func = rf.id_func
 							where id_rol = @id_rol)
 GO
-/****** Object:  StoredProcedure [datiados].[Tarjetas_buscar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[Tarjetas_buscar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -829,7 +829,7 @@ inner join datiados.tarjetas_cliente tc on tc.id_tarjeta = t.id_tarjeta
 inner join datiados.emisoresTarjetas et  on et.codemisor = t.codemisor
 where tc.id_cliente = @clienteID
 GO
-/****** Object:  StoredProcedure [datiados].[Usuario_modif]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[Usuario_modif]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -850,7 +850,7 @@ as
 update datiados.Usuarios set username = @username,pwd = @pass,estado = @estado,fecha_ult_modif=@fechaModif,preg_secr= @pregunta, rta_secr=@resp,clienteID = @clienteID
 where username = @username
 GO
-/****** Object:  StoredProcedure [datiados].[Usuario_baja]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[Usuario_baja]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -863,7 +863,7 @@ as
 
 update datiados.Usuarios set estado = 0 where username = @username
 GO
-/****** Object:  StoredProcedure [datiados].[Usuario_agregar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[Usuario_agregar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -884,7 +884,7 @@ as
 insert into datiados.Usuarios 
 values (@username,@pass,1,@fechaCreacion,@fechaModif,@pregunta,@resp,0,@clienteID);
 GO
-/****** Object:  StoredProcedure [datiados].[proximoNroCta]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[proximoNroCta]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -903,7 +903,7 @@ set @proximoNro+=1
 
 select ProximoNro = convert(varchar(16),@proximoNro)
 GO
-/****** Object:  StoredProcedure [datiados].[incrementarIntentosFallidos]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[incrementarIntentosFallidos]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -921,7 +921,7 @@ if @intentos = 2
 else
 	update datiados.Usuarios  set cant_intentos_fallidos+=1 where username = @usuario
 GO
-/****** Object:  StoredProcedure [datiados].[tarjeta_desAsociar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[tarjeta_desAsociar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -948,7 +948,7 @@ begin
 	delete from datiados.Tarjetas_Cliente where id_cliente = @clienteID and id_tarjeta = @tarjetaID
 end
 GO
-/****** Object:  StoredProcedure [datiados].[tarjeta_asociar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[tarjeta_asociar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -996,7 +996,7 @@ begin
 	end
 end
 GO
-/****** Object:  StoredProcedure [datiados].[buscarCuentas]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[buscarCuentas]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1013,7 +1013,7 @@ inner join datiados.Clientes c  on c.id = cc.cliente_id
 where (c.nombre like @nombre+'%' or @nombre ='')
 and  (c.apellido like @apellido+'%' or @apellido='')
 GO
-/****** Object:  StoredProcedure [datiados].[consultaSaldo]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[consultaSaldo]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1068,7 +1068,7 @@ where cta_origen = @nroCta
 and fecha <= @fechaTope
 order by fecha desc
 GO
-/****** Object:  StoredProcedure [datiados].[Deposito_agregar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[Deposito_agregar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1103,7 +1103,7 @@ values  (@proximoCodigo,@nroCta,@Fecha,@importe,@moneda,@tarjetaID)
 insert into datiados.cuentaMovimientos
 values(@nroCta,1,@importe,@Fecha)
 GO
-/****** Object:  StoredProcedure [datiados].[RolesBuscar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[RolesBuscar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1125,7 +1125,7 @@ select id_rol
 from datiados.Usuarios_Roles
 where usr = @username
 GO
-/****** Object:  StoredProcedure [datiados].[Retiro_agregar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[Retiro_agregar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1166,7 +1166,7 @@ values(@proximoRetiro,@nroCta,@Fecha,@importe,@proxCheque,10002)
 insert into datiados.cuentaMovimientos
 values(@nroCta,4,@importe,@Fecha)
 GO
-/****** Object:  StoredProcedure [datiados].[loguear]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[loguear]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1230,7 +1230,7 @@ begin
 
 end
 GO
-/****** Object:  StoredProcedure [datiados].[listado4]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[listado4]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1262,7 +1262,7 @@ and MONTH(cm.fecha) between @MesDesde and @MesHasta
 group by  p.descripcion
 order by 2 desc
 GO
-/****** Object:  StoredProcedure [datiados].[listado3]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[listado3]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1295,7 +1295,7 @@ and MONTH(t.fecha) between @MesDesde and @MesHasta
 group by cli.nombre + ' '+cli.apellido 
 order by 2 desc
 GO
-/****** Object:  StoredProcedure [datiados].[listado2]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[listado2]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1325,7 +1325,7 @@ and MONTH(f.fecha) between @MesDesde and @MesHasta
 group by c.nombre +' ' +c.apellido
 order by 2 desc
 GO
-/****** Object:  StoredProcedure [datiados].[transferencia_agregar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[transferencia_agregar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1391,7 +1391,7 @@ values (@nroCtaO,3,@importe,@Fecha)
 insert into datiados.CuentaMovimientos
 values (@nroCtaD,2,@importe,@Fecha)
 GO
-/****** Object:  StoredProcedure [datiados].[listado5]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[listado5]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1421,7 +1421,7 @@ where YEAR(f.fecha) = @anio
 and MONTH(f.fecha) between @MesDesde and @MesHasta
 group by cc.descripcion
 GO
-/****** Object:  StoredProcedure [datiados].[gestionarCuentas]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[gestionarCuentas]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1499,7 +1499,7 @@ end
 
 end
 GO
-/****** Object:  StoredProcedure [datiados].[facturar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[facturar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1567,7 +1567,7 @@ and  cc.Saldada = 1
 
 drop table #tempItems
 GO
-/****** Object:  StoredProcedure [datiados].[cuenta_modif]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[cuenta_modif]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1621,7 +1621,7 @@ end
 
 update datiados.cuentas set cod_estado =@estadoCuenta,cod_pais = @pais,categoria = @categoria,cod_moneda = @moneda,diasRestantes = @diasRestantes where nro_cuenta  = @NroCta
 GO
-/****** Object:  StoredProcedure [datiados].[Cuenta_agregar]    Script Date: 07/06/2015 18:49:59 ******/
+/****** Object:  StoredProcedure [datiados].[Cuenta_agregar]    Script Date: 07/06/2015 22:13:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1639,10 +1639,14 @@ as
 
 
 
+insert into datiados.cuentas 
+values (@NroCta,@clienteID,3,@pais,@fechaCreac,null,@categoria,@moneda,null)
+
+
+if @Categoria <>1
+begin
 insert into datiados.CtaCte 
 select @ClienteID,c.costo,@fechaCreac,2,@NroCta,0,null
 from datiados.CuentaCategorias c
-
-insert into datiados.cuentas 
-values (@NroCta,@clienteID,3,@pais,@fechaCreac,null,@categoria,@moneda,null)
+end
 GO
